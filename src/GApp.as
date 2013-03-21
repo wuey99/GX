@@ -3,6 +3,7 @@ package
 {
 	
 // app
+	import GX.Assets.*;
 	import GX.Levels.*;
 	import GX.Text.*;
 	import GX.Mickey.*;
@@ -33,8 +34,7 @@ package
 		private var m_XApp:XApp;
 		private var xxx:XWorld;
 		private var m_app:GApp;
-// !!! todo
-//		private var m_assets:XAssets;
+		private var m_assets:XAssets;
 		private var m_mickeyObject:MickeyX;
 		private var m_mickeyCursorObject:MickeyCursorX;;
 		private var m_levelObject:LevelX;
@@ -55,16 +55,10 @@ package
 		//------------------------------------------------------------------------------------------
 		public function GApp() {	
 			trace (": starting: ");
-			
-			setup ();
 		}
-
-		//==========================================================================================
-		// common
-		//==========================================================================================
 		
 		//------------------------------------------------------------------------------------------
-		public function setup ():void {	
+		public function setup (__assetsClass:Class, __mickeyXClass:Class):void {	
 			m_app = this;
 			
 			m_XApp = new XApp ();
@@ -79,9 +73,8 @@ package
 			
 			xxx.grabFocus ();
 			
-// !!! todo
-//			m_assets = new XAssets (m_XApp, this);
-//			m_assets.load ();
+			m_assets = new __assetsClass (m_XApp, this);
+			m_assets.load ();
 			
 			K.setup (this, m_XApp);
 		}
@@ -95,14 +88,10 @@ package
 
 		//------------------------------------------------------------------------------------------
 		public function initGame ():void {
-// !!! todo
-//			__initGame ();
 		}
 		
 		//------------------------------------------------------------------------------------------
 		public function initLevel (__levelName:String):void {
-// !!! todo
-//			__initLevel ("X001");
 		}
 		
 		//------------------------------------------------------------------------------------------
@@ -127,7 +116,6 @@ package
 			m_mask.alpha = 1.0 - Math.min (1.0, __alpha);
 		}
 
-		
 		//------------------------------------------------------------------------------------------
 		public function Null_HndlrX ():XLogicObject {
 			return null;
@@ -135,7 +123,7 @@ package
 		
 		//------------------------------------------------------------------------------------------
 		public function logicClassNameToClass (__logicClassName:String):* {
-			return __logicClassNameToClass[__logicClassName];
+			return null;
 		}
 		
 		//------------------------------------------------------------------------------------------
@@ -145,7 +133,7 @@ package
 		
 		//------------------------------------------------------------------------------------------
 		public function getLevelData (__levelName:String):* {
-			return __levelDataMap[__levelName];
+			return null;
 		}
 		
 		//------------------------------------------------------------------------------------------
@@ -313,16 +301,7 @@ package
 		public function removeMickeyPlayingListener (__listener:Function):void {
 			K.app$.getMickeyObject ().removePlayingListener (__listener);
 		}
-			
-		//------------------------------------------------------------------------------------------
-		public var __logicClassNameToClass:Object = {
-		};
-		
-		//------------------------------------------------------------------------------------------
-		public var __levelDataMap:* = {
-			$: { }
-		}
-			
+
 	//------------------------------------------------------------------------------------------
 	}
 	
