@@ -31,26 +31,26 @@ package
 	 
 //------------------------------------------------------------------------------------------
 	public class GApp extends Sprite {
-		private var m_XApp:XApp;
-		private var xxx:XWorld;
-		private var m_app:GApp;
-		private var m_assets:XAssets;
-		private var m_mickeyObject:MickeyX;
-		private var m_mickeyCursorObject:MickeyCursorX;;
-		private var m_levelObject:LevelX;
-//		private var m_gameHudObject:HudX;
-		private var m_hudObject:XLogicObject;
-		private var m_hudMessageObject:HudMessageX;
+		public var m_XApp:XApp;
+		public var xxx:XWorld;
+		public var m_app:GApp;
+		public var m_assets:XAssets;
+		public var m_mickeyObject:MickeyX;
+		public var m_mickeyCursorObject:MickeyCursorX;;
+		public var m_levelObject:LevelX;
+//		public var m_gameHudObject:HudX;
+		public var m_hudObject:XLogicObject;
+		public var m_hudMessageObject:HudMessageX;
 		public var PLAYFIELD_LAYER:Number = 0;
-		private var m_gameState:Number;
-		private var m_levelData:*;
-		private var m_levelComplete:Boolean;	
-		private var m_currentZone:Number;
+		public var m_gameState:Number;
+		public var m_levelData:*;
+		public var m_levelComplete:Boolean;	
+		public var m_currentZone:Number;
 		
-		private var m_setMickeyToStartSignal:XSignal;
-		private var m_zoneStartedSignal:XSignal;
-		private var m_zoneFinishedSignal:XSignal;
-		private var m_mickeyDeathSignal:XSignal;
+		public var m_setMickeyToStartSignal:XSignal;
+		public var m_zoneStartedSignal:XSignal;
+		public var m_zoneFinishedSignal:XSignal;
+		public var m_mickeyDeathSignal:XSignal;
 		
 		//------------------------------------------------------------------------------------------
 		public function GApp() {	
@@ -95,7 +95,7 @@ package
 		}
 		
 		//------------------------------------------------------------------------------------------
-		private var m_mask:Sprite;
+		public var m_mask:Sprite;
 		
 		//------------------------------------------------------------------------------------------
 		public function setupMask ():void {
@@ -137,7 +137,7 @@ package
 		}
 		
 		//------------------------------------------------------------------------------------------
-		private function initHudLayerObject ():void {		
+		public function initHudLayerObject ():void {		
 			m_hudObject = xxx.getXLogicManager ().initXLogicObject (
 				// parent
 				null,
