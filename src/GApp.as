@@ -1,0 +1,330 @@
+//------------------------------------------------------------------------------------------
+package
+{
+	
+// app
+	import GX.Levels.*;
+	import GX.Text.*;
+	import GX.Mickey.*;
+	import GX.Messages.*;
+	import GX.Messages.Level.*;
+	
+// X classes
+	import X.*;
+	import X.Bitmap.XBitmapDataAnim;
+	import X.Collections.*;
+	import X.Game.*;
+	import X.Geom.*;
+	import X.Keyboard.*;
+	import X.Resource.*;
+	import X.Signals.XSignal;
+	import X.Task.*;
+	import X.World.*;
+	import X.World.Logic.*;
+	import X.XML.*;
+	import X.XMap.*;
+	
+// flash classes
+	import flash.display.Sprite;
+	import flash.ui.Mouse;
+	 
+//------------------------------------------------------------------------------------------
+	public class GApp extends Sprite {
+		private var m_XApp:XApp;
+		private var xxx:XWorld;
+		private var m_app:GApp;
+// !!! todo
+//		private var m_assets:XAssets;
+		private var m_mickeyObject:MickeyX;
+		private var m_mickeyCursorObject:MickeyCursorX;;
+		private var m_levelObject:LevelX;
+//		private var m_gameHudObject:HudX;
+		private var m_hudObject:XLogicObject;
+		private var m_hudMessageObject:HudMessageX;
+		public var PLAYFIELD_LAYER:Number = 0;
+		private var m_gameState:Number;
+		private var m_levelData:*;
+		private var m_levelComplete:Boolean;	
+		private var m_currentZone:Number;
+		
+		private var m_setMickeyToStartSignal:XSignal;
+		private var m_zoneStartedSignal:XSignal;
+		private var m_zoneFinishedSignal:XSignal;
+		private var m_mickeyDeathSignal:XSignal;
+		
+		//------------------------------------------------------------------------------------------
+		public function GApp() {	
+			trace (": starting: ");
+			
+			setup ();
+		}
+
+		//==========================================================================================
+		// common
+		//==========================================================================================
+		
+		//------------------------------------------------------------------------------------------
+		public function setup ():void {	
+			m_app = this;
+			
+			m_XApp = new XApp ();
+			m_XApp.setup (m_XApp.getDefaultPoolSettings ());
+			
+			xxx = new XWorld (this, m_XApp);
+			addChild (xxx);
+			
+			setupMask ();
+			
+			xxx.setViewRect (704, 576);
+			
+			xxx.grabFocus ();
+			
+// !!! todo
+//			m_assets = new XAssets (m_XApp, this);
+//			m_assets.load ();
+			
+			K.setup (this, m_XApp);
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function setupSignals ():void {
+			m_setMickeyToStartSignal = new XSignal ();
+			m_zoneStartedSignal = new XSignal ();
+			m_zoneFinishedSignal = new XSignal ();
+		}
+
+		//------------------------------------------------------------------------------------------
+		public function initGame ():void {
+// !!! todo
+//			__initGame ();
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function initLevel (__levelName:String):void {
+// !!! todo
+//			__initLevel ("X001");
+		}
+		
+		//------------------------------------------------------------------------------------------
+		private var m_mask:Sprite;
+		
+		//------------------------------------------------------------------------------------------
+		public function setupMask ():void {
+			m_mask = new Sprite ();
+			m_mask.graphics.beginFill (0x000000);
+			m_mask.graphics.drawRect (0, 0, 700, 550);
+			addChild (m_mask);
+			setMaskAlpha (1.0);
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function getMaskAlpha ():Number {
+			return 1.0 - m_mask.alpha;
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function setMaskAlpha (__alpha:Number):void {
+			m_mask.alpha = 1.0 - Math.min (1.0, __alpha);
+		}
+
+		
+		//------------------------------------------------------------------------------------------
+		public function Null_HndlrX ():XLogicObject {
+			return null;
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function logicClassNameToClass (__logicClassName:String):* {
+			return __logicClassNameToClass[__logicClassName];
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function getLevelComplete ():Boolean {
+			return m_levelComplete;
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function getLevelData (__levelName:String):* {
+			return __levelDataMap[__levelName];
+		}
+		
+		//------------------------------------------------------------------------------------------
+		private function initHudLayerObject ():void {		
+			m_hudObject = xxx.getXLogicManager ().initXLogicObject (
+				// parent
+				null,
+				// logicObject
+				new XLogicObject () as XLogicObject,
+				// item, layer, depth
+				null, -1, 25000,
+				// x, y, z
+				0, 0, 0,
+				// scale, rotation
+				1.0, 0
+			) as XLogicObject;
+			
+			m_hudObject.show ();
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function getHudObject ():XLogicObject {
+			return m_hudObject;
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function getGameHudObject ():XLogicObject {
+//			return m_gameHudObject;
+			return null;
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function getHudMessageObject ():HudMessageX {
+			return m_hudMessageObject;
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function getLevelObject ():LevelX {
+			return m_levelObject;
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function getLevelLayer (__layer:Number):XMapView { // XMapLayerView
+			return m_levelObject;
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function setupMickey (__mickey:MickeyX):void {
+			var __x:Number = 2536-256;
+			var __y:Number = 2536+256;
+			
+			m_mickeyObject = xxx.getXLogicManager ().initXLogicObject (
+				// parent
+				null,
+				// logicObject
+				__mickey as XLogicObject,
+				// item, layer, depth
+				null, PLAYFIELD_LAYER, 10000,
+				// x, y, z
+				__x, __y, 0,
+				// scale, rotation
+				1.0, 0,
+				m_mickeyCursorObject
+			) as MickeyX;
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function initCursor ():void {
+			var __x:Number;
+			var __y:Number;
+			
+			__x = 0;
+			__y = 0;
+			
+			m_mickeyCursorObject = xxx.getXLogicManager ().initXLogicObject (
+				// parent
+				null,
+				// logicObject
+				new MickeyCursorX () as XLogicObject,
+				// item, layer, depth
+				null, PLAYFIELD_LAYER, 10000,
+				// x, y, z
+				__x, __y, 0,
+				// scale, rotation
+				1.0, 0
+			) as MickeyCursorX;
+		}
+		
+		
+		//------------------------------------------------------------------------------------------
+		public function getMickeyCursorObject ():MickeyCursorX {
+			return m_mickeyCursorObject;	
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function getMickeyObject ():MickeyX {
+			return m_mickeyObject;
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function setMickeyMessage (__message:String):void {
+			m_mickeyObject.setMessage (__message);
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function setCurrentZone (__zone:Number):void {
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function getCurrentZone ():Number {
+			return m_currentZone;
+		}
+
+		//------------------------------------------------------------------------------------------
+		public function addZoneStartedListener (__function:Function):void {
+			m_zoneStartedSignal.addListener (__function);
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function removeZoneStartedListener (__function:Function):void {
+			m_zoneStartedSignal.removeListener (__function);
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function fireZoneStartedSignal ():void {
+			m_zoneStartedSignal.fireSignal (getCurrentZone ());
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function addZoneFinishedListener (__function:Function):void {
+			m_zoneFinishedSignal.addListener (__function);
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function removeZoneFinishedListener (__function:Function):void {
+			m_zoneFinishedSignal.removeListener (__function);
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function fireZoneFinishedSignal ():void {
+			m_zoneFinishedSignal.fireSignal (getCurrentZone ());
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function fireMickeyDeathSignal (__trigger:Number):void {
+			m_mickeyDeathSignal.fireSignal (__trigger);
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function addMickeyDeathListener (__listener:Function):void {
+			m_mickeyDeathSignal.addListener (__listener);
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function removeMickeyDeathListener (__listener:Function):void {
+			m_mickeyDeathSignal.removeListener (__listener);
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function addMickeyPlayingListener (__listener:Function):void {
+			K.app$.getMickeyObject ().addPlayingListener (__listener);
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function removeMickeyPlayingListener (__listener:Function):void {
+			K.app$.getMickeyObject ().removePlayingListener (__listener);
+		}
+			
+		//------------------------------------------------------------------------------------------
+		public var __logicClassNameToClass:Object = {
+		};
+		
+		//------------------------------------------------------------------------------------------
+		public var __levelDataMap:* = {
+			$: { }
+		}
+			
+	//------------------------------------------------------------------------------------------
+	}
+	
+//------------------------------------------------------------------------------------------
+}
