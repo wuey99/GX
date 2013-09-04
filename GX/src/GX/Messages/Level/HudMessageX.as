@@ -29,6 +29,9 @@ package GX.Messages.Level {
 			m_text = new XTextSprite ();
 			x_text = addSpriteToHudAt (m_text, 0, 0);
 			
+			// !STARLING!
+			
+			/*
 			m_text.v.filters = [new DropShadowFilter (
 				// distance
 				4.0,
@@ -39,6 +42,7 @@ package GX.Messages.Level {
 				// alpha
 				1.0
 			)];
+			*/
 			
 			show ();
 		}

@@ -14,7 +14,7 @@ package GX.Assets {
 		public var m_XApp:XApp;
 		
 		//------------------------------------------------------------------------------------------
-		public function XAssets (__XApp:XApp, __parent:Sprite) {
+		public function XAssets (__XApp:XApp, __parent:*) {
 			m_XApp = __XApp;
 		}
 		
