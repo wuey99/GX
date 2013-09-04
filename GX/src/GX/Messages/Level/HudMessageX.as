@@ -9,7 +9,6 @@ package GX.Messages.Level {
 	import X.World.Logic.*;
 	import X.World.Sprite.*;
 	
-	import flash.display.*;
 	import flash.geom.*;
 	import flash.text.*;
 	import flash.utils.*;
@@ -29,10 +28,7 @@ package GX.Messages.Level {
 			m_text = new XTextSprite ();
 			x_text = addSpriteToHudAt (m_text, 0, 0);
 			
-			// !STARLING!
-			
-			/*
-			m_text.v.filters = [new DropShadowFilter (
+			m_text.filters = [new DropShadowFilter (
 				// distance
 				4.0,
 				// angle
@@ -42,7 +38,6 @@ package GX.Messages.Level {
 				// alpha
 				1.0
 			)];
-			*/
 			
 			show ();
 		}

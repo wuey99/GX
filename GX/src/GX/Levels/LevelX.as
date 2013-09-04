@@ -12,7 +12,6 @@ package GX.Levels {
 	import X.XML.*;
 	import X.XMap.*;
 	
-	import flash.display.*;
 	import flash.geom.*;
 	import flash.text.*;
 	import flash.utils.*;

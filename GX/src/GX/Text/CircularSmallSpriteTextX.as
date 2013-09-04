@@ -1,6 +1,12 @@
 //------------------------------------------------------------------------------------------
 package GX.Text {
 	
+	import Assets.*;
+	
+	import Objects.*;
+	import Objects.Explosions.*;
+	import Objects.Mickey.*;
+	
 	import X.*;
 	import X.Geom.*;
 	import X.Task.*;
@@ -9,7 +15,6 @@ package GX.Text {
 	import X.World.Logic.*;
 	import X.World.Sprite.*;
 	
-	import flash.display.*;
 	import flash.geom.*;
 	import flash.text.*;
 	import flash.utils.*;
@@ -117,6 +122,7 @@ package GX.Text {
 			for (var i:Number=0; i<m_text.length; i++) {
 				var __c:Number = m_text.charCodeAt (i) - 32;
 				if (__c >= 64) __c -= 32;
+				m_bitmap[i].gotoAndStop (__c + 1);
 //				m_bitmap[i].setRegistration (getWidths ()[__c]/2, 21);
 				__rotation = 360 - __angle;  if (__rotation >= 360) __rotation - 360;
 				m_bitmap[i].rotation = __rotation - 90;

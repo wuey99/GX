@@ -9,7 +9,6 @@ package GX.Mickey {
 	import X.World.Logic.*;
 	import X.World.Sprite.*;
 	
-	import flash.display.*;
 	import flash.geom.*;
 	import flash.text.*;
 	import flash.utils.*;

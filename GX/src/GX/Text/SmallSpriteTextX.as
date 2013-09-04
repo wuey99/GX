@@ -4,6 +4,7 @@ package GX.Text {
 	import Assets.*;
 	
 	import Objects.*;
+	import Objects.Explosions.*;
 	import Objects.Mickey.*;
 	
 	import X.*;
@@ -14,7 +15,6 @@ package GX.Text {
 	import X.World.Logic.*;
 	import X.World.Sprite.*;
 	
-	import flash.display.*;
 	import flash.geom.*;
 	import flash.text.*;
 	import flash.utils.*;
