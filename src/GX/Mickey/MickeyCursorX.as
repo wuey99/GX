@@ -9,16 +9,15 @@ package GX.Mickey {
 	import X.World.Logic.*;
 	import X.World.Sprite.*;
 	
-	import flash.display.*;
 	import flash.geom.*;
 	import flash.text.*;
 	import flash.utils.*;
 		
 //------------------------------------------------------------------------------------------
 	public class MickeyCursorX extends XLogicObject {
-		public var m_spriteCircle:MovieClip;
+		public var m_spriteCircle:XMovieClip;
 		public var x_spriteCircle:XDepthSprite;
-		public var m_spriteArrow:MovieClip;
+		public var m_spriteArrow:XMovieClip;
 		public var x_spriteArrow:XDepthSprite;
 		public var m_stagePoint:XPoint;
 		public var m_worldPoint:XPoint;
@@ -122,15 +121,19 @@ package GX.Mickey {
 //------------------------------------------------------------------------------------------
 		public override function createSprites ():void {
 			if (CONFIG::starling) {
-				m_spriteCircle = new (xxx.getClass ("MickeyCursor:MickeyCursor")) ();
+				m_spriteCircle = createXMovieClip ("MickeyCursor:MickeyCursor");
 				x_spriteCircle = addSpriteAt (m_spriteCircle, 0, 0);	
+				
+				m_spriteArrow = createXMovieClip ("MickeyCursorArrow:MickeyCursorArrow");
+				x_spriteArrow = addSpriteAt (m_spriteArrow, 0, 0);
+				m_spriteArrow.alpha = 0.60;
 			}
 			else
 			{
-				m_spriteCircle = new (xxx.getClass ("MickeyCursor:MickeyCursor")) ();
-				x_spriteCircle = addSpriteAt (m_spriteCircle, 0, 0);
+				m_spriteCircle = createXMovieClip ("MickeyCursor:MickeyCursor");
+				x_spriteCircle = addSpriteAt (m_spriteCircle, 0, 0);	
 				
-				m_spriteArrow = new (xxx.getClass ("MickeyCursorArrow:MickeyCursorArrow")) ();
+				m_spriteArrow = createXMovieClip ("MickeyCursorArrow:MickeyCursorArrow");
 				x_spriteArrow = addSpriteAt (m_spriteArrow, 0, 0);
 				m_spriteArrow.alpha = 0.60;
 			}
