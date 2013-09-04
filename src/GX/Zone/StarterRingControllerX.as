@@ -2,6 +2,7 @@
 package GX.Zone {
 	
 	import GX.Messages.*;
+	import GX.Messages.Level.*;
 	
 	import X.*;
 	import X.Geom.*;
@@ -12,14 +13,13 @@ package GX.Zone {
 	import X.World.Sprite.*;
 	import X.XML.*;
 	
-	import flash.display.*;
 	import flash.geom.*;
 	import flash.text.*;
 	import flash.utils.*;
 	
 	//------------------------------------------------------------------------------------------
 	public class StarterRingControllerX extends XLogicObjectCX {
-		public var m_sprite:MovieClip;
+		public var m_sprite:XMovieClip;
 		public var x_sprite:XDepthSprite;
 		public var script:XTask;
 		public var m_zone:Number;

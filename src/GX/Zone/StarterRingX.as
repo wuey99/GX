@@ -14,7 +14,9 @@ package GX.Zone {
 	import X.World.Logic.*;
 	import X.World.Sprite.*;
 	
-	import flash.display.*;
+	// flash classes
+	include "..\\..\\flash.h";
+	
 	import flash.geom.*;
 	import flash.text.*;
 	import flash.utils.*;
@@ -67,8 +69,7 @@ package GX.Zone {
 		//------------------------------------------------------------------------------------------
 		public override function createSprites ():void {
 			m_sprite = new (xxx.getClass ("StarterRing:StarterRing")) ();
-// !STARLING!
-//			x_sprite = addSpriteAt (m_sprite, 0, 0);
+			x_sprite = addSpriteAt (m_sprite, 0, 0);
 			
 			show ();
 		}

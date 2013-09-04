@@ -10,7 +10,6 @@ package GX.Mickey {
 	import X.World.Logic.*;
 	import X.World.Sprite.*;
 	
-	import flash.display.*;
 	import flash.events.KeyboardEvent;
 	import flash.events.MouseEvent;
 	import flash.geom.*;

@@ -4,9 +4,6 @@ package GX.Assets {
 	import X.*;
 	import X.Resource.Manager.*;
 	
-	import flash.display.*;
-	import flash.media.*;
-	
 	//------------------------------------------------------------------------------------------	
 	public class XAssets extends Object {
 

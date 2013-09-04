@@ -2,7 +2,11 @@
 package GX.Text {
 	
 	import Assets.*;
-
+	
+	import Objects.*;
+	import Objects.Explosions.*;
+	import Objects.Mickey.*;
+	
 	import X.*;
 	import X.Geom.*;
 	import X.Task.*;
@@ -11,8 +15,6 @@ package GX.Text {
 	import X.World.Logic.*;
 	import X.World.Sprite.*;
 	
-// !STARLING!
-	import flash.display.*;
 	import flash.geom.*;
 	import flash.text.*;
 	import flash.utils.*;
@@ -76,7 +78,6 @@ package GX.Text {
 				if (__c >= 64) __c -= 32;
 				m_bitmap[i] = new XBitmap ();
 				m_bitmap[i].initWithClassName (xxx, null, getFontName ());
-				m_bitmap[i].gotoAndStop (__c + 1);
 				x_sprite[i] = __addSpriteAt (m_bitmap[i], 0, 0);
 				x_sprite[i].setDepth (getDepth ());
 			}
@@ -93,6 +94,7 @@ package GX.Text {
 			for (var i:Number=0; i<m_text.length; i++) {
 				var __c:Number = m_text.charCodeAt (i) - 32;
 				if (__c >= 64) __c -= 32;
+				m_bitmap[i].gotoAndStop (__c + 1);
 				x_sprite[i].setRegistration (m_bitmap[i].dx + __x, m_bitmap[i].dy);
 				__x -= (getWidths ()[__c] + 2);
 			}
@@ -131,10 +133,8 @@ package GX.Text {
 		}
 		
 	//------------------------------------------------------------------------------------------
-		protected function __addSpriteAt (__sprite:DisplayObject, __x:Number, __y:Number):XDepthSprite {
-// !STARLING!
-//			return addSpriteAt (__sprite, __x, __y);
-			return null;
+		protected function __addSpriteAt (__sprite:XBitmap, __x:Number, __y:Number):XDepthSprite {
+			return addSpriteAt (__sprite, __x, __y);
 		}
 		
 	//------------------------------------------------------------------------------------------

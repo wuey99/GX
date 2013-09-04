@@ -1,6 +1,14 @@
 //------------------------------------------------------------------------------------------
 package GX.Messages.Level {
 	
+	import Assets.*;
+	
+	import Objects.*;
+	import Objects.Enemies.*;
+	import Objects.Explosions.*;
+	
+	import Text.*;
+	
 	import X.*;
 	import X.Geom.*;
 	import X.Task.*;
@@ -10,7 +18,6 @@ package GX.Messages.Level {
 	import X.World.Sprite.*;
 	import X.XMap.*;
 	
-	import flash.display.*;
 	import flash.geom.*;
 	import flash.text.*;
 	import flash.utils.*;
@@ -46,7 +53,7 @@ package GX.Messages.Level {
 		// create sprites
 		//------------------------------------------------------------------------------------------
 		public override function createSprites ():void {
-			m_text = new XTextSprite ();
+			m_text = new XTextSprite (128, 32, "");
 			x_text = addSpriteAt (m_text, 0, 0);
 			
 			show ();
@@ -97,9 +104,9 @@ package GX.Messages.Level {
 			m_text.selectable = false;
 			m_text.multiline = true;
 			m_text.wordWrap = true;
-//			m_text.embedFonts = true;
+//			m_text.1embedFonts = true;
 			
-//			var __font:Font = new XAssets.ArialFontClass ();
+//			var __font:Font = new XAssets.ArialFontClass ();	
 //			m_text.font = __font.fontName;
 			
 			m_text.color = __color;

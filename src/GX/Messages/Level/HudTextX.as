@@ -1,6 +1,14 @@
 //------------------------------------------------------------------------------------------
 package GX.Messages.Level {
 	
+	import Assets.*;
+	
+	import Objects.*;
+	import Objects.Enemies.*;
+	import Objects.Explosions.*;
+	
+	import Text.*;
+	
 	import X.*;
 	import X.Geom.*;
 	import X.Task.*;
@@ -10,7 +18,6 @@ package GX.Messages.Level {
 	import X.World.Sprite.*;
 	import X.XML.*;
 	
-	import flash.display.*;
 	import flash.geom.*;
 	import flash.text.*;
 	import flash.utils.*;
