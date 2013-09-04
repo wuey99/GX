@@ -4,7 +4,6 @@ package GX.Text {
 	import Assets.*;
 	
 	import Objects.*;
-	import Objects.Explosions.*;
 	import Objects.Mickey.*;
 	
 	import X.*;

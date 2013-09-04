@@ -26,6 +26,7 @@ package
 	import X.XMap.*;
 	
 // flash classes
+// !STARLING!
 	import flash.display.Sprite;
 	import flash.ui.Mouse;
 	 
@@ -53,18 +54,18 @@ package
 		public var m_mickeyDeathSignal:XSignal;
 		
 		//------------------------------------------------------------------------------------------
-		public function GApp() {	
+		public function GApp () {	
 			trace (": starting: ");
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function setup (__assetsClass:Class, __mickeyXClass:Class):void {	
+		public function setup (__assetsClass:Class, __mickeyClass:Class, __parent:*):void {	
 			m_app = this;
 			
 			m_XApp = new XApp ();
 			m_XApp.setup (m_XApp.getDefaultPoolSettings ());
 			
-			xxx = new XWorld (this, m_XApp);
+			xxx = new XWorld (__parent, m_XApp);
 			addChild (xxx);
 			
 			setupMask ();
@@ -73,7 +74,7 @@ package
 			
 			xxx.grabFocus ();
 			
-			m_assets = new __assetsClass (m_XApp, this);
+			m_assets = new __assetsClass (m_XApp, __parent);
 			m_assets.load ();
 			
 			K.setup (this, m_XApp);
@@ -99,11 +100,12 @@ package
 		
 		//------------------------------------------------------------------------------------------
 		public function setupMask ():void {
-			m_mask = new Sprite ();
-			m_mask.graphics.beginFill (0x000000);
-			m_mask.graphics.drawRect (0, 0, 700, 550);
-			addChild (m_mask);
-			setMaskAlpha (1.0);
+// ! STARLING!
+//			m_mask = new starling.display.Sprite ();
+//			m_mask.graphics.beginFill (0x000000);
+//			m_mask.graphics.drawRect (0, 0, 700, 550);
+//			addChild (m_mask);
+//			setMaskAlpha (1.0);
 		}
 		
 		//------------------------------------------------------------------------------------------

@@ -24,7 +24,9 @@ package GX.Text {
 		
 		//------------------------------------------------------------------------------------------
 		protected override function __addSpriteAt (__sprite:DisplayObject, __x:Number, __y:Number):XDepthSprite {
-			return addSpriteToHudAt (__sprite, __x, __y);
+// !STARLING!
+//			return addSpriteToHudAt (__sprite, __x, __y);
+			return null;
 		}
 		
 	//------------------------------------------------------------------------------------------

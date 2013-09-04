@@ -11,6 +11,7 @@ package GX.Text {
 	import X.World.Logic.*;
 	import X.World.Sprite.*;
 	
+// !STARLING!
 	import flash.display.*;
 	import flash.geom.*;
 	import flash.text.*;
@@ -131,7 +132,9 @@ package GX.Text {
 		
 	//------------------------------------------------------------------------------------------
 		protected function __addSpriteAt (__sprite:DisplayObject, __x:Number, __y:Number):XDepthSprite {
-			return addSpriteAt (__sprite, __x, __y);
+// !STARLING!
+//			return addSpriteAt (__sprite, __x, __y);
+			return null;
 		}
 		
 	//------------------------------------------------------------------------------------------

@@ -5,7 +5,6 @@ package GX.Zone {
 	
 	import Objects.*;
 	import Objects.Mickey.*;
-	import Objects.Explosions.*;
 	
 	import X.*;
 	import X.Geom.*;
@@ -68,7 +67,8 @@ package GX.Zone {
 		//------------------------------------------------------------------------------------------
 		public override function createSprites ():void {
 			m_sprite = new (xxx.getClass ("StarterRing:StarterRing")) ();
-			x_sprite = addSpriteAt (m_sprite, 0, 0);
+// !STARLING!
+//			x_sprite = addSpriteAt (m_sprite, 0, 0);
 			
 			show ();
 		}

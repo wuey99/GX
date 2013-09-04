@@ -87,8 +87,9 @@ package GX.Mickey {
 					},
 					
 					function ():void {
-						m_stagePoint.x = stage.mouseX;
-						m_stagePoint.y = stage.mouseY;
+// !STARLING!
+//						m_stagePoint.x = stage.mouseX;
+//						m_stagePoint.y = stage.mouseY;
 						
 						xxx.globalToWorld2 (
 							getLayer (),
@@ -116,11 +117,13 @@ package GX.Mickey {
 //------------------------------------------------------------------------------------------
 		public override function createSprites ():void {
 			m_spriteCircle = new (xxx.getClass ("MickeyCursor:MickeyCursor")) ();
-			x_spriteCircle = addSpriteAt (m_spriteCircle, 0, 0);
+// !STARLING!
+//			x_spriteCircle = addSpriteAt (m_spriteCircle, 0, 0);
 			
 			m_spriteArrow = new (xxx.getClass ("MickeyCursorArrow:MickeyCursorArrow")) ();
-			x_spriteArrow = addSpriteAt (m_spriteArrow, 0, 0);
-			m_spriteArrow.alpha = 0.60;
+// !STARLING!
+//			x_spriteArrow = addSpriteAt (m_spriteArrow, 0, 0);
+//			m_spriteArrow.alpha = 0.60;
 			
 			show ();
 		}

@@ -60,8 +60,9 @@ package GX.Messages.SpeechBubble {
 		//------------------------------------------------------------------------------------------
 		public override function createSprites ():void {
 			m_sprite = new MovieClip ();
-			x_sprite = addSpriteAt (m_sprite, 0, 0);
-			x_sprite.setDepth (getDepth ());
+// !STARLING!
+//			x_sprite = addSpriteAt (m_sprite, 0, 0);
+//			x_sprite.setDepth (getDepth ());
 			
 			var g:Graphics = m_sprite.graphics;
 			

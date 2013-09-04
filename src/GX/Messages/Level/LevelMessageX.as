@@ -93,46 +93,23 @@ package GX.Messages.Level {
 			__spacing:Number,
 			__leading:Number):void {
 			
-			m_text.v.htmlText = __message;	
-			m_text.v.selectable = false;
-			m_text.v.multiline = true;
-			m_text.v.wordWrap = true;
-//			m_text.v.embedFonts = true;
-	
-// !!! todo
+			m_text.text = __message;	
+			m_text.selectable = false;
+			m_text.multiline = true;
+			m_text.wordWrap = true;
+//			m_text.embedFonts = true;
+			
 //			var __font:Font = new XAssets.ArialFontClass ();
-			var __font:Font;
+//			m_text.font = __font.fontName;
 			
-			var __format:TextFormat = new TextFormat();
-			__format.font = __font.fontName;
+			m_text.color = __color;
+			m_text.size = __size;
+			m_text.letterSpacing = __spacing;
+			m_text.leading = __leading;
+			m_text.align = __alignment
 			
-			__format.color = __color;
-			__format.size = __size;
-			__format.letterSpacing = __spacing;
-			__format.leading = __leading;
-			
-			__format.align = __getAlignment ();
-			
-			m_text.v.setTextFormat (__format);
-			
-			m_text.v.width = __width;
-			m_text.v.height = __height;
-			
-			function __getAlignment ():String {
-				if (__alignment == "center") {
-					return TextFormatAlign.CENTER;
-				}
-				
-				if (__alignment == "left") {
-					return TextFormatAlign.LEFT;
-				}
-				
-				if (__alignment == "right") {
-					return TextFormatAlign.RIGHT;
-				}
-				
-				return TextFormatAlign.CENTER;
-			}
+			m_text.width = __width;
+			m_text.height = __height;
 		}
 		
 		//------------------------------------------------------------------------------------------
