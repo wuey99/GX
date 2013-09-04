@@ -10,7 +10,6 @@ package GX.Zone {
 	import X.World.Sprite.*;
 	import X.XML.*;
 	
-	import flash.display.*;
 	import flash.geom.*;
 	import flash.text.*;
 	import flash.utils.*;

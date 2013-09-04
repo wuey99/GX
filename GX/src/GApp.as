@@ -24,10 +24,9 @@ package
 	import X.World.Logic.*;
 	import X.XML.*;
 	import X.XMap.*;
-	
+
 // flash classes
-// !STARLING!
-	import flash.display.Sprite;
+	include "flash.h";
 	import flash.ui.Mouse;
 	 
 //------------------------------------------------------------------------------------------
@@ -100,22 +99,38 @@ package
 		
 		//------------------------------------------------------------------------------------------
 		public function setupMask ():void {
-// ! STARLING!
-//			m_mask = new starling.display.Sprite ();
-//			m_mask.graphics.beginFill (0x000000);
-//			m_mask.graphics.drawRect (0, 0, 700, 550);
-//			addChild (m_mask);
-//			setMaskAlpha (1.0);
+			if (CONFIG::starling) {
+				
+			}
+			else
+			{
+				m_mask = new flash.display.Sprite ();
+				m_mask.graphics.beginFill (0x000000);
+				m_mask.graphics.drawRect (0, 0, 700, 550);
+				addChild (m_mask);
+				setMaskAlpha (1.0);
+			}
 		}
 		
 		//------------------------------------------------------------------------------------------
 		public function getMaskAlpha ():Number {
-			return 1.0 - m_mask.alpha;
+			if (CONFIG::starling) {
+				return 1.0;
+			}
+			else
+			{
+				return 1.0 - m_mask.alpha;
+			}
 		}
 		
 		//------------------------------------------------------------------------------------------
 		public function setMaskAlpha (__alpha:Number):void {
-			m_mask.alpha = 1.0 - Math.min (1.0, __alpha);
+			if (CONFIG::starling) {
+			}
+			else
+			{
+				m_mask.alpha = 1.0 - Math.min (1.0, __alpha);
+			}
 		}
 
 		//------------------------------------------------------------------------------------------
