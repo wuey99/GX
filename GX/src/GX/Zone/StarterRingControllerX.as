@@ -52,7 +52,7 @@ package GX.Zone {
 			
 			Ring_Script ();
 			
-			K.app$.getMickeyObject ().addWaitingListener (
+			GX.app$.getMickeyObject ().addWaitingListener (
 				function ():void {
 					trace (": waiting: ");
 					
@@ -60,7 +60,7 @@ package GX.Zone {
 				}
 			);
 			
-			K.app$.getMickeyObject ().addPlayingListener (
+			GX.app$.getMickeyObject ().addPlayingListener (
 				function ():void {
 					trace (": playing: ");
 					
