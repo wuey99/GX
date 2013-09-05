@@ -100,7 +100,6 @@ package
 		//------------------------------------------------------------------------------------------
 		public function setupMask ():void {
 			if (CONFIG::starling) {
-				
 			}
 			else
 			{
