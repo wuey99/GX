@@ -19,7 +19,7 @@ package GX.Levels {
 //------------------------------------------------------------------------------------------
 	public class LevelX extends XMapView {
 		protected var m_XApp:XApp;
-		protected var m_layerView1X:XMapLayerView;
+		protected var m_layerView:XMapLayerView;
 		protected var m_layerView0:XMapLayerView;
 		protected var m_layerView1:XMapLayerCachedView;
 		public var script:XTask;
@@ -74,7 +74,7 @@ package GX.Levels {
 // create sprites
 //------------------------------------------------------------------------------------------
 		public override function createSprites ():void {
-			m_layerView1X = xxx.getXLogicManager ().initXLogicObject (
+			m_layerView = xxx.getXLogicManager ().initXLogicObject (
 				// parent
 					this,
 				// logicObject
@@ -85,17 +85,17 @@ package GX.Levels {
 					0, 0, 0,
 				// scale, rotation
 					1.0, 0,
-					// XMapView
+				// XMapView
 					this,
-					// XMapModel
+				// XMapModel
 					m_XMapModel,
-					// layer
+				// layer
 					GX.app$.PLAYFIELD_LAYER + 1,
-					// logicClassNameToClass
+				// logicClassNameToClass
 					GX.app$.logicClassNameToClass
 				) as XMapLayerView;
 			
-			addXLogicObject (m_layerView1X);
+			addXLogicObject (m_layerView);
 					
 			show ();
 		}
@@ -138,11 +138,11 @@ package GX.Levels {
 					0, 0, 0,
 				// scale, rotation
 					1.0, 0,
-					// XMapView
+				// XMapView
 					this,
-					// XMapModel
+				// XMapModel
 					m_XMapModel,
-					// layer
+				// layer
 					GX.app$.PLAYFIELD_LAYER + 1
 				) as XMapLayerCachedView;
 			
