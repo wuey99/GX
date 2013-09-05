@@ -31,10 +31,10 @@ package GX.Messages.Level {
 
 		//------------------------------------------------------------------------------------------
 		public override function cleanup ():void {
-			if (K.app$.getHudMessageObject ().getOwnerItem () == item) {
-				K.app$.getHudMessageObject ().setMessage ("", 32.0, 0x000000, 32, 32, "left", 0.0, -12.0);
+			if (GX.app$.getHudMessageObject ().getOwnerItem () == item) {
+				GX.app$.getHudMessageObject ().setMessage ("", 32.0, 0x000000, 32, 32, "left", 0.0, -12.0);
 				
-				K.app$.getHudMessageObject ().setOwnerItem (null);
+				GX.app$.getHudMessageObject ().setOwnerItem (null);
 			}
 			
 			super.cleanup ();
@@ -46,7 +46,7 @@ package GX.Messages.Level {
 	
 		//------------------------------------------------------------------------------------------
 		public override function setMessage ():void {
-			K.app$.getHudMessageObject ().setMessage (
+			GX.app$.getHudMessageObject ().setMessage (
 				// message
 				m_message,
 				// size
@@ -63,10 +63,10 @@ package GX.Messages.Level {
 				m_leading
 			);
 			
-			K.app$.getHudMessageObject ().oX = m_textX;
-			K.app$.getHudMessageObject ().oY = m_textY;
+			GX.app$.getHudMessageObject ().oX = m_textX;
+			GX.app$.getHudMessageObject ().oY = m_textY;
 			
-			K.app$.getHudMessageObject ().setOwnerItem (item);
+			GX.app$.getHudMessageObject ().setOwnerItem (item);
 		}
 		
 		//------------------------------------------------------------------------------------------

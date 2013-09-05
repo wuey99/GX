@@ -76,7 +76,7 @@ package
 			m_assets = new __assetsClass (m_XApp, __parent);
 			m_assets.load ();
 			
-			K.setup (this, m_XApp);
+			GX.setup (this, m_XApp);
 		}
 		
 		//------------------------------------------------------------------------------------------
@@ -311,12 +311,12 @@ package
 		
 		//------------------------------------------------------------------------------------------
 		public function addMickeyPlayingListener (__listener:Function):void {
-			K.app$.getMickeyObject ().addPlayingListener (__listener);
+			GX.app$.getMickeyObject ().addPlayingListener (__listener);
 		}
 		
 		//------------------------------------------------------------------------------------------
 		public function removeMickeyPlayingListener (__listener:Function):void {
-			K.app$.getMickeyObject ().removePlayingListener (__listener);
+			GX.app$.getMickeyObject ().removePlayingListener (__listener);
 		}
 
 	//------------------------------------------------------------------------------------------

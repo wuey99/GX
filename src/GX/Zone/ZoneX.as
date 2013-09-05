@@ -82,9 +82,9 @@ package GX.Zone {
 					XTask.WAIT, 0x0100,
 					
 					XTask.FLAGS, function (__task:XTask):void {
-						if (!K.app$.getLevelComplete ()) {
-							K.app$.getMickeyObject ().getCX ().copy2 (__mickeyRect);
-							__mickeyRect.offsetPoint (K.app$.getMickeyObject ().getPos ());
+						if (!GX.app$.getLevelComplete ()) {
+							GX.app$.getMickeyObject ().getCX ().copy2 (__mickeyRect);
+							__mickeyRect.offsetPoint (GX.app$.getMickeyObject ().getPos ());
 							
 							__task.ifTrue (__zoneRect.intersects (__mickeyRect));
 						}
@@ -98,10 +98,10 @@ package GX.Zone {
 					}, XTask.BNE, "loop",
 					
 					function ():void {
-						if (K.app$.getCurrentZone () != m_zone) {
-							K.app$.setCurrentZone (m_zone);	
+						if (GX.app$.getCurrentZone () != m_zone) {
+							GX.app$.setCurrentZone (m_zone);	
 							
-							K.app$.fireZoneStartedSignal ();
+							GX.app$.fireZoneStartedSignal ();
 						}
 					},
 				

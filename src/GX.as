@@ -4,7 +4,7 @@ package {
 	import X.*;
 	
 	//------------------------------------------------------------------------------------------
-	public class K extends Object {
+	public class GX extends Object {
 		public static var app$:GApp;
 		public static var XApp$:XApp;
 		

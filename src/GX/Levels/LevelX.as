@@ -54,20 +54,20 @@ package GX.Levels {
 				XTask.WAIT, 0x0100,
 				
 				function ():void {
-					K.app$.getGameHudObject ().oVisible = false;
+					GX.app$.getGameHudObject ().oVisible = false;
 				},
 				
 				XTask.RETN
 			]);
 			
-			K.app$.addMickeyPlayingListener (__onMickeyPlaying);
+			GX.app$.addMickeyPlayingListener (__onMickeyPlaying);
 		}
 
 //------------------------------------------------------------------------------------------
 		public override function cleanup ():void {
 			super.cleanup ();
 			
-			K.app$.removeMickeyPlayingListener (__onMickeyPlaying);
+			GX.app$.removeMickeyPlayingListener (__onMickeyPlaying);
 		}
 		
 //------------------------------------------------------------------------------------------
@@ -90,9 +90,9 @@ package GX.Levels {
 					// XMapModel
 					m_XMapModel,
 					// layer
-					K.app$.PLAYFIELD_LAYER + 1,
+					GX.app$.PLAYFIELD_LAYER + 1,
 					// logicClassNameToClass
-					K.app$.logicClassNameToClass
+					GX.app$.logicClassNameToClass
 				) as XMapLayerView;
 			
 			addXLogicObject (m_layerView1X);
@@ -120,9 +120,9 @@ package GX.Levels {
 				// XMapModel
 				m_XMapModel,
 				// layer
-				K.app$.PLAYFIELD_LAYER + 0,
+				GX.app$.PLAYFIELD_LAYER + 0,
 				// logicClassNameToClass
-				K.app$.logicClassNameToClass
+				GX.app$.logicClassNameToClass
 			) as XMapLayerView;
 			
 			addXLogicObject (m_layerView0);
@@ -143,7 +143,7 @@ package GX.Levels {
 					// XMapModel
 					m_XMapModel,
 					// layer
-					K.app$.PLAYFIELD_LAYER + 1
+					GX.app$.PLAYFIELD_LAYER + 1
 				) as XMapLayerCachedView;
 			
 			addXLogicObject (m_layerView1);
@@ -153,7 +153,7 @@ package GX.Levels {
 
 //------------------------------------------------------------------------------------------
 		protected function __onMickeyPlaying ():void {
-			K.app$.getGameHudObject ().oVisible = true;			
+			GX.app$.getGameHudObject ().oVisible = true;			
 		}
 		
 //------------------------------------------------------------------------------------------
@@ -178,7 +178,7 @@ package GX.Levels {
 		
 		//------------------------------------------------------------------------------------------
 		public function setLevelAlpha (__alpha:Number):void {
-			K.app$.setMaskAlpha (__alpha);
+			GX.app$.setMaskAlpha (__alpha);
 		}
 		
 		//------------------------------------------------------------------------------------------
@@ -195,7 +195,7 @@ package GX.Levels {
 							XTask.WAIT, 0x0100,
 							
 							function ():void {
-								setLevelAlpha (Math.max (0.0, K.app$.getMaskAlpha () - 0.025));
+								setLevelAlpha (Math.max (0.0, GX.app$.getMaskAlpha () - 0.025));
 							},
 							
 							XTask.GOTO, "loop",
@@ -235,7 +235,7 @@ package GX.Levels {
 							XTask.WAIT, 0x0100,
 							
 							function ():void {
-								setLevelAlpha (Math.min (1.0, K.app$.getMaskAlpha () + 0.05));
+								setLevelAlpha (Math.min (1.0, GX.app$.getMaskAlpha () + 0.05));
 							},
 							
 							XTask.GOTO, "loop",
