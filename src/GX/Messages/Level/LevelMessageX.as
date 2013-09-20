@@ -1,13 +1,8 @@
 //------------------------------------------------------------------------------------------
 package GX.Messages.Level {
 	
-	import Assets.*;
-	
-	import Objects.*;
-	import Objects.Enemies.*;
-	import Objects.Explosions.*;
-	
-	import Text.*;
+	import Assets.*;	
+	import GX.Text.*;
 	
 	import X.*;
 	import X.Geom.*;
