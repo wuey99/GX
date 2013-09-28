@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------------------
 package GX.Text {
 	
-	import Assets.*;
+	import GX.Assets.*;
 	
 	import X.*;
 	import X.Geom.*;
