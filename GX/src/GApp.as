@@ -5,12 +5,11 @@ package
 // app
 	import GX.Assets.*;
 	import GX.Levels.*;
-	import GX.Text.*;
-	import GX.Mickey.*;
 	import GX.Messages.*;
 	import GX.Messages.Level.*;
+	import GX.Mickey.*;
+	import GX.Text.*;
 	
-// X classes
 	import X.*;
 	import X.Bitmap.XBitmapDataAnim;
 	import X.Collections.*;
@@ -24,11 +23,11 @@ package
 	import X.World.Logic.*;
 	import X.XML.*;
 	import X.XMap.*;
-
-// flash classes
-	include "flash.h";
+	
 	import flash.ui.Mouse;
-	 
+	
+	include "flash.h";
+	
 //------------------------------------------------------------------------------------------
 	public class GApp extends Sprite {
 		public var m_XApp:XApp;
@@ -58,13 +57,13 @@ package
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function setup (__assetsClass:Class, __mickeyClass:Class, __parent:*):void {	
+		public function setup (__assetsClass:Class, __mickeyClass:Class, __parent:*, __timerInterval:Number=32):void {	
 			m_app = this;
 			
 			m_XApp = new XApp ();
 			m_XApp.setup (m_XApp.getDefaultPoolSettings ());
 			
-			xxx = new XWorld (__parent, m_XApp);
+			xxx = new XWorld (__parent, m_XApp, 4, __timerInterval);
 			addChild (xxx);
 			
 			setupMask ();
@@ -77,6 +76,11 @@ package
 			m_assets.load ();
 			
 			GX.setup (this, m_XApp);
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function getWorld ():XWorld {
+			return xxx;
 		}
 		
 		//------------------------------------------------------------------------------------------
