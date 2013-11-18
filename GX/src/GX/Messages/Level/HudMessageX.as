@@ -25,7 +25,7 @@ package GX.Messages.Level {
 		// create sprites
 		//------------------------------------------------------------------------------------------
 		public override function createSprites ():void {
-			m_text = new XTextSprite ();
+			m_text = createXTextSprite ();
 			x_text = addSpriteToHudAt (m_text, 0, 0);
 			
 			m_text.filters = [new DropShadowFilter (

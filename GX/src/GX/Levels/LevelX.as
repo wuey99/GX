@@ -162,6 +162,11 @@ package GX.Levels {
 		}
 		
 //------------------------------------------------------------------------------------------
+		public function getXLogicObject (__item:XMapItemModel):XLogicObject {
+			return m_layerView0.getXLogicObject (__item);
+		}
+		
+//------------------------------------------------------------------------------------------
 		public override function updateFromXMapModel ():void {
 			m_layerView0.updateFromXMapModel ();	
 			m_layerView1.updateFromXMapModel ();	
