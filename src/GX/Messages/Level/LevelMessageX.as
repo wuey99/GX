@@ -48,7 +48,7 @@ package GX.Messages.Level {
 		// create sprites
 		//------------------------------------------------------------------------------------------
 		public override function createSprites ():void {
-			m_text = new XTextSprite (128, 32, "");
+			m_text = createXTextSprite (128, 32, "");
 			x_text = addSpriteAt (m_text, 0, 0);
 			
 			show ();
