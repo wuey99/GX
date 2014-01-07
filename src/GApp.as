@@ -9,6 +9,7 @@ package
 	import GX.Messages.Level.*;
 	import GX.Mickey.*;
 	import GX.Text.*;
+	import GX.Hud.*;
 	
 	import X.*;
 	import X.Bitmap.XBitmapDataAnim;
@@ -37,7 +38,7 @@ package
 		public var m_mickeyObject:MickeyX;
 		public var m_mickeyCursorObject:MickeyCursorX;;
 		public var m_levelObject:LevelX;
-//		public var m_gameHudObject:HudX;
+		public var m_gameHudObject:HudX;
 		public var m_hudObject:XLogicObject;
 		public var m_hudMessageObject:HudMessageX;
 		public var PLAYFIELD_LAYER:Number = 0;
@@ -181,8 +182,7 @@ package
 		
 		//------------------------------------------------------------------------------------------
 		public function getGameHudObject ():XLogicObject {
-//			return m_gameHudObject;
-			return null;
+			return m_gameHudObject;
 		}
 		
 		//------------------------------------------------------------------------------------------
