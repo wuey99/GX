@@ -1,6 +1,12 @@
 //------------------------------------------------------------------------------------------
 package GX.Zone {
 	
+	import Assets.*;
+	
+	import Objects.*;
+	import Objects.Explosions.*;
+	import Objects.Mickey.*;
+	
 	import X.*;
 	import X.Geom.*;
 	import X.Task.*;
@@ -19,6 +25,8 @@ package GX.Zone {
 		public var script:XTask;
 		
 		public var m_zone:Number;
+		public var m_direction:String;
+		public var m_size:Number
 		
 		//------------------------------------------------------------------------------------------
 		public function ZoneX () {
@@ -67,15 +75,38 @@ package GX.Zone {
 				boundingRect.setRect (0, 0, 0, 0);
 			}
 			
+			m_direction = "both";
+			if (m_xml.hasAttribute ("direction")) {
+				m_direction = m_xml.getAttribute ("direction");	
+			}
+			
+			m_size = 256;
+			if (m_xml.hasAttribute ("size")) {
+				m_size = m_xml.getAttribute ("size");
+			}
+			
 			m_zone = itemGetAttribute ("zone");
 			
 			script = addEmptyTask ();
 			
 			var __mickeyRect:XRect = new XRect ();
 			var __zoneRect:XRect = new XRect ();
+			var __zoneRectX:XRect = new XRect ();
 			
 			getCX ().copy2 (__zoneRect);
 			__zoneRect.offset (oX, oY);
+
+			getCX ().copy2 (__zoneRectX);
+			__zoneRectX.offset (oX, oY);
+			if (m_direction == "both") {
+				__zoneRectX.inflate (m_size, m_size);
+			}		
+			if (m_direction == "horz") {
+				__zoneRectX.inflate (m_size, 64);
+			}
+			if (m_direction == "vert") {
+				__zoneRectX.inflate (64, m_size);
+			}
 			
 			addTask ([
 				XTask.LABEL, "loop",
@@ -83,10 +114,27 @@ package GX.Zone {
 					
 					XTask.FLAGS, function (__task:XTask):void {
 						if (!GX.app$.getLevelComplete ()) {
-							GX.app$.getMickeyObject ().getCX ().copy2 (__mickeyRect);
-							__mickeyRect.offsetPoint (GX.app$.getMickeyObject ().getPos ());
+							GX.app$.__getMickeyObject ().getCX ().copy2 (__mickeyRect);
+							__mickeyRect.offsetPoint (GX.app$.__getMickeyObject ().getPos ());
 							
 							__task.ifTrue (__zoneRect.intersects (__mickeyRect));
+							
+							if (__zoneRectX.intersects (__mickeyRect)) {
+								var __dx:Number, __dy:Number;
+								
+								__dx = oX - GX.app$.__getMickeyObject ().getPos ().x;
+								__dy = oY - GX.app$.__getMickeyObject ().getPos ().y;
+								
+								__dx = Math.abs (__dx);  __dy = Math.abs (__dy);
+								
+								if (m_direction == "horz" && __dy < 32) {
+									__task.ifTrue (true);
+								}
+								
+								if (m_direction == "vert" && __dx < 32) {
+									__task.ifTrue (true);
+								}
+							}
 						}
 						else
 						{
