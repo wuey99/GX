@@ -35,10 +35,10 @@ package
 		public var xxx:XWorld;
 		public var m_app:GApp;
 		public var m_assets:XAssets;
-		public var m_mickeyObject:MickeyX;
-		public var m_mickeyCursorObject:MickeyCursorX;;
-		public var m_levelObject:LevelX;
-		public var m_gameHudObject:HudX;
+		public var m_mickeyObject:_MickeyX;
+		public var m_mickeyCursorObject:_MickeyCursorX;;
+		public var m_levelObject:_LevelX;
+		public var m_gameHudObject:_HudX;
 		public var m_hudObject:XLogicObject;
 		public var m_hudMessageObject:HudMessageX;
 		public var PLAYFIELD_LAYER:Number = 0;
@@ -191,7 +191,7 @@ package
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function getLevelObject ():LevelX {
+		public function getLevelObject ():_LevelX {
 			return m_levelObject;
 		}
 		
@@ -201,7 +201,7 @@ package
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function setupMickey (__mickey:MickeyX):void {
+		public function setupMickey (__mickey:_MickeyX):void {
 			var __x:Number = 2536-256;
 			var __y:Number = 2536+256;
 			
@@ -217,7 +217,7 @@ package
 				// scale, rotation
 				1.0, 0,
 				m_mickeyCursorObject
-			) as MickeyX;
+			) as _MickeyX;
 		}
 		
 		//------------------------------------------------------------------------------------------
@@ -232,24 +232,24 @@ package
 				// parent
 				null,
 				// logicObject
-				new MickeyCursorX () as XLogicObject,
+				new _MickeyCursorX () as XLogicObject,
 				// item, layer, depth
 				null, PLAYFIELD_LAYER, 10000,
 				// x, y, z
 				__x, __y, 0,
 				// scale, rotation
 				1.0, 0
-			) as MickeyCursorX;
+			) as _MickeyCursorX;
 		}
 		
 		
 		//------------------------------------------------------------------------------------------
-		public function getMickeyCursorObject ():MickeyCursorX {
+		public function __getMickeyCursorObject ():_MickeyCursorX {
 			return m_mickeyCursorObject;	
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function getMickeyObject ():MickeyX {
+		public function __getMickeyObject ():_MickeyX {
 			return m_mickeyObject;
 		}
 		
@@ -314,12 +314,12 @@ package
 		
 		//------------------------------------------------------------------------------------------
 		public function addMickeyPlayingListener (__listener:Function):void {
-			GX.app$.getMickeyObject ().addPlayingListener (__listener);
+			GX.app$.__getMickeyObject ().addPlayingListener (__listener);
 		}
 		
 		//------------------------------------------------------------------------------------------
 		public function removeMickeyPlayingListener (__listener:Function):void {
-			GX.app$.getMickeyObject ().removePlayingListener (__listener);
+			GX.app$.__getMickeyObject ().removePlayingListener (__listener);
 		}
 
 	//------------------------------------------------------------------------------------------

@@ -1,9 +1,9 @@
 //------------------------------------------------------------------------------------------
-package GX.Messages.Level {
+package GX.Messages {
 	
 	import GX.Assets.*;
 	import GX.Text.*;
-	
+
 	import X.*;
 	import X.Geom.*;
 	import X.Task.*;

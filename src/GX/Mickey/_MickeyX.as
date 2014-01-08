@@ -17,7 +17,7 @@ package GX.Mickey {
 	import flash.utils.*;
 		
 //------------------------------------------------------------------------------------------
-	public class MickeyX extends EnemyCollidableX {
+	public class _MickeyX extends EnemyCollidableX {
 		protected var m_dead:Boolean;
 		protected var m_mouseDownSignal:XSignal;
 		protected var m_waitingSignal:XSignal;
@@ -27,7 +27,7 @@ package GX.Mickey {
 		protected var m_levelCompleteSignal:XSignal;
 		
 //------------------------------------------------------------------------------------------
-		public function MickeyX () {
+		public function _MickeyX () {
 		}
 								
 //------------------------------------------------------------------------------------------
@@ -46,7 +46,7 @@ package GX.Mickey {
 		}
 		
 //------------------------------------------------------------------------------------------
-		private function fireLevelCompleteSignal ():void {
+		public function fireLevelCompleteSignal ():void {
 			m_levelCompleteSignal.fireSignal ();
 		}
 				
