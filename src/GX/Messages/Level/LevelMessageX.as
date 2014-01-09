@@ -99,10 +99,10 @@ package GX.Messages.Level {
 			m_text.selectable = false;
 			m_text.multiline = true;
 			m_text.wordWrap = true;
-//			m_text.1embedFonts = true;
+//			m_text.embedFonts = true;
 			
-//			var __font:Font = new XAssets.ArialFontClass ();	
-//			m_text.font = __font.fontName;
+			var __font:Font = new XAssets.ArialFontClass ();	
+			m_text.font = __font.fontName;
 			
 			m_text.color = __color;
 			m_text.size = __size;
