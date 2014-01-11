@@ -1,12 +1,6 @@
 //------------------------------------------------------------------------------------------
 package GX.Zone {
 	
-	import Assets.*;
-	
-	import Objects.*;
-	import Objects.Explosions.*;
-	import Objects.Mickey.*;
-	
 	import X.*;
 	import X.Geom.*;
 	import X.Task.*;

@@ -24,6 +24,7 @@ package
 	import X.World.Logic.*;
 	import X.XML.*;
 	import X.XMap.*;
+	import X.Texture.*;
 	
 	import flash.ui.Mouse;
 	
@@ -51,6 +52,8 @@ package
 		public var m_zoneStartedSignal:XSignal;
 		public var m_zoneFinishedSignal:XSignal;
 		public var m_mickeyDeathSignal:XSignal;
+		
+		private var m_globalTextureManager:XSubTextureManager;
 		
 		//------------------------------------------------------------------------------------------
 		public function GApp () {	
@@ -137,6 +140,30 @@ package
 			}
 		}
 
+		//------------------------------------------------------------------------------------------
+		public function cacheAllMovieClips ():void {
+			if (CONFIG::flash) {
+				return;
+			}
+			
+			var t:XSubTextureManager = m_globalTextureManager = xxx.getTextureManager ().createSubManager ("__global__");
+			
+			t.start ();
+			
+			m_XApp.getAllClassNames ().forEach (
+				function (x:*):void {
+					t.add (x as String);					
+				}
+			);
+			
+			t.finish ();
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function addYShake (__count:Number=15, __delayValue:Number=0x0100):void {
+			m_levelObject.addYShake (__count, __delayValue);
+		}
+		
 		//------------------------------------------------------------------------------------------
 		public function Null_HndlrX ():XLogicObject {
 			return null;
