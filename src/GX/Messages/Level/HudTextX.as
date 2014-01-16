@@ -1,7 +1,6 @@
 //------------------------------------------------------------------------------------------
 package GX.Messages.Level {
 	
-	import Assets.*;
 	import GX.Text.*;
 	
 	import X.*;
