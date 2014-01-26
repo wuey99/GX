@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------------------
 package GX.Levels {
 	
-	import Assets.*;
+	import GX.Assets.*;
 	
 	import X.*;
 	import X.Collections.*;
