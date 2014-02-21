@@ -68,25 +68,11 @@ package GX.Levels {
 			super.setupX ();
 			
 			script = addEmptyTask ();
-			
-			addTask ([
-				XTask.WAIT, 0x0100,
-				
-				function ():void {
-					GX.app$.getGameHudObject ().oVisible = false;
-				},
-				
-				XTask.RETN
-			]);
-			
-			GX.app$.addMickeyPlayingListener (__onMickeyPlaying);
 		}
 
 //------------------------------------------------------------------------------------------
 		public override function cleanup ():void {
 			super.cleanup ();
-			
-			GX.app$.removeMickeyPlayingListener (__onMickeyPlaying);
 		}
 		
 //------------------------------------------------------------------------------------------
@@ -170,11 +156,6 @@ package GX.Levels {
 			show ();
 		}
 
-//------------------------------------------------------------------------------------------
-		protected function __onMickeyPlaying ():void {
-			GX.app$.getGameHudObject ().oVisible = true;			
-		}
-		
 //------------------------------------------------------------------------------------------
 		public function addXMapItem (__item:XMapItemModel, __depth:Number):XLogicObject {
 			return m_layerView0.addXMapItem (__item, __depth);
