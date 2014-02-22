@@ -4,12 +4,12 @@ package
 	
 // app
 	import GX.Assets.*;
+	import GX.Hud.*;
 	import GX.Levels.*;
 	import GX.Messages.*;
 	import GX.Messages.Level.*;
 	import GX.Mickey.*;
 	import GX.Text.*;
-	import GX.Hud.*;
 	
 	import X.*;
 	import X.Bitmap.XBitmapDataAnim;
@@ -20,11 +20,11 @@ package
 	import X.Resource.*;
 	import X.Signals.XSignal;
 	import X.Task.*;
+	import X.Texture.*;
 	import X.World.*;
 	import X.World.Logic.*;
 	import X.XML.*;
 	import X.XMap.*;
-	import X.Texture.*;
 	
 	import flash.ui.Mouse;
 	
@@ -349,6 +349,11 @@ package
 			GX.app$.__getMickeyObject ().removePlayingListener (__listener);
 		}
 
+		//------------------------------------------------------------------------------------------
+		public function getSmallFontName ():String {
+			return "SmallHiresFont:SmallHiresFont";	
+		}
+		
 	//------------------------------------------------------------------------------------------
 	}
 	
