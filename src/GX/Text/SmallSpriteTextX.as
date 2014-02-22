@@ -17,11 +17,10 @@ package GX.Text {
 	
 	//------------------------------------------------------------------------------------------
 	public class SmallSpriteTextX extends SpriteTextX {
-		private static var g_fontName:String = "SmallHiresFont:SmallHiresFont";
-		
+
 		//------------------------------------------------------------------------------------------
 		public static function init (__XApp:XApp):void {
-			__XApp.getBitmapDataAnimManager ().add (g_fontName);
+			__XApp.getBitmapDataAnimManager ().add (GX.app$.getSmallFontName ());
 		}
 		
 		//------------------------------------------------------------------------------------------
@@ -31,7 +30,7 @@ package GX.Text {
 		
 		//------------------------------------------------------------------------------------------
 		public override function getFontName ():String {
-			return "SmallHiresFont:SmallHiresFont";
+			return GX.app$.getSmallFontName ();
 		}
 		
 		//------------------------------------------------------------------------------------------
