@@ -219,6 +219,37 @@ package GX.Levels {
 		}
 
 //------------------------------------------------------------------------------------------
+		public function addXShake (__count:Number=15, __delayValue:Number=0x0100):void {
+			var __delay:XNumber = new XNumber (0);
+			__delay.value = __delayValue;
+			
+			addTask ([
+				XTask.LABEL, "loop",
+				function ():void {__setX (-__count) }, XTask.WAIT, __delay,
+				function ():void {__setX (+__count) }, XTask.WAIT, __delay,
+				
+				XTask.FLAGS, function (__task:XTask):void {
+					__count--;
+					
+					__task.ifTrue (__count == 0);
+				}, XTask.BNE, "loop",
+				
+				function ():void {
+					__setX (0);
+				},
+				
+				XTask.RETN,
+			]);
+			
+			function __setX (__dy:Number):void {
+				m_layer0Shake.x = __dy;
+				m_layer1Shake.x = __dy;
+				
+				updateScroll ();
+			}
+		}
+		
+//------------------------------------------------------------------------------------------
 		public function addYShake (__count:Number=15, __delayValue:Number=0x0100):void {
 			var __delay:XNumber = new XNumber (0);
 			__delay.value = __delayValue;

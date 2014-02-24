@@ -162,6 +162,11 @@ package
 		}
 		
 		//------------------------------------------------------------------------------------------
+		public function addXShake (__count:Number=15, __delayValue:Number=0x0100):void {
+			m_levelObject.addXShake (__count, __delayValue);
+		}
+		
+		//------------------------------------------------------------------------------------------
 		public function addYShake (__count:Number=15, __delayValue:Number=0x0100):void {
 			m_levelObject.addYShake (__count, __delayValue);
 		}
