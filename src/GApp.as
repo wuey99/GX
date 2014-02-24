@@ -52,6 +52,7 @@ package
 		public var m_zoneStartedSignal:XSignal;
 		public var m_zoneFinishedSignal:XSignal;
 		public var m_mickeyDeathSignal:XSignal;
+		public var m_triggerSignal:XSignal;
 		
 		private var m_globalTextureManager:XSubTextureManager;
 		
@@ -92,6 +93,7 @@ package
 			m_setMickeyToStartSignal = new XSignal ();
 			m_zoneStartedSignal = new XSignal ();
 			m_zoneFinishedSignal = new XSignal ();
+			m_triggerSignal = new XSignal ();
 		}
 
 		//------------------------------------------------------------------------------------------
@@ -349,6 +351,21 @@ package
 			GX.app$.__getMickeyObject ().removePlayingListener (__listener);
 		}
 
+		//------------------------------------------------------------------------------------------
+		public function fireTriggerSignal (__trigger:Number):void {
+			m_triggerSignal.fireSignal (__trigger);
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function addTriggerListener (__listener:Function):void {
+			m_triggerSignal.addListener (__listener);
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function removeTriggerListener (__listener:Function):void {
+			m_triggerSignal.removeListener (__listener);
+		}
+		
 		//------------------------------------------------------------------------------------------
 		public function getSmallFontName ():String {
 			return "SmallHiresFont:SmallHiresFont";	
