@@ -53,6 +53,8 @@ package
 		public var m_zoneFinishedSignal:XSignal;
 		public var m_mickeyDeathSignal:XSignal;
 		public var m_triggerSignal:XSignal;
+		public var m_trigger$Signal:XSignal;
+		public var m_pingSignal:XSignal;
 		
 		private var m_globalTextureManager:XSubTextureManager;
 		
@@ -94,6 +96,8 @@ package
 			m_zoneStartedSignal = new XSignal ();
 			m_zoneFinishedSignal = new XSignal ();
 			m_triggerSignal = new XSignal ();
+			m_trigger$Signal = new XSignal ();
+			m_pingSignal = new XSignal ();
 		}
 
 		//------------------------------------------------------------------------------------------
@@ -369,6 +373,41 @@ package
 		//------------------------------------------------------------------------------------------
 		public function removeTriggerListener (__listener:Function):void {
 			m_triggerSignal.removeListener (__listener);
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function fireTrigger$Signal (__trigger:String):void {
+			m_trigger$Signal.fireSignal (__trigger);
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function addTrigger$Listener (__listener:Function):void {
+			m_trigger$Signal.addListener (__listener);
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function removeTrigger$Listener (__listener:Function):void {
+			m_trigger$Signal.removeListener (__listener);
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function addPingListener (__listener:Function):void {
+			m_pingSignal.addListener (__listener);
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function removePingListener (__listener:Function):void {
+			m_pingSignal.removeListener (__listener);
+		}
+
+		//------------------------------------------------------------------------------------------
+		public function firePingSignal (
+			__id:Number,
+			__type:String,
+			__logicObject:XLogicObject,
+			__callback:Function
+		):void {
+			m_pingSignal.fireSignal (__id, __type, __logicObject, __callback);
 		}
 		
 		//------------------------------------------------------------------------------------------
