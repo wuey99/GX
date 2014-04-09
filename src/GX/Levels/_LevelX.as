@@ -7,6 +7,7 @@ package GX.Levels {
 	import X.Collections.*;
 	import X.Geom.*;
 	import X.Task.*;
+	import X.Signals.*;
 	import X.World.*;
 	import X.World.Collision.*;
 	import X.World.Logic.*;
@@ -36,6 +37,8 @@ package GX.Levels {
 		public var m_layer1Shake:XPoint;
 		public var m_layer1Scroll:XPoint;
 		
+		private var m_levelSelectSignal:XSignal;
+		
 //------------------------------------------------------------------------------------------
 		public function _LevelX () {
 		}
@@ -61,6 +64,8 @@ package GX.Levels {
 			m_layer1Pos = new XPoint (0, 0);
 			m_layer1Shake = new XPoint (0, 0);
 			m_layer1Scroll = new XPoint (0, 0);
+			
+			m_levelSelectSignal = createXSignal ();
 		}
 
 //------------------------------------------------------------------------------------------
@@ -281,7 +286,7 @@ package GX.Levels {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function FadeOut_Script ():void {
+		public function FadeOut_Script (__levelId:String=""):void {
 			
 			script.gotoTask ([
 				
@@ -293,8 +298,16 @@ package GX.Levels {
 						XTask.LABEL, "loop",
 							XTask.WAIT, 0x0100,
 							
-							function ():void {
+							XTask.FLAGS, function (__task:XTask):void {
 								setLevelAlpha (Math.max (0.0, GX.app$.getMaskAlpha () - 0.025));
+								
+								__task.ifTrue (GX.app$.getMaskAlpha () == 0.0 && __levelId != "");
+							}, XTask.BNE, "loop",
+							
+							function ():void {
+								fireLevelSelectSignal (__levelId);
+								
+								nukeLater ();
 							},
 							
 							XTask.GOTO, "loop",
@@ -359,8 +372,19 @@ package GX.Levels {
 			
 		//------------------------------------------------------------------------------------------
 		}
+	
+		//------------------------------------------------------------------------------------------
+		public function addLevelSelectListener (__listener:Function):void {
+			m_levelSelectSignal.addListener (__listener);
+		}
 		
-//------------------------------------------------------------------------------------------
+		//------------------------------------------------------------------------------------------
+		protected function fireLevelSelectSignal (__levelId:String):void {
+			m_levelSelectSignal.fireSignal (__levelId);
+		}
+
+		
+	//------------------------------------------------------------------------------------------
 	}
 
 //------------------------------------------------------------------------------------------
