@@ -45,6 +45,7 @@ package
 		public var PLAYFIELD_LAYER:Number = 0;
 		public var m_gameState:Number;
 		public var m_levelData:*;
+		public var m_levelName:String;
 		public var m_levelComplete:Boolean;	
 		public var m_currentZone:Number;
 		
