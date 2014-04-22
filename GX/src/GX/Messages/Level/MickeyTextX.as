@@ -67,7 +67,6 @@ package GX.Messages.Level {
 		public override function createSprites ():void {
 			show ();
 		}
-
 		
 	//------------------------------------------------------------------------------------------
 	}
