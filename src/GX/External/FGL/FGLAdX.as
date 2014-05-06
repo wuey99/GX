@@ -67,6 +67,7 @@ package GX.External.FGL {
 			x_sprite = addSpriteToHudAt (m_sprite, 0, 0);
 			
 			var ads:FGLAds = new FGLAds(stage, "FGL-20028079");
+//			var ads:FGLAds = new FGLAds(stage, "0");
 			
 			//When the API is ready, show the ad!
 			ads.addEventListener(FGLAds.EVT_API_READY, showStartupAd);
