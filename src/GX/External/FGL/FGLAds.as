@@ -179,6 +179,7 @@ package GX.External.FGL {
 			_fglAds.showAdPopup(format, delay, timeout);
 		}
 		
+		//------------------------------------------------------------------------------------------
 		/**
 		 * The status variable allows you to determine the current
 		 * status of the API. This can be any of the following:
