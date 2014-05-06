@@ -119,9 +119,14 @@ package
 			else
 			{
 				m_mask = new flash.display.Sprite ();
+				m_mask.mouseEnabled = false;
+				m_mask.mouseChildren = false;
+				
 				m_mask.graphics.beginFill (0x000000);
 				m_mask.graphics.drawRect (0, 0, 700, 550);
+				
 				addChild (m_mask);
+				
 				setMaskAlpha (1.0);
 			}
 		}
