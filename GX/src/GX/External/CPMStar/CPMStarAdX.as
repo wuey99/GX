@@ -26,7 +26,6 @@ package GX.External.CPMStar {
 		public var script:XTask;
 		
 		public var CPMStarContentSpotID:String = "11176QBBEC2318";
-//		public var CPMStarContentSpotID:String = "0";
 		
 		//------------------------------------------------------------------------------------------
 		public function CPMStarAdX () {
@@ -35,6 +34,9 @@ package GX.External.CPMStar {
 		//------------------------------------------------------------------------------------------
 		public override function setup (__xxx:XWorld, args:Array):void {
 			super.setup (__xxx, args);
+			
+			mouseEnabled = true;
+			mouseChildren = true;
 			
 			createSprites ();
 		}
@@ -69,7 +71,17 @@ package GX.External.CPMStar {
 			m_sprite = createXMovieClip ("adBox:adBox");
 			x_sprite = addSpriteToHudAt (m_sprite, 0, 0);
 			
-			m_sprite.getMovieClip ().addChild (new AdLoader (CPMStarContentSpotID));
+			var __displayObject:DisplayObject = new AdLoader (CPMStarContentSpotID);
+			
+			addTask ([
+				XTask.WAIT, 0x0100,
+				
+				function ():void {
+					m_sprite.getMovieClip ().addChild (__displayObject);
+				},
+
+				XTask.RETN,
+			]);
 			
 			show ();
 		}
