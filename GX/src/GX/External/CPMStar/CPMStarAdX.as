@@ -69,19 +69,15 @@ package GX.External.CPMStar {
 		//------------------------------------------------------------------------------------------
 		public override function createSprites ():void {
 			m_sprite = createXMovieClip ("adBox:adBox");
-			x_sprite = addSpriteToHudAt (m_sprite, 0, 0);
-			
-			var __displayObject:DisplayObject = new AdLoader (CPMStarContentSpotID);
-			
-			addTask ([
-				XTask.WAIT, 0x0100,
-				
-				function ():void {
-					m_sprite.getMovieClip ().addChild (__displayObject);
-				},
 
-				XTask.RETN,
-			]);
+			var __sprite:Sprite = new AdLoader (CPMStarContentSpotID);
+			
+			m_sprite.getMovieClip ().addChild (__sprite);
+			
+			Sprite (GX.app$).addChild (m_sprite);
+			
+			m_sprite.x = (700-300)/2;
+			m_sprite.y = (550-250)/2;
 			
 			show ();
 		}
