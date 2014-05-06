@@ -26,6 +26,7 @@ package GX.External.CPMStar {
 		public var script:XTask;
 		
 		public var CPMStarContentSpotID:String = "11176QBBEC2318";
+//		public var CPMStarContentSpotID:String = "0";
 		
 		//------------------------------------------------------------------------------------------
 		public function CPMStarAdX () {
@@ -65,7 +66,7 @@ package GX.External.CPMStar {
 		// create sprites
 		//------------------------------------------------------------------------------------------
 		public override function createSprites ():void {
-			m_sprite = createXMovieClip ("CPMStarAdBox:CPMStarAdBox");
+			m_sprite = createXMovieClip ("adBox:adBox");
 			x_sprite = addSpriteToHudAt (m_sprite, 0, 0);
 			
 			m_sprite.getMovieClip ().addChild (new AdLoader (CPMStarContentSpotID));
