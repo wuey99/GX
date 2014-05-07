@@ -44,6 +44,7 @@ package GX.External.CPMStar {
 			
 			m_adLoaderObject.addEventListener (
 				Event.COMPLETE,
+				
 				function ():void {
 					fireCompleteSignal ();
 				}
@@ -51,6 +52,7 @@ package GX.External.CPMStar {
 			
 			m_adLoaderObject.addEventListener (
 				IOErrorEvent.IO_ERROR,
+				
 				function (e:Event):void {
 					fireErrorSignal (e);
 				}

@@ -25,6 +25,8 @@ package GX.External {
 		
 		public var script:XTask;
 		
+		public var adID:String;
+		
 		//------------------------------------------------------------------------------------------
 		public function AdX () {
 		}
@@ -33,6 +35,8 @@ package GX.External {
 		public override function setup (__xxx:XWorld, args:Array):void {
 			super.setup (__xxx, args);
 		
+			adID = getArg (args, 0);
+			
 			m_completeSignal = createXSignal ();
 			m_errorSignal = createXSignal ();
 			
