@@ -41,16 +41,22 @@ package GX.External.CPMStar {
 		//------------------------------------------------------------------------------------------
 		private function onInit(event:Event):void {
 			trace (": onInit: ", event);
+			
+			dispatchEvent (event);
 		}
 		
 		//------------------------------------------------------------------------------------------
 		private function onComplete(event:Event):void {
 			trace (": onComplete: ", event);
+			
+			dispatchEvent (event);
 		}
 		
 		//------------------------------------------------------------------------------------------
 		private function onError(event:Event):void {
 			trace (": onLoadingError: ", event);	
+			
+			dispatchEvent (event);
 		}
 
 	//------------------------------------------------------------------------------------------
