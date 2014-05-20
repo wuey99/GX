@@ -83,7 +83,7 @@ package GX.External {
 		
 		//------------------------------------------------------------------------------------------
 		public function fireErrorSignal (e:Event):void {
-			m_errorSignal.fireSignal ();
+			m_errorSignal.fireSignal (e);
 		}
 		
 		//------------------------------------------------------------------------------------------
