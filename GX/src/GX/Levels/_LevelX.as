@@ -38,6 +38,7 @@ package GX.Levels {
 		public var m_layer1Scroll:XPoint;
 		
 		private var m_levelSelectSignal:XSignal;
+		private var m_gameStateChangedSignal:XSignal;
 		
 //------------------------------------------------------------------------------------------
 		public function _LevelX () {
@@ -66,6 +67,7 @@ package GX.Levels {
 			m_layer1Scroll = new XPoint (0, 0);
 			
 			m_levelSelectSignal = createXSignal ();
+			m_gameStateChangedSignal = createXSignal ();
 		}
 
 //------------------------------------------------------------------------------------------
@@ -382,7 +384,16 @@ package GX.Levels {
 		protected function fireLevelSelectSignal (__levelId:String):void {
 			m_levelSelectSignal.fireSignal (__levelId);
 		}
-
+		
+		//------------------------------------------------------------------------------------------
+		public function addGameStateChangedListener (__listener:Function):void {
+			m_gameStateChangedSignal.addListener (__listener);
+		}
+		
+		//------------------------------------------------------------------------------------------
+		protected function fireGameStateChangedSignal (__gameState:Number):void {
+			m_gameStateChangedSignal.fireSignal (__gameState);
+		}
 		
 	//------------------------------------------------------------------------------------------
 	}
