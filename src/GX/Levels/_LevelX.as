@@ -381,7 +381,7 @@ package GX.Levels {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		protected function fireLevelSelectSignal (__levelId:String):void {
+		public function fireLevelSelectSignal (__levelId:String):void {
 			m_levelSelectSignal.fireSignal (__levelId);
 		}
 		
@@ -391,7 +391,7 @@ package GX.Levels {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		protected function fireGameStateChangedSignal (__gameState:Number):void {
+		public function fireGameStateChangedSignal (__gameState:Number):void {
 			m_gameStateChangedSignal.fireSignal (__gameState);
 		}
 		
