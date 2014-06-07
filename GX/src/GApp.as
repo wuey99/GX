@@ -9,6 +9,7 @@ package
 	import GX.Messages.*;
 	import GX.Messages.Level.*;
 	import GX.Mickey.*;
+	import GX.Music.*;
 	import GX.Text.*;
 	
 	import X.*;
@@ -57,6 +58,8 @@ package
 		public var m_trigger$Signal:XSignal;
 		public var m_pingSignal:XSignal;
 		
+		public var m_player:XFlod;
+		
 		private var m_globalTextureManager:XSubTextureManager;
 		
 		//------------------------------------------------------------------------------------------
@@ -82,6 +85,8 @@ package
 			
 			m_assets = new __assetsClass (m_XApp, __parent);
 			m_assets.load ();
+		
+			m_player = new XFlod ();
 			
 			GX.setup (this, m_XApp);
 		}
@@ -179,6 +184,11 @@ package
 		//------------------------------------------------------------------------------------------
 		public function addYShake (__count:Number=15, __delayValue:Number=0x0100):void {
 			m_levelObject.addYShake (__count, __delayValue);
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function get player ():XFlod {
+			return m_player;
 		}
 		
 		//------------------------------------------------------------------------------------------
