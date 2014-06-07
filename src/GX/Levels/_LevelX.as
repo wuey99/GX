@@ -40,6 +40,8 @@ package GX.Levels {
 		private var m_levelSelectSignal:XSignal;
 		private var m_gameStateChangedSignal:XSignal;
 		
+		private var m_levelData:*;
+		
 //------------------------------------------------------------------------------------------
 		public function _LevelX () {
 		}
@@ -375,6 +377,16 @@ package GX.Levels {
 		//------------------------------------------------------------------------------------------
 		}
 	
+		//------------------------------------------------------------------------------------------
+		public function getLevelData ():* {
+			return m_levelData;
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function setLevelData (__levelData:*):void {
+			m_levelData = __levelData;
+		}
+		
 		//------------------------------------------------------------------------------------------
 		public function addLevelSelectListener (__listener:Function):void {
 			m_levelSelectSignal.addListener (__listener);
