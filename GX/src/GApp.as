@@ -27,7 +27,9 @@ package
 	import X.XML.*;
 	import X.XMap.*;
 	
-	import flash.ui.Mouse;
+	import flash.ui.*;
+	import flash.utils.*;
+	import flash.net.*;
 	
 	include "flash.h";
 	
@@ -429,6 +431,15 @@ package
 		//------------------------------------------------------------------------------------------
 		public function getSmallFontName ():String {
 			return "SmallHiresFont:SmallHiresFont";	
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function openURLInBrowser (__url:String):void {
+			var __request:URLRequest = new URLRequest (__url);
+			
+			__request.method = URLRequestMethod.POST;
+			
+			navigateToURL (__request, "_blank");	
 		}
 		
 	//------------------------------------------------------------------------------------------
