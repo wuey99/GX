@@ -1,7 +1,10 @@
 //------------------------------------------------------------------------------------------
+// <$begin$/>
+// <$end$/>
+//------------------------------------------------------------------------------------------
 package GX.Zone {
 	
-	import GX.Assets.*;
+	import GX.Messages.*;
 	
 	import X.*;
 	import X.Geom.*;
@@ -17,7 +20,7 @@ package GX.Zone {
 	
 	//------------------------------------------------------------------------------------------
 	public class StarterRingX extends XLogicObjectCX {
-		public var m_sprite:XMovieClip;
+		public var m_sprite:XBitmap;
 		public var x_sprite:XDepthSprite;
 		public var script:XTask;
 		
@@ -62,8 +65,8 @@ package GX.Zone {
 		// create sprites
 		//------------------------------------------------------------------------------------------
 		public override function createSprites ():void {
-			m_sprite = createXMovieClip ("StarterRing:StarterRing");
-			x_sprite = addSpriteAt (m_sprite, 0, 0);
+			m_sprite = createXBitmap ("StarterRing:StarterRing");
+			x_sprite = addSpriteAt (m_sprite, m_sprite.dx, m_sprite.dy);
 			
 			show ();
 		}
