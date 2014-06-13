@@ -1,8 +1,11 @@
 //------------------------------------------------------------------------------------------
+// <$begin$/>
+// <$end$/>
+//------------------------------------------------------------------------------------------
 package GX.Zone {
 	
+	import GX.Mickey.*;
 	import GX.Messages.*;
-	import GX.Messages.Level.*;
 	
 	import X.*;
 	import X.Geom.*;
@@ -19,7 +22,7 @@ package GX.Zone {
 	
 	//------------------------------------------------------------------------------------------
 	public class StarterRingControllerX extends XLogicObjectCX {
-		public var m_sprite:XMovieClip;
+		public var m_sprite:XBitmap;
 		public var x_sprite:XDepthSprite;
 		public var script:XTask;
 		public var m_zone:Number;
@@ -119,11 +122,15 @@ package GX.Zone {
 		
 		//------------------------------------------------------------------------------------------
 		private function __spawnStarterRing (__scale:Number):void {
-			var __logicObject:StarterRingX = xxx.getXLogicManager ().initXLogicObject (
+			if (getDistanceToMickey () > 192) {
+				return;
+			}
+			
+			var __logicObject:StarterRingX = xxx.getXLogicManager ().initXLogicObjectFromPool (
 				// parent
 				this,
-				// logicObject
-				new StarterRingX as XLogicObject,
+				// class
+				StarterRingX,
 				// item, layer, depth
 				null, getLayer (), getDepth (),
 				// x, y, z
@@ -139,15 +146,6 @@ package GX.Zone {
 		// create sprites
 		//------------------------------------------------------------------------------------------
 		public override function createSprites ():void {
-			/*
-			m_sprite = new (xxx.getClass ("ClickHere:ClickHere")) ();
-			x_sprite = addSpriteAt (m_sprite, 0, 0);
-			x_sprite.setDepth (10000);
-			
-			m_sprite.gotoAndStop (1);
-			m_sprite.scaleX = m_sprite.scaleY = 1.75;
-			*/
-			
 			show ();
 		}
 		
@@ -203,6 +201,18 @@ package GX.Zone {
 			]);
 			
 		//------------------------------------------------------------------------------------------
+		}
+
+		//------------------------------------------------------------------------------------------	
+		private function getDistanceToMickey ():Number {
+			var __mickeyObject:_MickeyX = GX.app$.__getMickeyObject ();
+			
+			var __dx:Number = __mickeyObject.oX - oX;
+			var __dy:Number = __mickeyObject.oY - oY;
+			
+			var __distance:Number = xxx.approxDistance (__dx, __dy);
+			
+			return __distance;
 		}
 		
 	//------------------------------------------------------------------------------------------
