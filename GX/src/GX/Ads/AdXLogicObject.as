@@ -46,11 +46,19 @@ package GX.Ads {
 		public override function cleanup ():void {
 			super.cleanup ();
 			
-			if (getAdObject () != null) {
-				getAdObject ().nukeLater ();
-			}
+			killAdObject ();
 		}
 	
+		//------------------------------------------------------------------------------------------
+		public function killAdObject ():void {
+			if (getAdObject () != null) {
+				getAdObject ().nukeLater ();
+				
+				m_cpmStarAdObject = null;
+				m_fglAdObject = null;
+			}
+		}
+		
 		//------------------------------------------------------------------------------------------
 		public function addContinueListener (__listener:Function):void {
 			m_continueSignal.addListener (__listener);
