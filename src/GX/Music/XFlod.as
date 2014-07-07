@@ -31,19 +31,25 @@ package GX.Music {
 	
 		//------------------------------------------------------------------------------------------
 		public function stopSong ():void {
-			m_player.stop ();
+			if (isPlaying ()) {
+				m_player.stop ();
 			
-			m_player = null;
+				m_player = null;
+			}
 		}
 		
 		//------------------------------------------------------------------------------------------
 		public function pauseSong ():void {
-			m_player.pause ();
+			if (isPlaying ()) {
+				m_player.pause ();
+			}
 		}
 		
 		//------------------------------------------------------------------------------------------
 		public function resumeSong ():void {
-			m_player.play ();
+			if (isPlaying ()) {
+				m_player.play ();
+			}
 		}
 		
 		//------------------------------------------------------------------------------------------
