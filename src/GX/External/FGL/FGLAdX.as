@@ -25,6 +25,8 @@ package GX.External.FGL {
 		public var m_sprite:Sprite;
 		public var x_sprite:XDepthSprite;
 		
+		public static var m_ads:FGLAds;
+		
 		//------------------------------------------------------------------------------------------
 		public function FGLAdX () {
 		}
@@ -36,13 +38,19 @@ package GX.External.FGL {
 			m_sprite = new Sprite ();
 			x_sprite = addSpriteToHudAt (m_sprite, 0, 0);
 			
-			var ads:FGLAds = new FGLAds (stage, adID);
+			if (m_ads == null) {
+				m_ads = new FGLAds (stage, adID);
 			
-			// When the API is ready, show the ad!
-			ads.addEventListener(FGLAds.EVT_API_READY, showStartupAd);
+				// When the API is ready, show the ad!
+				m_ads.addEventListener(FGLAds.EVT_API_READY, showStartupAd);
 			
-			function showStartupAd(e:Event):void {
-				ads.showAdPopup();
+				function showStartupAd(e:Event):void {
+					m_ads.showAdPopup();
+				}
+			}
+			else
+			{
+				m_ads.showAdPopup();
 			}
 			
 			show ();
