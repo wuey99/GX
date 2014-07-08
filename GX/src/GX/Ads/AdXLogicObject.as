@@ -29,7 +29,8 @@ package GX.Ads {
 		
 		private var m_continueSignal:XSignal;
 		
-		private var adType:String = "CPMStar";
+		public const AdType_CPMStar = "CPMStar";
+		public const AdType_FGLAds = "FGLAds";
 		
 		//------------------------------------------------------------------------------------------
 		public function AdXLogicObject () {
@@ -74,7 +75,7 @@ package GX.Ads {
 			m_fglAdObject = null;
 			m_cpmStarAdObject = null;
 			
-			if (false) {
+			if (getAdType () != "CPMStar") {
 				m_fglAdObject = xxx.getXLogicManager ().initXLogicObject (
 					// parent
 					null,
@@ -86,7 +87,7 @@ package GX.Ads {
 					0, 0, 0,
 					// scale, rotation
 					1.0, 0,
-					"FGL-20028079"
+					getAdID ()
 				) as FGLAdX;
 			}
 			else
@@ -107,6 +108,11 @@ package GX.Ads {
 			}
 		}
 
+		//------------------------------------------------------------------------------------------
+		public function getAdType ():String {
+			return AdType_CPMStar;
+		}
+		
 		//------------------------------------------------------------------------------------------
 		public function getAdID ():String {
 			return "";
