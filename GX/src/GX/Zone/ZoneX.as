@@ -107,48 +107,48 @@ package GX.Zone {
 			
 			addTask ([
 				XTask.LABEL, "loop",
-				XTask.WAIT, 0x0100,
-				
-				XTask.FLAGS, function (__task:XTask):void {
-					if (!GX.app$.getLevelComplete ()) {
-						GX.app$.__getMickeyObject ().getCX ().copy2 (__mickeyRect);
-						__mickeyRect.offsetPoint (GX.app$.__getMickeyObject ().getPos ());
-						
-						__task.ifTrue (__zoneRect.intersects (__mickeyRect));
-						
-						if (__zoneRectX.intersects (__mickeyRect)) {
-							var __dx:Number, __dy:Number;
+					XTask.WAIT, 0x0100,
+					
+					XTask.FLAGS, function (__task:XTask):void {
+						if (!GX.app$.getLevelComplete ()) {
+							GX.app$.__getMickeyObject ().getCX ().copy2 (__mickeyRect);
+							__mickeyRect.offsetPoint (GX.app$.__getMickeyObject ().getPos ());
 							
-							__dx = oX - GX.app$.__getMickeyObject ().getPos ().x;
-							__dy = oY - GX.app$.__getMickeyObject ().getPos ().y;
+							__task.ifTrue (__zoneRect.intersects (__mickeyRect));
 							
-							__dx = Math.abs (__dx);  __dy = Math.abs (__dy);
-							
-							if (m_direction == "horz" && __dy < 32) {
-								__task.ifTrue (true);
-							}
-							
-							if (m_direction == "vert" && __dx < 32) {
-								__task.ifTrue (true);
+							if (__zoneRectX.intersects (__mickeyRect)) {
+								var __dx:Number, __dy:Number;
+								
+								__dx = oX - GX.app$.__getMickeyObject ().getPos ().x;
+								__dy = oY - GX.app$.__getMickeyObject ().getPos ().y;
+								
+								__dx = Math.abs (__dx);  __dy = Math.abs (__dy);
+								
+								if (m_direction == "horz" && __dy < 32) {
+									__task.ifTrue (true);
+								}
+								
+								if (m_direction == "vert" && __dx < 32) {
+									__task.ifTrue (true);
+								}
 							}
 						}
-					}
-					else
-					{
-						__task.ifTrue (false);
-					}
-					
-//					trace (": zone: ", __zoneRect.intersects (__mickeyRect));
-					
-				}, XTask.BNE, "loop",
-				
-				function ():void {
-					if (GX.app$.getCurrentZone () != m_zone) {
-						GX.app$.setCurrentZone (m_zone);	
+						else
+						{
+							__task.ifTrue (false);
+						}
 						
-						GX.app$.fireZoneStartedSignal ();
-					}
-				},
+//					trace (": zone: ", __zoneRect.intersects (__mickeyRect));
+						
+					}, XTask.BNE, "loop",
+					
+					function ():void {
+						if (GX.app$.getCurrentZone () != m_zone) {
+							GX.app$.setCurrentZone (m_zone);	
+							
+							GX.app$.fireZoneStartedSignal ();
+						}
+					},
 				
 				XTask.RETN,
 			]);			
