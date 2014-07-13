@@ -30,6 +30,7 @@ package
 	import flash.ui.*;
 	import flash.utils.*;
 	import flash.net.*;
+	import flash.external.*;
 	
 	include "flash.h";
 	
@@ -440,6 +441,32 @@ package
 			__request.method = URLRequestMethod.POST;
 			
 			navigateToURL (__request, "_blank");	
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function getNetworkingRestriction():String {
+			
+			var result:String = "all"; // default level
+			
+			try {
+				// first try SharedObject.  If it throws a SecurityError, then allowNetworking="none"
+				SharedObject.getLocal("test"); 
+				
+				try {
+					// SharedObject didn't throw a SecurityError. 
+					//If ExternalInterface.call() throws a SecurityError then allowNetworking="internal"
+					ExternalInterface.call(""); 
+				}
+				catch (e:SecurityError) {
+					result = "internal";
+				}
+				
+			}
+			catch (e:SecurityError) {
+				result = "none";        
+			}
+			
+			return result;
 		}
 		
 	//------------------------------------------------------------------------------------------
