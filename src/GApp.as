@@ -89,9 +89,20 @@ package
 			m_assets = new __assetsClass (m_XApp, __parent);
 			m_assets.load ();
 		
-			m_player = new XFlod ();
-			
 			GX.setup (this, m_XApp);
+			
+			m_player = xxx.getXLogicManager ().initXLogicObject (
+				// parent
+				null,
+				// logicObject
+				new XFlod () as XLogicObject,
+				// item, layer, depth
+				null, 0, 0,
+				// x, y, z
+				0, 0, 0,
+				// scale, rotation
+				1.0, 0
+			) as XFlod;
 		}
 		
 		//------------------------------------------------------------------------------------------
@@ -442,6 +453,23 @@ package
 			
 			navigateToURL (__request, "_blank");	
 		}
+		
+		//------------------------------------------------------------------------------------------
+		/*
+		public  function openURLInBrowser (url:*, window:String = "_blank"):void {
+			var req:URLRequest = url is String ? new URLRequest(url) : url;
+			if (!ExternalInterface.available) {
+				navigateToURL(req, window);
+			} else {
+				var strUserAgent:String = String(ExternalInterface.call("function() {return navigator.userAgent;}")).toLowerCase();
+				if (strUserAgent.indexOf("firefox") != -1 || (strUserAgent.indexOf("msie") != -1 && uint(strUserAgent.substr(strUserAgent.indexOf("msie") + 5, 3)) >= 7)) {
+					ExternalInterface.call("window.open", req.url, window);
+				} else {
+					navigateToURL(req, window);
+				}
+			}
+		}
+		*/
 		
 		//------------------------------------------------------------------------------------------
 		public function getNetworkingRestriction():String {
