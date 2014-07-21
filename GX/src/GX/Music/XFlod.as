@@ -41,8 +41,9 @@ package GX.Music {
 			
 			var loader:FileLoader = new FileLoader ();
 			__stream = new __source as ByteArray;
-			m_player = loader.load (__stream);
 			
+			m_player = loader.load (__stream);
+			m_player.loop = true;
 			m_player.play ();
 		}
 
