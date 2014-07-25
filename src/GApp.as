@@ -27,10 +27,10 @@ package
 	import X.XML.*;
 	import X.XMap.*;
 	
+	import flash.external.*;
+	import flash.net.*;
 	import flash.ui.*;
 	import flash.utils.*;
-	import flash.net.*;
-	import flash.external.*;
 	
 	include "flash.h";
 	
@@ -455,21 +455,19 @@ package
 		}
 		
 		//------------------------------------------------------------------------------------------
-		/*
-		public  function openURLInBrowser (url:*, window:String = "_blank"):void {
+		public  function openURLInBrowserWithJavascript (url:*, window:String = "_blank", specs:String=""):void {
 			var req:URLRequest = url is String ? new URLRequest(url) : url;
 			if (!ExternalInterface.available) {
 				navigateToURL(req, window);
 			} else {
 				var strUserAgent:String = String(ExternalInterface.call("function() {return navigator.userAgent;}")).toLowerCase();
 				if (strUserAgent.indexOf("firefox") != -1 || (strUserAgent.indexOf("msie") != -1 && uint(strUserAgent.substr(strUserAgent.indexOf("msie") + 5, 3)) >= 7)) {
-					ExternalInterface.call("window.open", req.url, window);
+					ExternalInterface.call("window.open", req.url, window, specs);
 				} else {
 					navigateToURL(req, window);
 				}
 			}
 		}
-		*/
 		
 		//------------------------------------------------------------------------------------------
 		public function getNetworkingRestriction():String {
