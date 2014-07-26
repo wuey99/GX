@@ -15,6 +15,8 @@ package GX.Music {
 	//------------------------------------------------------------------------------------------
 	public class XFlod extends XLogicObject {
 		public var m_player:CorePlayer;
+		public var m_source:Class;
+		public var m_volume:Number;
 		
 		//------------------------------------------------------------------------------------------
 		public function XFlod () {	
@@ -24,6 +26,8 @@ package GX.Music {
 		//------------------------------------------------------------------------------------------
 		public override function setup (__xxx:XWorld, args:Array):void {
 			super.setup (__xxx, args);
+			
+			m_volume = 1.0;
 		}
 		
 		//------------------------------------------------------------------------------------------
@@ -36,6 +40,14 @@ package GX.Music {
 			if (m_player != null) {
 				stopSong ();
 			}
+		
+			m_source = __source;
+			
+			if (getVolume () == 0.0) {
+				m_player = null;
+				
+				return;
+			}
 			
 			var __stream:ByteArray;
 			
@@ -45,16 +57,25 @@ package GX.Music {
 			m_player = loader.load (__stream);
 			m_player.loop = true;
 			m_player.play ();
+			m_player.volume = getVolume ();
 		}
 
 		//------------------------------------------------------------------------------------------
 		public function setVolume (__volume:Number):void {
-			m_player.volume = __volume;
+			m_volume = __volume;
+
+			if (m_player) {
+				m_player.volume = m_volume;
+			}
+
+			if (!m_player && m_source && m_volume) {
+				playSong (m_source);
+			}
 		}
 		
 		//------------------------------------------------------------------------------------------
 		public function getVolume ():Number {
-			return m_player.volume;
+			return m_volume;
 		}
 		
 		//------------------------------------------------------------------------------------------
@@ -89,6 +110,7 @@ package GX.Music {
 				m_player.stop ();
 			
 				m_player = null;
+				m_source = null;
 			}
 		}
 		
