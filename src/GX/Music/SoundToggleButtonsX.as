@@ -43,6 +43,9 @@ package GX.Music {
 		//------------------------------------------------------------------------------------------
 		public override function cleanup ():void {
 			super.cleanup ();
+			
+			m_BGMToggleButton.nukeLater ();
+			m_SFXToggleButton.nukeLater ();
 		}
 		
 		//------------------------------------------------------------------------------------------
