@@ -267,6 +267,26 @@ package
 		public function getLevelLayer (__layer:Number):XMapView { // XMapLayerView
 			return m_levelObject;
 		}
+
+		//------------------------------------------------------------------------------------------
+		public function setBGMVolume (__volume:Number):void {
+			m_player.setVolume (__volume);
+		}
+
+		//------------------------------------------------------------------------------------------
+		public function getBGMVolume ():Number {
+			return m_player.getVolume ();
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function setSFXVolume (__volume:Number):void {
+			xxx.getSoundManager ().setSFXVolume (__volume);
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function getSFXVolume ():Number {
+			return xxx.getSoundManager ().getSFXVolume ();
+		}
 		
 		//------------------------------------------------------------------------------------------
 		public function setupMickey (__mickey:_MickeyX):void {
@@ -309,7 +329,6 @@ package
 				1.0, 0
 			) as _MickeyCursorX;
 		}
-		
 		
 		//------------------------------------------------------------------------------------------
 		public function __getMickeyCursorObject ():_MickeyCursorX {

@@ -48,6 +48,16 @@ package GX.Music {
 		}
 
 		//------------------------------------------------------------------------------------------
+		public function setVolume (__volume:Number):void {
+			m_player.volume = __volume;
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function getVolume ():Number {
+			return m_player.volume;
+		}
+		
+		//------------------------------------------------------------------------------------------
 		public function fadeOutAndStopSong ():void {
 			var __volume:Number = 1.0;
 			
