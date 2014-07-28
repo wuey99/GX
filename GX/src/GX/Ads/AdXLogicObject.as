@@ -29,8 +29,8 @@ package GX.Ads {
 		
 		private var m_continueSignal:XSignal;
 		
-		public const AdType_CPMStar = "CPMStar";
-		public const AdType_FGLAds = "FGLAds";
+		public const AdType_CPMStar:String = "CPMStar";
+		public const AdType_FGLAds:String = "FGLAds";
 		
 		//------------------------------------------------------------------------------------------
 		public function AdXLogicObject () {
@@ -75,7 +75,7 @@ package GX.Ads {
 			m_fglAdObject = null;
 			m_cpmStarAdObject = null;
 			
-			if (getAdType () != "CPMStar") {
+			if (getAdType () != AdType_CPMStar) {
 				m_fglAdObject = xxx.getXLogicManager ().initXLogicObject (
 					// parent
 					null,
