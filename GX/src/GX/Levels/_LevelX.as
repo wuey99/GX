@@ -9,7 +9,6 @@ package GX.Levels {
 	import X.Task.*;
 	import X.Signals.*;
 	import X.World.*;
-	import X.World.Collision.*;
 	import X.World.Logic.*;
 	import X.World.Sprite.*;
 	import X.XML.*;
