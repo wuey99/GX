@@ -81,7 +81,7 @@ package GX.Music {
 			__stream = new __source as ByteArray;
 			
 			m_player = loader.load (__stream);
-			m_player.loop = true;
+//			m_player.loop = true;
 			m_player.play ();
 			m_player.volume = getVolume ();
 		}

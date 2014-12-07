@@ -10,8 +10,7 @@
         </excludedEntries>
       </libraryPathEntry>
       <libraryPathEntry kind="3" linkType="1" path="/X/bin/X.swc" useDefaultLinkType="false"/>
-      <libraryPathEntry kind="3" linkType="1" path="C:/Documents and Settings/Jimmy Huey/Desktop/PrimaryFeather-Starling-Framework-v1.3-0-g0ac3592/PrimaryFeather-Starling-Framework-0ac3592/starling/bin/starling.swc" useDefaultLinkType="false"/>
-      <libraryPathEntry kind="3" linkType="1" path="/FLOD5/bin/FLOD5.swc" useDefaultLinkType="false"/>
+      <libraryPathEntry kind="3" linkType="1" path="/FLOD4/bin/FLOD4.swc" useDefaultLinkType="false"/>
     </libraryPath>
     <sourceAttachmentPath/>
   </compiler>
