@@ -301,27 +301,6 @@ package GX.Zone {
 			getItemStorage ().state = 2;
 			
 			__setState ();
-			
-
-			if (m_message == "__zone") {
-// #TODO should be added as a param
-				/*
-				var __logicObject:XLogicObject = xxx.getXLogicManager ().initXLogicObject (
-					// parent
-					G.app$.getHudObject (),
-					// logicObject
-					new ZoneClearedX () as XLogicObject,
-					// item, layer, depth
-					null, -1, 0,
-					// x, y, z
-					192, 224, 0,
-					// scale, rotation
-					1.0, 0
-				) as ZoneClearedX;	
-		
-				G.app$.getHudObject ().addXLogicObject (__logicObject);
-				*/
-			}
 		}
 					
 	//------------------------------------------------------------------------------------------

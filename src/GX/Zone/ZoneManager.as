@@ -89,6 +89,7 @@ package GX.Zone {
 			m_XApp = __XApp;
 			
 			m_playFieldLayer = __playfieldLayer;
+			
 			m_zoneObjectsMap = __zoneObjectsMap;
 			m_zoneObjectsMapNoKill = __zoneObjectsMapNoKill;
 			
