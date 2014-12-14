@@ -1,0 +1,500 @@
+//------------------------------------------------------------------------------------------
+// <$begin$/>
+// The MIT License (MIT)
+//
+// The "GX-Engine"
+//
+// Copyright (c) 2014 Jimmy Huey (wuey99@gmail.com)
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+// <$end$/>
+//------------------------------------------------------------------------------------------
+package GX.Zone {
+	
+	import X.Collections.*;
+	import X.Geom.*;
+	import X.Task.*;
+	import X.Pool.*;
+	import X.World.*;
+	import X.World.Logic.*;
+	import X.XApp;
+	import X.XMap.*;
+	
+	//------------------------------------------------------------------------------------------
+	public class ZoneManager extends Object {
+		private var xxx:XWorld;
+		private var m_XApp:XApp;
+		
+		private var m_starterRingItems:XDict;
+		private var m_starterRingItemObjects:XDict;
+		
+		private var m_zoneItems:XDict;
+		private var m_zoneItemObjects:XDict;
+		
+		private var m_gateItems:XDict;
+		private var m_gateItemObjects:XDict;
+		
+		private var m_currentGateItems:XDict;
+		private var m_currentGateItemObjects:XDict;	
+		
+		private var m_doorItems:XDict;
+		private var m_doorItemObjects:XDict;
+		
+		private var m_zoneKillCount:Number;
+		
+		private var m_playFieldLayer:Number;
+		private var m_zoneObjectsMap:Object;
+		private var m_zoneObjectsMapNoKill:Object;
+		private var m_Horz_GateX:Class;
+		private var m_Vert_GateX:Class;
+		private var m_Horz_DoorX:Class;
+		private var m_Vert_DoorX:Class;
+		private var m_WaterCurrentX:Class;
+		
+		//------------------------------------------------------------------------------------------
+		public function ZoneManager () {
+			super ();
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function setup (
+			__xxx:XWorld,
+			__XApp:XApp,
+			__playfieldLayer:Number,
+			__zoneObjectsMap:Object,
+			__zoneObjectsMapNoKill:Object,
+			__Horz_GateX:Class,
+			__Vert_GateX:Class,
+			__Horz_DoorX:Class,
+			__Vert_DoorX:Class,
+			__WaterCurrentX:Class
+		):void {
+			xxx = __xxx;
+			m_XApp = __XApp;
+			
+			m_playFieldLayer = __playfieldLayer;
+			m_zoneObjectsMap = __zoneObjectsMap;
+			m_zoneObjectsMapNoKill = __zoneObjectsMapNoKill;
+			
+			m_Horz_GateX = __Horz_GateX;
+			m_Vert_GateX = __Vert_GateX;
+			m_Horz_DoorX = __Horz_DoorX;
+			m_Vert_DoorX = __Vert_DoorX;
+			m_WaterCurrentX = __WaterCurrentX;
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function cleanup ():void {
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function setCurrentZone (__zone:Number):void {
+			GX.app$.m_currentZone = __zone;
+			
+			resetZoneKillCount ();
+			
+			var __layerModel:XMapLayerModel = xxx.getXMapModel ().getLayer (m_playFieldLayer + 0);
+			var __currentZoneItemObject:ZoneX = getZoneItemObject (getCurrentZone ());
+			var __itemRect:XRect = new XRect ();
+			var __list:XDict = new XDict ();
+			
+			//------------------------------------------------------------------------------------------
+			trace (": currentItemZoneObject: ", __currentZoneItemObject, __currentZoneItemObject.boundingRect);
+			trace (": itemRect: ", __itemRect);
+			
+			//------------------------------------------------------------------------------------------
+			if (__currentZoneItemObject == null) {
+				throw (Error ("no zone item object found!"));	
+			}
+			
+			//------------------------------------------------------------------------------------------
+			// find all items that intersect zone's boundingRect
+			//------------------------------------------------------------------------------------------
+			trace (": zoneRect: ", __currentZoneItemObject.boundingRect);
+			
+			__layerModel.iterateAllSubmaps (
+				function (__XSubmapModel:XSubmapModel, __row:Number, __col:Number):void {
+					__XSubmapModel.iterateAllItems (
+						function (x:*):void {
+							var __item:XMapItemModel = x as XMapItemModel;
+							
+							__item.boundingRect.copy2 (__itemRect);
+							__itemRect.offset (__item.x, __item.y);
+							
+							if (
+								__currentZoneItemObject.boundingRect.width != 0 && __currentZoneItemObject.boundingRect.height != 0 &&
+								__currentZoneItemObject.boundingRect.intersects (__itemRect) &&
+								isValidZoneObjectItem (__item.XMapItem)) {
+								trace (": itemRect: ", __item.logicClassName, __itemRect);
+								
+								__list.put (__item.id, __item);
+							}
+						}
+					);
+				}
+			);
+			
+			//------------------------------------------------------------------------------------------
+			// find killCount for the zone
+			//------------------------------------------------------------------------------------------
+			__list.forEach (
+				function (__id:*):void {
+					var __item:XMapItemModel = __list.get (__id) as XMapItemModel;
+					// objects are double instantiated here.  normal XMapLayerView instantiates it first sometimes.
+					
+					var __logicObject:ZoneObjectCX;
+					
+					if (!__item.inuse) {
+						__logicObject = GX.app$.getLevelObject ().addXMapItem (__item, 0) as ZoneObjectCX;
+					}
+					else
+					{
+						__logicObject = GX.app$.getLevelObject ().getXLogicObject (__item) as ZoneObjectCX;
+					}
+					
+					trace (": setCurrentZone: item: ", __item.logicClassName, __logicObject);
+					
+					if (__logicObject != null) {
+						__logicObject.setAsPersistedObject (true);
+						
+						if (!isZoneObjectItemNoKill (__item.XMapItem)) {
+							addToZoneKillCount ();
+						}
+					}
+				}	
+			);
+			
+			//----------------------------------------------------------------------------------------
+			trace (": zoneKillCount: ", m_zoneKillCount);
+			
+			m_XApp.getXTaskManager ().addTask ([
+				XTask.WAIT, 0x0800,
+				
+				function ():void {
+					if (m_zoneKillCount == 0) {
+						GX.app$.fireZoneFinishedSignal ();
+					}
+				},
+				
+				XTask.RETN,
+			]);
+		}
+				
+		//------------------------------------------------------------------------------------------
+		public function getCurrentZone ():Number {
+			return GX.app$.m_currentZone;
+		}
+		
+		//------------------------------------------------------------------------------------------
+		// m_zoneItems: map of all zone items in the level
+		// we iterate through all the zome items and instantiate XLogicObjects for each.
+		//      m_zoneItemObjects: map of all the instantiated zoneItemObjects 
+		//		
+		// m_starterItems: map of all the start items in the level
+		// we iterate through all the zone items and instantiate XLogicObjects for each.
+		//      m_starterItemObjects: map of all the instantiated startItemObjects
+		//
+		// m_gateItems: map of all the gate items in the level (horz and vert)
+		// we iterate through all the gate items and instantiate XLogicObjects for each.
+		//     m_gateItemObjects: map of all the instantiated gateItemObjects
+		//------------------------------------------------------------------------------------------
+		public function getAllGlobalItems ():void {
+			var __layerModel:XMapLayerModel = xxx.getXMapModel ().getLayer (m_playFieldLayer + 0);
+					
+			//------------------------------------------------------------------------------------------
+			m_zoneItems = __layerModel.lookForItem ("Zone_Item");
+					
+			m_zoneItemObjects = new XDict ();
+					
+			m_zoneItems.forEach (
+				function (__id:*):void {
+					var __item:XMapItemModel = m_zoneItems.get (__id);
+							
+					var __zoneItemObject:ZoneX = xxx.getXLogicManager ().initXLogicObject (
+						// parent
+						GX.app$.getLevelObject (),
+						// logicObject
+						new ZoneX () as XLogicObject,
+						// item, layer, depth
+						__item, m_playFieldLayer + 0, 10000,
+						// x, y, z
+						__item.x, __item.y, 0,
+						// scale, rotation
+						1.0, 0
+					) as ZoneX;
+							
+					GX.app$.getLevelObject ().addXLogicObject (__zoneItemObject);
+							
+					__item.inuse++;
+							
+					m_zoneItemObjects.put (__zoneItemObject.getZone (), __zoneItemObject);
+				}
+			);
+					
+			//------------------------------------------------------------------------------------------
+			m_starterRingItems = __layerModel.lookForItem ("StarterRing_Item");
+					
+			m_starterRingItemObjects = new XDict ();
+					
+			m_starterRingItems.forEach (
+				function (__id:*):void {
+					var __item:XMapItemModel = m_starterRingItems.get (__id);
+							
+					var __starterRingItemObject:StarterRingControllerX = xxx.getXLogicManager ().initXLogicObject (
+						// parent
+						GX.app$.getLevelObject (),
+						// logicObject
+						new StarterRingControllerX () as XLogicObject,
+						// item, layer, depth
+						__item, m_playFieldLayer + 0, 10000,
+						// x, y, z
+						__item.x, __item.y, 0,
+						// scale, rotation
+						1.0, 0
+					) as StarterRingControllerX;
+							
+					GX.app$.getLevelObject ().addXLogicObject (__starterRingItemObject);
+							
+					__item.inuse++;
+							
+					m_starterRingItemObjects.put (__starterRingItemObject.getZone (), __starterRingItemObject);
+				}
+			);
+					
+			//------------------------------------------------------------------------------------------
+			m_gateItems = __layerModel.lookForItem ("Horz_Gate_Item");
+			m_gateItems = __layerModel.lookForItem ("Vert_Gate_Item", m_gateItems);
+					
+			m_gateItemObjects = new XDict ();
+					
+			m_gateItems.forEach (
+				function (__id:*):void {
+					var __item:XMapItemModel = m_gateItems.get (__id);
+							
+					var __gateItemObject:GateX;
+							
+					trace (": gateItems: ", __item.id, __item.XMapItem);
+							
+					if (__item.XMapItem == "Horz_Gate_Item") {
+						__gateItemObject = xxx.getXLogicManager ().initXLogicObject (
+							// parent
+							GX.app$.getLevelObject (),
+							// logicObject
+							new (m_Horz_GateX) () as XLogicObject,
+							// item, layer, depth
+							__item, m_playFieldLayer + 0, 10000,
+							// x, y, z
+							__item.x, __item.y, 0,
+							// scale, rotation
+							1.0, 0
+						) as GateX;
+					}
+					else
+					{
+						__gateItemObject = xxx.getXLogicManager ().initXLogicObject (
+							// parent
+							GX.app$.getLevelObject (),
+							// logicObject
+							new (m_Vert_GateX) () as XLogicObject,
+							// item, layer, depth
+							__item, m_playFieldLayer + 0, 10000,
+							// x, y, z
+							__item.x, __item.y, 0,
+							// scale, rotation
+							1.0, 0
+						) as GateX;	
+					}
+							
+					GX.app$.getLevelObject ().addXLogicObject (__gateItemObject);
+							
+					__item.inuse++;
+							
+					__gateItemObject.setXMapModel (GX.app$.__getMickeyObject ().getLayer () + 1, xxx.getXMapModel (), GX.app$.getLevelObject ());	
+				}
+			);
+					
+			//------------------------------------------------------------------------------------------
+			m_doorItems = __layerModel.lookForItem ("Horz_Door_Item");
+			m_doorItems = __layerModel.lookForItem ("Vert_Door_Item", m_doorItems);
+					
+			m_doorItemObjects = new XDict ();
+					
+			m_doorItems.forEach (
+				function (__id:*):void {
+					var __item:XMapItemModel = m_doorItems.get (__id);
+							
+					var __doorItemObject:DoorX;
+							
+					trace (": doorItems: ", __item.id, __item.XMapItem);
+							
+					if (__item.XMapItem == "Horz_Door_Item") {
+						__doorItemObject = xxx.getXLogicManager ().initXLogicObject (
+							// parent
+							GX.app$.getLevelObject (),
+							// logicObject
+							new (m_Horz_DoorX) () as XLogicObject,
+							// item, layer, depth
+							__item, m_playFieldLayer + 0, 10000,
+							// x, y, z
+							__item.x, __item.y, 0,
+							// scale, rotation
+							1.0, 0
+						) as DoorX;
+					}
+					else
+					{
+						__doorItemObject = xxx.getXLogicManager ().initXLogicObject (
+							// parent
+							GX.app$.getLevelObject (),
+							// logicObject
+							new (m_Vert_DoorX) () as XLogicObject,
+							// item, layer, depth
+							__item, m_playFieldLayer + 0, 10000,
+							// x, y, z
+							__item.x, __item.y, 0,
+							// scale, rotation
+							1.0, 0
+						) as DoorX;	
+					}
+							
+					GX.app$.getLevelObject ().addXLogicObject (__doorItemObject);
+							
+					__item.inuse++;
+							
+					__doorItemObject.setXMapModel (GX.app$.__getMickeyObject ().getLayer () + 1, xxx.getXMapModel (), GX.app$.getLevelObject ());	
+				}
+			);
+					
+			//------------------------------------------------------------------------------------------
+			m_currentGateItems = __layerModel.lookForItem ("Current_Gate_Item");
+					
+			m_currentGateItemObjects = new XDict ();
+					
+			m_currentGateItems.forEach (
+				function (__id:*):void {
+					var __item:XMapItemModel = m_currentGateItems.get (__id);
+							
+					var __currentGateItemObject:CurrentGateX;
+							
+					trace (": currentGateItems: ", __item.id, __item.XMapItem);
+							
+					__currentGateItemObject = xxx.getXLogicManager ().initXLogicObject (
+						// parent
+						GX.app$.getLevelObject (),
+						// logicObject
+						new CurrentGateX () as XLogicObject,
+						// item, layer, depth
+						__item, m_playFieldLayer + 0, 10000,
+						// x, y, z
+						__item.x, __item.y, 0,
+						// scale, rotation
+						1.0, 0,
+						m_WaterCurrentX
+					) as CurrentGateX;
+							
+					GX.app$.getLevelObject ().addXLogicObject (__currentGateItemObject);
+							
+					__item.inuse++;
+							
+					__currentGateItemObject.setXMapModel (GX.app$.__getMickeyObject ().getLayer () + 1, xxx.getXMapModel (), GX.app$.getLevelObject ());	
+				}
+			);
+		}
+				
+		//------------------------------------------------------------------------------------------
+		public function isValidZoneObjectItem (__itemName:String):Boolean {
+			return __itemName in m_zoneObjectsMap;
+		}
+				
+		//------------------------------------------------------------------------------------------
+		public function isZoneObjectItemNoKill (__itemName:String):Boolean {
+			return __itemName in m_zoneObjectsMapNoKill;
+		}
+				
+		//------------------------------------------------------------------------------------------
+		public function getZoneItems ():XDict {
+			return m_zoneItems;
+		}
+				
+		//------------------------------------------------------------------------------------------
+		public function getZoneItemObject (__zone:Number):ZoneX {
+			if (m_zoneItemObjects.exists (__zone)) {
+				return m_zoneItemObjects.get (__zone) as ZoneX;
+			}
+					
+			return null;
+		}
+				
+		//------------------------------------------------------------------------------------------
+		public function getStarterRingItems ():XDict {
+			return m_starterRingItems;
+		}
+				
+		//------------------------------------------------------------------------------------------
+		public function setMickeyToStartPosition (__zone:Number):void {	
+			var __logicObject:StarterRingControllerX = m_starterRingItemObjects.get (__zone) as StarterRingControllerX;
+					
+			if (__logicObject.getZone () == __zone) {
+				GX.app$.__getMickeyObject ().oX = __logicObject.oX
+				GX.app$.__getMickeyObject ().oY = __logicObject.oY;
+				GX.app$.__getMickeyObject ().oRotation = 0;
+			}
+		}
+				
+		//------------------------------------------------------------------------------------------
+		public function resetZoneKillCount ():void {
+			m_zoneKillCount = 0;
+		}
+				
+		//------------------------------------------------------------------------------------------
+		public function addToZoneKillCount ():void {
+			m_zoneKillCount++;
+					
+			trace (": addToZoneKillCount: ", m_zoneKillCount);
+		}
+				
+		//------------------------------------------------------------------------------------------
+		public function removeFromZoneKillCount ():void {
+			m_zoneKillCount--;
+					
+			trace (": removeFromZoneKillCount: ", m_zoneKillCount);
+					
+			xxx.getXTaskManager ().addTask ([
+				XTask.WAIT, 0x1000,
+						
+				function ():void {
+					if (m_zoneKillCount == 0) {
+						GX.app$.fireZoneFinishedSignal ();
+					}
+				},
+						
+				XTask.RETN,
+			]);
+		}
+						
+		//------------------------------------------------------------------------------------------
+		public function getZoneKillCount ():Number {
+			return m_zoneKillCount;
+		}
+					
+	//------------------------------------------------------------------------------------------
+	}
+	
+//------------------------------------------------------------------------------------------
+}

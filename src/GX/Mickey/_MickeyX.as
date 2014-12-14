@@ -51,6 +51,8 @@ package GX.Mickey {
 		protected var m_ready:Boolean;
 		protected var m_invincible:Number;
 		protected var m_levelCompleteSignal:XSignal;
+		protected var m_extraDX:Number;
+		protected var m_extraDY:Number;
 		
 //------------------------------------------------------------------------------------------
 		public function _MickeyX () {
@@ -61,6 +63,24 @@ package GX.Mickey {
 			super.cleanup ();
 		}
 
+//------------------------------------------------------------------------------------------
+		public function get extraDX ():Number {
+			return m_extraDX;
+		}
+		
+		public function set extraDX (__value:Number):void {
+			m_extraDX = __value;
+		}
+		
+//------------------------------------------------------------------------------------------
+		public function get extraDY ():Number {
+			return m_extraDY;
+		}
+		
+		public function set extraDY (__value:Number):void {
+			m_extraDY = __value;
+		}
+		
 //------------------------------------------------------------------------------------------
 		public function addLevelCompleteListener (__listener:Function):void {
 			m_levelCompleteSignal.addListener (__listener);

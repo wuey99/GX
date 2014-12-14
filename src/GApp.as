@@ -91,6 +91,9 @@ package
 		
 		private var m_globalTextureManager:XSubTextureManager;
 		
+		protected var m_lives:Number;
+		protected var m_livesChangedSignal:XSignal;
+		
 		//------------------------------------------------------------------------------------------
 		public function GApp () {	
 			trace (": starting: ");
@@ -129,6 +132,8 @@ package
 				// scale, rotation
 				1.0, 0
 			) as XFlod;
+			
+			m_livesChangedSignal = new XSignal ();
 		}
 		
 		//------------------------------------------------------------------------------------------
@@ -381,6 +386,23 @@ package
 		}
 
 		//------------------------------------------------------------------------------------------
+		public function resetZoneKillCount ():void {
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function addToZoneKillCount ():void {
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function removeFromZoneKillCount ():void {
+		}
+				
+		//------------------------------------------------------------------------------------------
+		public function getZoneKillCount ():Number {
+			return 0;
+		}
+		
+		//------------------------------------------------------------------------------------------
 		public function addZoneStartedListener (__function:Function):void {
 			m_zoneStartedSignal.addListener (__function);
 		}
@@ -408,6 +430,28 @@ package
 		//------------------------------------------------------------------------------------------
 		public function fireZoneFinishedSignal ():void {
 			m_zoneFinishedSignal.fireSignal (getCurrentZone ());
+		}
+
+		//------------------------------------------------------------------------------------------
+		public function get lives ():Number {
+			return  m_lives;
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function set lives (__value:Number):void {
+			m_lives = __value;
+			
+			m_livesChangedSignal.fireSignal ();
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function addLivesChangedListener (__listener:Function):void {
+			m_livesChangedSignal.addListener (__listener);
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function removeLivesChangedListener (__listener:Function):void {
+			m_livesChangedSignal.removeListener (__listener);
 		}
 		
 		//------------------------------------------------------------------------------------------
