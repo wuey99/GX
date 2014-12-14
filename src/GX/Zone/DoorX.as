@@ -252,14 +252,6 @@ package GX.Zone {
 		
 		//------------------------------------------------------------------------------------------
 		public function Open_Script (__finally:Function):void {
-// #TODO figure out where to add SFX later
-			/*
-			var __guid:Number = G.app$.getEnvironmentSoundManager ().playSoundFromClass (
-				_Assets.SFX_Door_Sliding_Loop,
-				2.0,
-				999
-			);
-			*/
 			
 			script.gotoTask ([
 				
@@ -288,14 +280,6 @@ package GX.Zone {
 					XTask.EXEC, openGateAnimation$ (),
 					
 					function ():void {
-// #TODO pass function to call SFX
-/*
-						G.app$.getEnvironmentSoundManager ().stopSound (__guid);
-						
-						G.app$.getEnvironmentSoundManager ().playSoundFromClass (
-							_Assets.SFX_Door_Open_Only
-						);
-*/						
 						__finally ();
 					},
 	

@@ -28,7 +28,7 @@
 package
 {
 	
-// app
+// GX
 	import GX.Assets.*;
 	import GX.Hud.*;
 	import GX.Levels.*;
@@ -37,7 +37,8 @@ package
 	import GX.Mickey.*;
 	import GX.Music.*;
 	import GX.Text.*;
-	
+	import GX.Zone.*;
+// X
 	import X.*;
 	import X.Bitmap.XBitmapDataAnim;
 	import X.Collections.*;
@@ -52,7 +53,7 @@ package
 	import X.World.Logic.*;
 	import X.XML.*;
 	import X.XMap.*;
-	
+// flash
 	import flash.external.*;
 	import flash.net.*;
 	import flash.ui.*;
@@ -94,6 +95,8 @@ package
 		protected var m_lives:Number;
 		protected var m_livesChangedSignal:XSignal;
 		
+		private var m_zoneManager:ZoneManager;
+		
 		//------------------------------------------------------------------------------------------
 		public function GApp () {	
 			trace (": starting: ");
@@ -134,6 +137,8 @@ package
 			) as XFlod;
 			
 			m_livesChangedSignal = new XSignal ();
+			
+			m_zoneManager = new ZoneManager ();
 		}
 		
 		//------------------------------------------------------------------------------------------
@@ -374,6 +379,11 @@ package
 		//------------------------------------------------------------------------------------------
 		public function setMickeyMessage (__message:String):void {
 			m_mickeyObject.setMessage (__message);
+		}
+
+		//------------------------------------------------------------------------------------------
+		public function getZoneManager ():ZoneManager {
+			return m_zoneManager;
 		}
 		
 		//------------------------------------------------------------------------------------------

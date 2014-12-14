@@ -418,15 +418,7 @@ package GX.Zone {
 		
 		//------------------------------------------------------------------------------------------
 		public function Opening_Script (__finally:Function):void {
-// #TODO figure out how to handle sound
-			/*
-			var __guid:Number = G.app$.getEnvironmentSoundManager ().playSoundFromClass (
-				_Assets.SFX_Door_Sliding_Loop,
-				2.0,
-				999
-			);
-			*/
-			
+
 			script.gotoTask ([
 				
 				//------------------------------------------------------------------------------------------
@@ -454,15 +446,6 @@ package GX.Zone {
 					XTask.EXEC, openGateAnimation$ (),
 					
 					function ():void {
-// #TODO figure out how to handle sound
-						/*
-						G.app$.getEnvironmentSoundManager ().stopSound (__guid);
-						
-						G.app$.getEnvironmentSoundManager ().playSoundFromClass (
-							_Assets.SFX_Door_Open_Only
-						);
-						*/
-						
 						__finally ();
 					},
 	
@@ -478,15 +461,7 @@ package GX.Zone {
 		
 		//------------------------------------------------------------------------------------------
 		public function Lowering_Script (__finally:Function):void {
-// #TODO figure out to handle sound
-			/*
-			var __guid:Number = G.app$.getEnvironmentSoundManager ().playSoundFromClass (
-				_Assets.SFX_Door_Sliding_Loop,
-				2.0,
-				999
-			);
-			*/
-			
+
 			setCXTiles ();
 			
 			x_sprite.visible2 = true;
@@ -521,15 +496,6 @@ package GX.Zone {
 					XTask.EXEC, closeGateAnimation$ (),
 					
 					function ():void {
-// #TODO figure out how to handle sound
-						/*
-						G.app$.getEnvironmentSoundManager ().stopSound (__guid);
-						
-						G.app$.getEnvironmentSoundManager ().playSoundFromClass (
-							_Assets.SFX_Door_Close_Only
-						);
-						*/
-						
 						__finally ();
 					},
 				

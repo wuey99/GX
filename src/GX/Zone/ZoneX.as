@@ -137,7 +137,7 @@ package GX.Zone {
 							__task.ifTrue (false);
 						}
 						
-						//						trace (": zone: ", __zoneRect.intersects (__mickeyRect));
+//						trace (": zone: ", __zoneRect.intersects (__mickeyRect));
 						
 					}, XTask.BNE, "loop",
 				
