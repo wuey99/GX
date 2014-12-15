@@ -29,8 +29,8 @@ package GX.Zone {
 	
 	import X.Collections.*;
 	import X.Geom.*;
-	import X.Task.*;
 	import X.Pool.*;
+	import X.Task.*;
 	import X.World.*;
 	import X.World.Logic.*;
 	import X.XApp;
@@ -65,6 +65,7 @@ package GX.Zone {
 		private var m_Vert_GateX:Class;
 		private var m_Horz_DoorX:Class;
 		private var m_Vert_DoorX:Class;
+		private var m_GateArrowX:Class;
 		private var m_WaterCurrentX:Class;
 		
 		//------------------------------------------------------------------------------------------
@@ -83,6 +84,7 @@ package GX.Zone {
 			__Vert_GateX:Class,
 			__Horz_DoorX:Class,
 			__Vert_DoorX:Class,
+			__GateArrowX:Class,
 			__WaterCurrentX:Class
 		):void {
 			xxx = __xxx;
@@ -97,6 +99,7 @@ package GX.Zone {
 			m_Vert_GateX = __Vert_GateX;
 			m_Horz_DoorX = __Horz_DoorX;
 			m_Vert_DoorX = __Vert_DoorX;
+			m_GateArrowX = __GateArrowX;
 			m_WaterCurrentX = __WaterCurrentX;
 		}
 		
@@ -303,7 +306,8 @@ package GX.Zone {
 							// x, y, z
 							__item.x, __item.y, 0,
 							// scale, rotation
-							1.0, 0
+							1.0, 0,
+							m_GateArrowX
 						) as GateX;
 					}
 					else
@@ -318,7 +322,8 @@ package GX.Zone {
 							// x, y, z
 							__item.x, __item.y, 0,
 							// scale, rotation
-							1.0, 0
+							1.0, 0,
+							m_GateArrowX
 						) as GateX;	
 					}
 							

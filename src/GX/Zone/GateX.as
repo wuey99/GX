@@ -36,6 +36,8 @@ package GX.Zone {
 		public var m_direction:String;
 		public var m_go:Boolean;
 		
+		public var m_GateArrowX:Class;
+		
 		//------------------------------------------------------------------------------------------
 		public function GateX () {
 		}
@@ -43,6 +45,8 @@ package GX.Zone {
 		//------------------------------------------------------------------------------------------
 		public override function setup (__xxx:XWorld, args:Array):void {
 			super.setup (__xxx, args);
+			
+			m_GateArrowX = getArg (args, 0);
 			
 			createSprites ();
 			
@@ -61,12 +65,9 @@ package GX.Zone {
 			m_zone = __xml.getAttribute ("zone");
 			m_exit = __xml.getAttribute ("exit") == "true";
 			
+			m_direction = "null";
 			if (__xml.hasAttribute ("direction")) {
 				m_direction = __xml.getAttribute ("direction");
-			}
-			else
-			{
-				m_direction = "right";
 			}
 			
 			if (!m_exit) {
@@ -122,6 +123,10 @@ package GX.Zone {
 
 		//------------------------------------------------------------------------------------------
 		public function createGoSprite ():void {
+			if (m_direction == "null" || m_GateArrowX == null) {
+				return;
+			}
+			
 			m_goSprite = createXMovieClip ("GO:GO");
 			
 			var __r:XRect = boundingRect;
@@ -156,14 +161,13 @@ package GX.Zone {
 					XTask.LOOP, 3,
 					
 						XTask.WAIT, 0x0900,
-	// #TODO ??? is the gate arrow used in Gorgon?					
+						
 						function ():void {
-							/*
-							var __logicObject:GateArrowX = xxx.getXLogicManager ().initXLogicObject (
+							var __logicObject:XLogicObject = xxx.getXLogicManager ().initXLogicObject (
 								// parent
-								G.app$.getLevelObject (),
+								GX.app$.getLevelObject (),
 								// logicObject
-								new GateArrowX () as XLogicObject,
+								new m_GateArrowX () as XLogicObject,
 								// item, layer, depth
 								null, 0, getDepth () + 1,
 								// x, y, z
@@ -171,10 +175,9 @@ package GX.Zone {
 								// scale, rotation
 								1.0, 0,
 								m_direction
-							) as GateArrowX;	
+							) as XLogicObject;	
 							
-							G.app$.getLevelObject ().addXLogicObject (__logicObject);
-							*/
+							GX.app$.getLevelObject ().addXLogicObject (__logicObject);
 						},
 					
 					XTask.NEXT,
