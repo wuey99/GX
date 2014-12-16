@@ -46,7 +46,13 @@ package GX.Zone {
 		public override function setup (__xxx:XWorld, args:Array):void {
 			super.setup (__xxx, args);
 			
-			m_GateArrowX = getArg (args, 0);
+			if (args.length == 0) {
+				m_GateArrowX = null;
+			}
+			else
+			{
+				m_GateArrowX = getArg (args, 0);
+			}
 			
 			createSprites ();
 			

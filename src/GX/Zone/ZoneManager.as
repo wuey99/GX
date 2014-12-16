@@ -287,7 +287,7 @@ package GX.Zone {
 					
 			m_gateItemObjects = new XDict ();
 					
-			m_gateItems.forEach (
+			if (m_Horz_GateX != null && m_Vert_GateX != null) m_gateItems.forEach (
 				function (__id:*):void {
 					var __item:XMapItemModel = m_gateItems.get (__id);
 							
@@ -341,7 +341,7 @@ package GX.Zone {
 					
 			m_doorItemObjects = new XDict ();
 					
-			m_doorItems.forEach (
+			if (m_Horz_DoorX != null && m_Vert_DoorX != null) m_doorItems.forEach (
 				function (__id:*):void {
 					var __item:XMapItemModel = m_doorItems.get (__id);
 							
