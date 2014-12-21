@@ -100,6 +100,8 @@ package
 		protected var m_paused:Boolean;
 		protected var m_pausedObject:XLogicObject;
 		
+		public var m_XTaskSubManager:XTaskSubManager;
+		
 		//------------------------------------------------------------------------------------------
 		public function GApp () {	
 			trace (": starting: ");
@@ -142,6 +144,8 @@ package
 			m_livesChangedSignal = new XSignal ();
 			
 			m_zoneManager = new ZoneManager ();
+			
+			m_XTaskSubManager = new XTaskSubManager (xxx.getXLogicManager ().getXTaskManager ());
 		}
 		
 		//------------------------------------------------------------------------------------------
@@ -159,6 +163,59 @@ package
 			m_pingSignal = new XSignal ();
 		}
 
+		//------------------------------------------------------------------------------------------
+		public function addTask (
+			__taskList:Array,
+			__findLabelsFlag:Boolean = true
+		):XTask {
+			
+			var __task:XTask = m_XTaskSubManager.addTask (__taskList, __findLabelsFlag);
+			
+			__task.setParent (this);
+			
+			return __task;
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function changeTask (
+			__task:XTask,
+			__taskList:Array,
+			__findLabelsFlag:Boolean = true
+		):XTask {
+			
+			return m_XTaskSubManager.changeTask (__task, __taskList, __findLabelsFlag);
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function isTask (__task:XTask):Boolean {
+			return m_XTaskSubManager.isTask (__task);
+		}		
+		
+		//------------------------------------------------------------------------------------------
+		public function removeTask (__task:XTask):void {
+			m_XTaskSubManager.removeTask (__task);	
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function removeAllTasks ():void {
+			m_XTaskSubManager.removeAllTasks ();
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function addEmptyTask ():XTask {
+			return m_XTaskSubManager.addEmptyTask ();
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function getEmptyTask$ ():Array {
+			return m_XTaskSubManager.getEmptyTask$ ();
+		}	
+		
+		//------------------------------------------------------------------------------------------
+		public function gotoLogic (__logic:Function):void {
+			m_XTaskSubManager.gotoLogic (__logic);
+		}
+		
 		//------------------------------------------------------------------------------------------
 		public function initGame ():void {
 		}
