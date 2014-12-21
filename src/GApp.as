@@ -102,6 +102,8 @@ package
 		
 		public var m_XTaskSubManager:XTaskSubManager;
 		
+		public var script:XTask;
+		
 		//------------------------------------------------------------------------------------------
 		public function GApp () {	
 			trace (": starting: ");
@@ -146,6 +148,8 @@ package
 			m_zoneManager = new ZoneManager ();
 			
 			m_XTaskSubManager = new XTaskSubManager (xxx.getXLogicManager ().getXTaskManager ());
+			
+			script = addEmptyTask ();
 		}
 		
 		//------------------------------------------------------------------------------------------
