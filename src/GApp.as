@@ -387,31 +387,70 @@ package
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function setCurrentZone (__zone:Number):void {
-		}
-		
-		//------------------------------------------------------------------------------------------
 		public function getCurrentZone ():Number {
 			return m_currentZone;
 		}
 
 		//------------------------------------------------------------------------------------------
+		public function setCurrentZone (__zone:Number):void {
+			getZoneManager ().setCurrentZone (__zone);
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function getAllGlobalItems ():void {
+			getZoneManager ().getAllGlobalItems ();
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function isValidZoneObjectItem (__itemName:String):Boolean {
+			return getZoneManager ().isValidZoneObjectItem (__itemName);
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function isZoneObjectItemNoKill (__itemName:String):Boolean {
+			return getZoneManager ().isZoneObjectItemNoKill (__itemName);
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function getZoneItems ():XDict {
+			return getZoneManager ().getZoneItems ();
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function getZoneItemObject (__zone:Number):ZoneX {
+			return getZoneManager ().getZoneItemObject (__zone);
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function getStarterRingItems ():XDict {
+			return getZoneManager ().getStarterRingItems ();
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function setMickeyToStartPosition (__zone:Number):void {	
+			getZoneManager ().setMickeyToStartPosition (__zone);
+		}
+		
+		//------------------------------------------------------------------------------------------
 		public function resetZoneKillCount ():void {
+			getZoneManager ().resetZoneKillCount ();
 		}
 		
 		//------------------------------------------------------------------------------------------
 		public function addToZoneKillCount ():void {
+			getZoneManager ().addToZoneKillCount ();
 		}
 		
 		//------------------------------------------------------------------------------------------
 		public function removeFromZoneKillCount ():void {
-		}
-				
-		//------------------------------------------------------------------------------------------
-		public function getZoneKillCount ():Number {
-			return 0;
+			getZoneManager ().removeFromZoneKillCount ();
 		}
 		
+		//------------------------------------------------------------------------------------------
+		public function getZoneKillCount ():Number {
+			return getZoneManager ().getZoneKillCount ();
+		}
+
 		//------------------------------------------------------------------------------------------
 		public function addZoneStartedListener (__function:Function):void {
 			m_zoneStartedSignal.addListener (__function);

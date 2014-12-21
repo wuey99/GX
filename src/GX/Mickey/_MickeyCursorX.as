@@ -55,8 +55,7 @@ package GX.Mickey {
 		public override function setupX ():void {
 			super.setupX ();
 		}
-
-		
+	
 //------------------------------------------------------------------------------------------
 	}
 
