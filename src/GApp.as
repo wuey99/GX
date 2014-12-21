@@ -97,6 +97,9 @@ package
 		
 		private var m_zoneManager:ZoneManager;
 		
+		protected var m_paused:Boolean;
+		protected var m_pausedObject:XLogicObject;
+		
 		//------------------------------------------------------------------------------------------
 		public function GApp () {	
 			trace (": starting: ");
@@ -322,6 +325,22 @@ package
 		//------------------------------------------------------------------------------------------
 		public function getSFXVolume ():Number {
 			return xxx.getSoundManager ().getSFXVolume ();
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function togglePauseGame ():void {	
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function pauseGame ():void {		
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function unpauseGame ():void {			
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function quitGame ():void {	
 		}
 		
 		//------------------------------------------------------------------------------------------
