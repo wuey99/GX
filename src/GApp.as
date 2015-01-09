@@ -147,7 +147,7 @@ package
 			
 			m_zoneManager = new ZoneManager ();
 			
-			m_XTaskSubManager = new XTaskSubManager (xxx.getXLogicManager ().getXTaskManager ());
+			m_XTaskSubManager = new XTaskSubManager (m_XApp.getXTaskManager ());
 			
 			script = addEmptyTask ();
 		}
