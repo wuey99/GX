@@ -110,13 +110,13 @@ package
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function setup (__assetsClass:Class, __mickeyClass:Class, __parent:*, __timerInterval:Number=32):void {	
+		public function setup (__assetsClass:Class, __mickeyClass:Class, __parent:*, __timerInterval:Number=32, __layers:Number=4):void {	
 			m_app = this;
 			
 			m_XApp = new XApp ();
 			m_XApp.setup (m_XApp.getDefaultPoolSettings ());
 			
-			xxx = new XWorld (__parent, m_XApp, 4, __timerInterval);
+			xxx = new XWorld (__parent, m_XApp, __layers, __timerInterval);
 			addChild (xxx);
 			
 			setupMask ();

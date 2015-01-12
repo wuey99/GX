@@ -62,10 +62,14 @@ package GX.Levels {
 		public var m_layer1Shake:XPoint;
 		public var m_layer1Scroll:XPoint;
 		
-		private var m_levelSelectSignal:XSignal;
-		private var m_gameStateChangedSignal:XSignal;
+		protected var m_levelSelectSignal:XSignal;
+		protected var m_gameStateChangedSignal:XSignal;
 		
-		private var m_levelData:*;
+		protected var m_levelData:*;
+		
+		protected var m_layerPos:Array;
+		protected var m_layerShake:Array;
+		protected var m_layerScroll:Array;
 		
 //------------------------------------------------------------------------------------------
 		public function _LevelX () {
