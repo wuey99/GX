@@ -713,6 +713,47 @@ package
 			return result;
 		}
 		
+		//------------------------------------------------------------------------------------------
+		// https://www.facebook.com/dialog/feed
+		// ?app_id=1437483596500878
+		// &caption=Octo-Tron%20Circus
+		// &description=Building%20a%20better%20tomorrow%20by%20lending%20today!
+		// &display=popup
+		// &e2e=%7B%7D
+		// &link=http%3A%2F%2Fwww.kablooey.com%2Fapps%2FOcto-Tron-Circus
+		// &locale=en_US
+		// &name=Play%20Octo-Tron%20Circus!
+		// &next=http%3A%2F%2Fstatic.ak.facebook.com%2Fconnect%2Fxd_arbiter%2FoDB-fAAStWy.js%3Fversion%3D41%23cb%3Df7a5bb56%26domain%3Dwww.kablooey.com%26origin%3Dhttp%253A%252F%252Fwww.kablooey.com%252Ff1cb06720%26relation%3Dopener%26frame%3Df3b90fbe68%26result%3D%2522xxRESULTTOKENxx%2522
+		// &picture=http%3A%2F%2Fwww.kablooey.com%3A8080%2Fapps%2FOcto-Tron-Circus%2Fimages%2FOcto-Tron-Circus-Facebook-Feed-Large.png
+		// &sdk=joey
+		//------------------------------------------------------------------------------------------
+		public function generateFacebookShareLink (
+			__app_id:String,
+			__caption:String,
+			__description:String,
+			__link:String,
+			__name:String,
+			__picture:String
+		):String {
+			
+			var __variables:URLVariables = new URLVariables();
+			__variables.caption = __caption;
+			__variables.display = "popup";
+			__variables.e2e = "{}";
+			__variables.link = __link;
+			__variables.local = "en_US";
+			__variables.name = __name;
+			__variables.next = "http://static.ak.facebook.com/connect/xd_arbiter/oDB-fAAStWy.js?version=41#cb=f7a5bb56&domain=www.kablooey.com&origin=http%3A%2F%2Fwww.kablooey.com%2Ff1cb06720&relation=opener&frame=f3b90fbe68&result=%22xxRESULTTOKENxx%22";
+			__variables.picture = __picture;
+			__variables.sdk = "joey";
+			
+			var __urlString:String = "http://www.facebook.com/dialog/feed?app_id=" + __app_id + "&" + __variables.toString ();
+			
+			trace (": ", __urlString);
+			
+			return __urlString;
+		}
+		
 	//------------------------------------------------------------------------------------------
 	}
 	

@@ -32,8 +32,8 @@ package GX.Levels {
 	import X.*;
 	import X.Collections.*;
 	import X.Geom.*;
-	import X.Task.*;
 	import X.Signals.*;
+	import X.Task.*;
 	import X.World.*;
 	import X.World.Logic.*;
 	import X.World.Sprite.*;
@@ -48,28 +48,19 @@ package GX.Levels {
 	public class _LevelX extends XMapView {
 		protected var m_XApp:XApp;
 		
-		protected var m_layerView1X:XMapLayerView;
-		protected var m_layerView0:XMapLayerView;
-		protected var m_layerView1:XMapLayerCachedView;
-		
 		public var script:XTask;
 		
-		public var m_layer0Pos:XPoint;
-		public var m_layer0Shake:XPoint;
-		public var m_layer0Scroll:XPoint;
+		protected var m_layerView:Array;
+		protected var m_layerPos:Array;
+		protected var m_layerShake:Array;
+		protected var m_layerScroll:Array;
 		
-		public var m_layer1Pos:XPoint;
-		public var m_layer1Shake:XPoint;
-		public var m_layer1Scroll:XPoint;
+		protected var m_maxLayers:Number;
 		
 		protected var m_levelSelectSignal:XSignal;
 		protected var m_gameStateChangedSignal:XSignal;
 		
 		protected var m_levelData:*;
-		
-		protected var m_layerPos:Array;
-		protected var m_layerShake:Array;
-		protected var m_layerScroll:Array;
 		
 //------------------------------------------------------------------------------------------
 		public function _LevelX () {
@@ -87,16 +78,24 @@ package GX.Levels {
 			xxx.setXMapModel (getModel ());
 			
 			initSubmapPoolManager ();
-				
+
+			m_maxLayers = xxx.MAX_LAYERS;
+			
+			m_layerPos = new Array (m_maxLayers);
+			m_layerShake = new Array (m_maxLayers);
+			m_layerScroll = new Array (m_maxLayers);
+			m_layerView = new Array (m_maxLayers);
+			
+			var i:Number;
+			
+			for (i=0; i < m_maxLayers; i++) {
+				m_layerPos[i] = new XPoint (0, 0);
+				m_layerShake[i] = new XPoint (0, 0);
+				m_layerScroll[i] = new XPoint (0, 0);
+			}
+			
 			createSprites9 ();
-			
-			m_layer0Pos = new XPoint (0, 0);
-			m_layer0Shake = new XPoint (0, 0);
-			m_layer0Scroll = new XPoint (0, 0);
-			m_layer1Pos = new XPoint (0, 0);
-			m_layer1Shake = new XPoint (0, 0);
-			m_layer1Scroll = new XPoint (0, 0);
-			
+
 			m_levelSelectSignal = createXSignal ();
 			m_gameStateChangedSignal = createXSignal ();
 		}
@@ -116,130 +115,104 @@ package GX.Levels {
 //------------------------------------------------------------------------------------------
 // create sprites
 //------------------------------------------------------------------------------------------
-		public override function createSprites ():void {
-			m_layerView1X = xxx.getXLogicManager ().initXLogicObject (
-				// parent
+		public function createSprites9 ():void {			
+			var i:Number;
+			
+			for (i=0; i < m_maxLayers; i += 2) {
+				m_layerView[i+0] = xxx.getXLogicManager ().initXLogicObject (
+					// parent
 					this,
-				// logicObject
+					// logicObject
 					new XMapLayerView () as XLogicObject,
-				// item, layer, depth
+					// item, layer, depth
 					null, 0, 1000,
-				// x, y, z
+					// x, y, z
 					0, 0, 0,
-				// scale, rotation
+					// scale, rotation
 					1.0, 0,
 					// XMapView
 					this,
 					// XMapModel
 					m_XMapModel,
 					// layer
-					GX.app$.PLAYFIELD_LAYER + 1,
+					GX.app$.PLAYFIELD_LAYER + i + 0,
 					// logicClassNameToClass
 					GX.app$.logicClassNameToClass
 				) as XMapLayerView;
-			
-			addXLogicObject (m_layerView1X);
-					
-			show ();
-		}
-
-//------------------------------------------------------------------------------------------
-// create sprites
-//------------------------------------------------------------------------------------------
-		public function createSprites9 ():void {
-			m_layerView0 = xxx.getXLogicManager ().initXLogicObject (
-				// parent
-				this,
-				// logicObject
-				new XMapLayerView () as XLogicObject,
-				// item, layer, depth
-				null, 0, 1000,
-				// x, y, z
-				0, 0, 0,
-				// scale, rotation
-				1.0, 0,
-				// XMapView
-				this,
-				// XMapModel
-				m_XMapModel,
-				// layer
-				GX.app$.PLAYFIELD_LAYER + 0,
-				// logicClassNameToClass
-				GX.app$.logicClassNameToClass
-			) as XMapLayerView;
-			
-			addXLogicObject (m_layerView0);
-			
-			m_layerView1 = xxx.getXLogicManager ().initXLogicObject (
-				// parent
+				
+				addXLogicObject (m_layerView[i+0]);
+				
+				m_layerView[i+1] = xxx.getXLogicManager ().initXLogicObject (
+					// parent
 					this,
-				// logicObject
+					// logicObject
 					new XMapLayerCachedView () as XLogicObject,
-				// item, layer, depth
+					// item, layer, depth
 					null, 0, 1000,
-				// x, y, z
+					// x, y, z
 					0, 0, 0,
-				// scale, rotation
+					// scale, rotation
 					1.0, 0,
 					// XMapView
 					this,
 					// XMapModel
 					m_XMapModel,
 					// layer
-					GX.app$.PLAYFIELD_LAYER + 1
+					GX.app$.PLAYFIELD_LAYER + i + 1
 				) as XMapLayerCachedView;
+				
+				addXLogicObject (m_layerView[i+1]);				
+			}
 			
-			addXLogicObject (m_layerView1);
-					
 			show ();
 		}
 
 //------------------------------------------------------------------------------------------
 		public function addXMapItem (__item:XMapItemModel, __depth:Number):XLogicObject {
-			return m_layerView0.addXMapItem (__item, __depth);
+			return null;
+			
+//			return m_layerView0.addXMapItem (__item, __depth);
 		}
 
 //------------------------------------------------------------------------------------------
 		public function getXLogicObject (__item:XMapItemModel):XLogicObject {
-			return m_layerView0.getXLogicObject (__item);
+			return null;
+			
+//			return m_layerView0.getXLogicObject (__item);
 		}
 		
 //------------------------------------------------------------------------------------------
 		public override function scrollTo (__layer:Number, __x:Number, __y:Number):void {
-			switch (__layer) {
-				case 0:
-					m_layer0Pos.x = __x;
-					m_layer0Pos.y = __y;
-					
-					break;
-				
-				case 1:
-					m_layer1Pos.x = __x;
-					m_layer1Pos.y = __y;
-					
-					break;
-			}
+			m_layerPos[__layer].x = __x;
+			m_layerPos[__layer].y = __y;
 		}
 
 //------------------------------------------------------------------------------------------
-		public override function updateScroll ():void {	
-			m_layer0Pos.copy2 (m_layer0Scroll);
-			m_layer1Pos.copy2 (m_layer1Scroll);
+		public override function updateScroll ():void {
+			var i:Number;
 			
-			m_layer0Scroll.x += m_layer0Shake.x;
-			m_layer0Scroll.y += m_layer0Shake.y;
-			
-			m_layer1Scroll.x += m_layer1Shake.x;
-			m_layer1Scroll.y += m_layer1Shake.y;			
-			
-			xxx.getXWorldLayer (0).setPos (m_layer0Scroll);
-			xxx.getXWorldLayer (1).setPos (m_layer1Scroll);
+			for (i=0; i < m_maxLayers; i++) {
+				m_layerPos[i].copy2 (m_layerScroll[i]);
+				
+				m_layerScroll[i].x += m_layerShake[i].x;
+				m_layerScroll[i].y += m_layerShake[i].y;
+				
+				xxx.getXWorldLayer (i).setPos (m_layerScroll[i]);
+			}
 		}
 		
 //------------------------------------------------------------------------------------------
 		public override function updateFromXMapModel ():void {
+			/*
 			m_layerView0.updateFromXMapModel ();	
-			m_layerView1.updateFromXMapModel ();	
+			m_layerView1.updateFromXMapModel ();
+			*/
+			
+			var i:Number;
+			
+			for (i=0; i < m_maxLayers; i++) {
+				m_layerView[i].updateFromXMapModel ();
+			}
 		}
 
 //------------------------------------------------------------------------------------------
@@ -280,8 +253,12 @@ package GX.Levels {
 			]);
 			
 			function __setX (__dy:Number):void {
-				m_layer0Shake.x = __dy;
-				m_layer1Shake.x = __dy;
+				var i:Number;
+				
+				for (i=0; i < m_maxLayers; i++) {
+					m_layerShake[i].x = __dy;
+					m_layerShake[i].y = __dy;
+				}
 				
 				updateScroll ();
 			}
@@ -311,8 +288,12 @@ package GX.Levels {
 			]);
 			
 			function __setY (__dy:Number):void {
-				m_layer0Shake.y = __dy;
-				m_layer1Shake.y = __dy;
+				var i:Number;
+				
+				for (i=0; i < m_maxLayers; i++) {
+					m_layerShake[i].x = __dy;
+					m_layerShake[i].y = __dy;
+				}
 				
 				updateScroll ();
 			}
