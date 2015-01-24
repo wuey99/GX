@@ -168,17 +168,13 @@ package GX.Levels {
 		}
 
 //------------------------------------------------------------------------------------------
-		public function addXMapItem (__item:XMapItemModel, __depth:Number):XLogicObject {
-			return null;
-			
-//			return m_layerView0.addXMapItem (__item, __depth);
+		public function addXMapItem (__item:XMapItemModel, __depth:Number):XLogicObject {	
+			return m_layerView[0].addXMapItem (__item, __depth);
 		}
 
 //------------------------------------------------------------------------------------------
-		public function getXLogicObject (__item:XMapItemModel):XLogicObject {
-			return null;
-			
-//			return m_layerView0.getXLogicObject (__item);
+		public function getXLogicObject (__item:XMapItemModel):XLogicObject {		
+			return m_layerView[0].getXLogicObject (__item);
 		}
 		
 //------------------------------------------------------------------------------------------

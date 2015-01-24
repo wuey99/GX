@@ -738,6 +738,7 @@ package
 			
 			var __variables:URLVariables = new URLVariables();
 			__variables.caption = __caption;
+			__variables.description = __description;
 			__variables.display = "popup";
 			__variables.e2e = "{}";
 			__variables.link = __link;
