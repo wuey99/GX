@@ -452,6 +452,11 @@ package
 		}
 		
 		//------------------------------------------------------------------------------------------
+		public function setMickeyObject (__mickeyObject:_MickeyX):void {
+			m_mickeyObject = __mickeyObject;
+		}
+		
+		//------------------------------------------------------------------------------------------
 		public function __getMickeyObject ():_MickeyX {
 			return m_mickeyObject;
 		}
@@ -509,6 +514,19 @@ package
 		//------------------------------------------------------------------------------------------
 		public function setMickeyToStartPosition (__zone:Number):void {	
 			getZoneManager ().setMickeyToStartPosition (__zone);
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function setMickeyToLevelStartPosition ():void {
+			getAllGlobalItems ();
+			
+			setCurrentZone (m_levelData.zone);
+			
+			m_levelObject.onEntry ();
+			
+			setMickeyToStartPosition (m_currentZone);
+			
+			m_mickeyObject.setXMapModel (m_mickeyObject.getLayer () + 1, xxx.getXMapModel (), m_levelObject);
 		}
 		
 		//------------------------------------------------------------------------------------------
