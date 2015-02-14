@@ -76,11 +76,12 @@ package GX.Zone {
 			
 			Ring_Script ();
 		
-			init ();
+			create ();
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function init ():void {
+		public function create ():void {
+			
 			GX.app$.__getMickeyObject ().addWaitingListener (
 				function ():void {
 					trace (": waiting: ");
