@@ -72,12 +72,15 @@ package GX.Zone {
 			
 			m_zone = __xml.getAttribute ("zone");
 
-			__createClickHereSprite ();
-			
 			script = addEmptyTask ();
 			
 			Ring_Script ();
-			
+		
+			init ();
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function init ():void {
 			GX.app$.__getMickeyObject ().addWaitingListener (
 				function ():void {
 					trace (": waiting: ");
@@ -94,6 +97,8 @@ package GX.Zone {
 				}
 			);
 			
+			__createClickHereSprite ();
+			
 			addTask ([
 				XTask.LABEL, "loop",
 					function ():void { __spawnStarterRing (0.20); }, XTask.WAIT, 0x0200,
@@ -108,17 +113,6 @@ package GX.Zone {
 				
 				XTask.RETN,
 			]);
-			
-			/*
-			addTask ([
-				XTask.LABEL, "loop",
-					function ():void { m_sprite.rotation += 2.5; }, XTask.WAIT, 0x0100,
-
-				XTask.GOTO, "loop",
-				
-				XTask.RETN,
-			]);
-			*/
 		}
 
 		//------------------------------------------------------------------------------------------
