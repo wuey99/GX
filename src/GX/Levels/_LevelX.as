@@ -62,6 +62,8 @@ package GX.Levels {
 		
 		protected var m_levelData:*;
 		
+		protected var m_viewRect:XRect;
+		
 //------------------------------------------------------------------------------------------
 		public function _LevelX () {
 		}
@@ -85,6 +87,8 @@ package GX.Levels {
 			m_layerShake = new Array (m_maxLayers);
 			m_layerScroll = new Array (m_maxLayers);
 			m_layerView = new Array (m_maxLayers);
+			
+			m_viewRect = new XRect ();
 			
 			var i:Number;
 			
@@ -199,16 +203,41 @@ package GX.Levels {
 		
 //------------------------------------------------------------------------------------------
 		public override function updateFromXMapModel ():void {
-			/*
-			m_layerView0.updateFromXMapModel ();	
-			m_layerView1.updateFromXMapModel ();
-			*/
-			
 			var i:Number;
 			
 			for (i=0; i < m_maxLayers; i++) {
 				m_layerView[i].updateFromXMapModel ();
 			}
+		}
+		
+//------------------------------------------------------------------------------------------
+		public override function prepareUpdateScroll ():void {
+			var i:Number;
+			
+			for (i=0; i < m_maxLayers; i++) {
+				m_layerPos[i].copy2 (m_layerScroll[i]);
+				
+				m_layerScroll[i].x += m_layerShake[i].x;
+				m_layerScroll[i].y += m_layerShake[i].y;
+			}
+
+			for (i=0; i < m_maxLayers; i++) {
+				m_viewRect.x = -m_layerScroll[i].x;
+				m_viewRect.y = -m_layerScroll[i].y;
+				m_viewRect.width = xxx.getViewRect ().width;
+				m_viewRect.height = xxx.getViewRect ().height;
+				
+				m_layerView[i].updateFromXMapModelAtRect (m_viewRect);
+			}
+		}
+		
+//------------------------------------------------------------------------------------------
+		public override function finishUpdateScroll ():void {
+			var i:Number;
+			
+			for (i=0; i < m_maxLayers; i++) {
+				xxx.getXWorldLayer (i).setPos (m_layerScroll[i]);
+			}			
 		}
 
 //------------------------------------------------------------------------------------------
