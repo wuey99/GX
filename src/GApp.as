@@ -30,6 +30,7 @@ package
 	
 // GX
 	import GX.Assets.*;
+	import GX.Game.*;
 	import GX.Hud.*;
 	import GX.Levels.*;
 	import GX.Messages.*;
@@ -38,7 +39,8 @@ package
 	import GX.Music.*;
 	import GX.Text.*;
 	import GX.Zone.*;
-// X
+	import GX.Game.*;
+	
 	import X.*;
 	import X.Bitmap.XBitmapDataAnim;
 	import X.Collections.*;
@@ -53,7 +55,7 @@ package
 	import X.World.Logic.*;
 	import X.XML.*;
 	import X.XMap.*;
-// flash
+	
 	import flash.external.*;
 	import flash.net.*;
 	import flash.ui.*;
@@ -102,6 +104,8 @@ package
 		
 		public var m_XTaskSubManager:XTaskSubManager;
 		
+		public var m_gameStateObject:Gamestate;
+		
 		public var script:XTask;
 		
 		//------------------------------------------------------------------------------------------
@@ -143,6 +147,8 @@ package
 				1.0, 0
 			) as XFlod;
 			
+			m_gameState = null;
+			
 			m_livesChangedSignal = new XSignal ();
 			
 			m_zoneManager = new ZoneManager ();
@@ -167,6 +173,22 @@ package
 			m_pingSignal = new XSignal ();
 		}
 
+		//------------------------------------------------------------------------------------------
+		public function launchGamestate (__gameState:Class):void {
+			m_gameStateObject = xxx.getXLogicManager ().initXLogicObject (
+				// parent
+				null,
+				// logicObject
+				new __gameState (),
+				// item, layer, depth
+				null, 0, 0,
+				// x, y, z
+				0, 0, 0,
+				// scale, rotation
+				1.0, 0
+			) as Gamestate;			
+		}
+		
 		//------------------------------------------------------------------------------------------
 		public function addTask (
 			__taskList:Array,
