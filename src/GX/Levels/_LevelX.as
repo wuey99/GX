@@ -139,7 +139,7 @@ package GX.Levels {
 					// XMapModel
 					m_XMapModel,
 					// layer
-					GX.app$.PLAYFIELD_LAYER + i + 0,
+					i + 0,
 					// logicClassNameToClass
 					GX.app$.logicClassNameToClass
 				) as XMapLayerView;
@@ -162,7 +162,7 @@ package GX.Levels {
 					// XMapModel
 					m_XMapModel,
 					// layer
-					GX.app$.PLAYFIELD_LAYER + i + 1
+					i + 1
 				) as XMapLayerCachedView;
 				
 				addXLogicObject (m_layerView[i+1]);				

@@ -174,19 +174,32 @@ package
 		}
 
 		//------------------------------------------------------------------------------------------
+		public function getGamestateObject ():Gamestate {
+			return m_gameStateObject;
+		}
+		
+		//------------------------------------------------------------------------------------------
 		public function launchGamestate (__gameState:Class):void {
-			m_gameStateObject = xxx.getXLogicManager ().initXLogicObject (
-				// parent
-				null,
-				// logicObject
-				new __gameState (),
-				// item, layer, depth
-				null, 0, 0,
-				// x, y, z
-				0, 0, 0,
-				// scale, rotation
-				1.0, 0
-			) as Gamestate;			
+			m_XApp.getXTaskManager ().addTask ([
+				XTask.WAIT, 0x0800,
+				
+				function ():void {
+					m_gameStateObject = xxx.getXLogicManager ().initXLogicObject (
+						// parent
+						null,
+						// logicObject
+						new __gameState (),
+						// item, layer, depth
+						null, 0, 0,
+						// x, y, z
+						0, 0, 0,
+						// scale, rotation
+						1.0, 0
+					) as Gamestate;	
+				},
+				
+				XTask.RETN,
+			]);
 		}
 		
 		//------------------------------------------------------------------------------------------
