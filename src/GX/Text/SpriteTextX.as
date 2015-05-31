@@ -46,6 +46,7 @@ package GX.Text {
 		public var m_bitmap:Array;
 		public var x_sprite:Array;
 		public var m_text:String;
+		public var m_totalWidth:Number;
 	
 		//------------------------------------------------------------------------------------------
 		public function SpriteTextX () {
@@ -120,6 +121,13 @@ package GX.Text {
 				x_sprite[i].setRegistration (m_bitmap[i].dx + __x, m_bitmap[i].dy);
 				__x -= (getWidths ()[__c] + 2);
 			}
+			
+			m_totalWidth = -__x;
+		}
+
+	//------------------------------------------------------------------------------------------
+		public function getTotalWidth ():Number {
+			return m_totalWidth;
 		}
 		
 	//------------------------------------------------------------------------------------------
