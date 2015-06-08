@@ -289,6 +289,8 @@ package GX.Zone {
 			
 			eraseCXTiles ();
 
+			trace (": ---------->: ", getItemStorage ().state);
+			
 			if (getItemStorage ().state == 2) {
 				return;
 			}
@@ -460,7 +462,7 @@ package GX.Zone {
 						__finally ();
 					},
 	
-					XTask.GOTO, "loop",
+//						XTask.GOTO, "loop",
 				
 				XTask.RETN,
 				
@@ -524,6 +526,10 @@ package GX.Zone {
 		public function Unlocked_Exit_Script ():void {
 //			x_goSprite.visible2 = true;
 			m_go = true;
+			
+			if (x_goSprite == null) {
+				return;
+			}
 			
 			var __rp:XPoint = x_goSprite.getRegistration ();
 			
