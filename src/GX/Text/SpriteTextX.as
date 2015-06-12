@@ -100,6 +100,7 @@ package GX.Text {
 				var __c:Number = m_text.charCodeAt (i) - 32;
 				if (__c >= 64) __c -= 32;
 				m_bitmap[i] = new XBitmap ();
+				m_bitmap[i].setup ();
 				m_bitmap[i].initWithClassName (xxx, null, getFontName ());
 				x_sprite[i] = __addSpriteAt (m_bitmap[i], 0, 0);
 				x_sprite[i].setDepth (getDepth ());
