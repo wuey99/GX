@@ -37,10 +37,14 @@ package GX.Util  {
 	
 	import flash.display.Stage;
 	
+	import mx.charts.chartClasses.NumericAxis;
+	
 //------------------------------------------------------------------------------------------
 	public class FrameRateAdjust extends XTextLogicObject {
 		public var m_stage:Stage;
-		public var m_targetFramerate:Number;
+		public var m_frameSamples:Array;
+		public var m_maxSamples:Number;
+		public var m_adjustedFrameRate:Number;
 		
 //------------------------------------------------------------------------------------------
 		public function FrameRateAdjust () {
@@ -54,12 +58,22 @@ package GX.Util  {
 		
 //------------------------------------------------------------------------------------------
 		public override function setupX ():void {
-			super.setupX ();
-						
 			m_stage = stage;
-			m_targetFramerate = 30;
 			
-			oX = oY = 8;
+			m_maxSamples = 16;
+			
+			m_frameSamples = new Array (m_maxSamples);
+			
+			for (var i:Number = 0; i < m_maxSamples; i++) {
+				m_frameSamples.push (xxx.getIdealFPS ());
+			}
+			
+			m_adjustedFrameRate = xxx.getIdealFPS ();
+			
+			super.setupX ();
+									
+			oX = 96;
+			oY = 8;
 			
 			return;
 			
@@ -71,7 +85,7 @@ package GX.Util  {
 						// height
 						32,
 						// text
-						"Target FPS: " + m_targetFramerate + ", FPS: " + xxx.getFPS (),
+						"Target FPS: " + m_adjustedFrameRate + ", FPS: " + xxx.getFPS (),
 						// font name
 						"Aller",
 						// font size
@@ -106,20 +120,18 @@ package GX.Util  {
 				function ():void {
 					script.addTask ([
 						XTask.LABEL, "loop",
-							XTask.WAIT, 0x1000,
+							XTask.WAIT, 0x0800,
 							
 							function ():void {
-								var dx:Number = (m_targetFramerate - 3) - xxx.getFPS ();
+								m_frameSamples.shift (); m_frameSamples.push (xxx.getFPS ());
+
+								var __averageFrameRate:Number = 0;
 								
-								if (dx > 0) {
-									m_targetFramerate = Math.max (15, m_targetFramerate - dx);
-								}
-								else
-								{
-									m_targetFramerate = Math.min (30, m_targetFramerate - dx + 1);
+								for (var i:Number=0; i < m_maxSamples; i++) {
+									__averageFrameRate += m_frameSamples[i];	
 								}
 								
-								m_stage.frameRate = m_targetFramerate;
+								m_adjustedFrameRate = Math.floor (Math.min (xxx.getIdealFPS (), __averageFrameRate / m_maxSamples + 3));
 							},
 							
 							XTask.GOTO, "loop",
@@ -127,6 +139,18 @@ package GX.Util  {
 						XTask.RETN,
 					]);
 					
+					script.addTask ([
+						XTask.LABEL, "loop",
+							XTask.WAIT, 0x1000,
+							
+							function ():void {
+								m_stage.frameRate = m_adjustedFrameRate;
+							},
+							
+							XTask.GOTO, "loop",
+						
+						XTask.RETN,
+					]);
 				},
 				
 				//------------------------------------------------------------------------------------------

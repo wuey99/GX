@@ -55,7 +55,7 @@ package GX.Music {
 
 		//------------------------------------------------------------------------------------------
 		public override function getName ():String {
-			return "BGMButtonButton:BGMMuteButton";
+			return "BGMMuteButton:BGMMuteButton";
 		}
 		
 	//------------------------------------------------------------------------------------------

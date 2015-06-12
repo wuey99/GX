@@ -386,7 +386,7 @@ package GX.Levels {
 							XTask.WAIT, 0x0100,
 							
 							XTask.FLAGS, function (__task:XTask):void {
-								oAlpha = Math.max (0.0, oAlpha - 0.010);
+								oAlpha = Math.max (0.0, oAlpha - 0.025);
 							},
 							
 							XTask.GOTO, "loop",

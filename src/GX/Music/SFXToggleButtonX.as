@@ -55,7 +55,7 @@ package GX.Music {
 
 		//------------------------------------------------------------------------------------------
 		public override function getName ():String {
-			return "SFXButtonButton:SFXMuteButton";
+			return "SFXMuteButton:SFXMuteButton";
 		}
 		
 	//------------------------------------------------------------------------------------------
