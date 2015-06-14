@@ -46,7 +46,7 @@ package GX.Text {
 
 		//------------------------------------------------------------------------------------------
 		public static function init (__XApp:XApp):void {
-			__XApp.getBitmapDataAnimManager ().add (GX.app$.getSmallFontName ());
+			__XApp.getBitmapDataAnimManager ().add (GX.appX.getSmallFontName ());
 		}
 		
 		//------------------------------------------------------------------------------------------
@@ -56,7 +56,7 @@ package GX.Text {
 		
 		//------------------------------------------------------------------------------------------
 		public override function getFontName ():String {
-			return GX.app$.getSmallFontName ();
+			return GX.appX.getSmallFontName ();
 		}
 		
 		//------------------------------------------------------------------------------------------

@@ -132,17 +132,17 @@ package GX.Zone {
 					XTask.WAIT, 0x0100,
 					
 					XTask.FLAGS, function (__task:XTask):void {
-						if (!GX.app$.getLevelComplete ()) {
-							GX.app$.__getMickeyObject ().getCX ().copy2 (__mickeyRect);
-							__mickeyRect.offsetPoint (GX.app$.__getMickeyObject ().getPos ());
+						if (!GX.appX.getLevelComplete ()) {
+							GX.appX.__getMickeyObject ().getCX ().copy2 (__mickeyRect);
+							__mickeyRect.offsetPoint (GX.appX.__getMickeyObject ().getPos ());
 							
 							__task.ifTrue (__zoneRect.intersects (__mickeyRect));
 							
 							if (__zoneRectX.intersects (__mickeyRect)) {
 								var __dx:Number, __dy:Number;
 								
-								__dx = oX - GX.app$.__getMickeyObject ().getPos ().x;
-								__dy = oY - GX.app$.__getMickeyObject ().getPos ().y;
+								__dx = oX - GX.appX.__getMickeyObject ().getPos ().x;
+								__dy = oY - GX.appX.__getMickeyObject ().getPos ().y;
 								
 								__dx = Math.abs (__dx);  __dy = Math.abs (__dy);
 								
@@ -166,10 +166,10 @@ package GX.Zone {
 				
 				function ():void {
 // #TODO make sure this uses the ZoneManager
-					if (GX.app$.getCurrentZone () != m_zone) {
-						GX.app$.setCurrentZone (m_zone);	
+					if (GX.appX.getCurrentZone () != m_zone) {
+						GX.appX.setCurrentZone (m_zone);	
 						
-						GX.app$.fireZoneStartedSignal ();
+						GX.appX.fireZoneStartedSignal ();
 					}
 				},
 				

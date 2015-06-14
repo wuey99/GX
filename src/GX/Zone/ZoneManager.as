@@ -112,7 +112,7 @@ package GX.Zone {
 		
 		//------------------------------------------------------------------------------------------
 		public function setCurrentZone (__zone:Number):void {
-			GX.app$.m_currentZone = __zone;
+			GX.appX.m_currentZone = __zone;
 			
 			resetZoneKillCount ();
 			
@@ -168,11 +168,11 @@ package GX.Zone {
 					var __logicObject:ZoneObjectCX;
 					
 					if (!__item.inuse) {
-						__logicObject = GX.app$.getLevelObject ().addXMapItem (__item, 0) as ZoneObjectCX;
+						__logicObject = GX.appX.getLevelObject ().addXMapItem (__item, 0) as ZoneObjectCX;
 					}
 					else
 					{
-						__logicObject = GX.app$.getLevelObject ().getXLogicObject (__item) as ZoneObjectCX;
+						__logicObject = GX.appX.getLevelObject ().getXLogicObject (__item) as ZoneObjectCX;
 					}
 					
 					trace (": setCurrentZone: item: ", __item.logicClassName, __logicObject);
@@ -195,7 +195,7 @@ package GX.Zone {
 				
 				function ():void {
 					if (m_zoneKillCount == 0) {
-						GX.app$.fireZoneFinishedSignal ();
+						GX.appX.fireZoneFinishedSignal ();
 					}
 				},
 				
@@ -205,7 +205,7 @@ package GX.Zone {
 				
 		//------------------------------------------------------------------------------------------
 		public function getCurrentZone ():Number {
-			return GX.app$.m_currentZone;
+			return GX.appX.m_currentZone;
 		}
 		
 		//------------------------------------------------------------------------------------------
@@ -235,7 +235,7 @@ package GX.Zone {
 							
 					var __zoneItemObject:ZoneX = xxx.getXLogicManager ().initXLogicObject (
 						// parent
-						GX.app$.getLevelObject (),
+						GX.appX.getLevelObject (),
 						// logicObject
 						new ZoneX () as XLogicObject,
 						// item, layer, depth
@@ -246,7 +246,7 @@ package GX.Zone {
 						1.0, 0
 					) as ZoneX;
 							
-					GX.app$.getLevelObject ().addXLogicObject (__zoneItemObject);
+					GX.appX.getLevelObject ().addXLogicObject (__zoneItemObject);
 							
 					__item.inuse++;
 							
@@ -265,7 +265,7 @@ package GX.Zone {
 							
 					var __starterRingItemObject:StarterRingControllerX = xxx.getXLogicManager ().initXLogicObject (
 						// parent
-						GX.app$.getLevelObject (),
+						GX.appX.getLevelObject (),
 						// logicObject
 						new (m_StarterRingControllerX) () as XLogicObject,
 						// item, layer, depth
@@ -276,7 +276,7 @@ package GX.Zone {
 						1.0, 0
 					) as StarterRingControllerX;
 							
-					GX.app$.getLevelObject ().addXLogicObject (__starterRingItemObject);
+					GX.appX.getLevelObject ().addXLogicObject (__starterRingItemObject);
 							
 					__item.inuse++;
 							
@@ -301,7 +301,7 @@ package GX.Zone {
 					if (__item.XMapItem == "Horz_Gate_Item") {
 						__gateItemObject = xxx.getXLogicManager ().initXLogicObject (
 							// parent
-							GX.app$.getLevelObject (),
+							GX.appX.getLevelObject (),
 							// logicObject
 							new (m_Horz_GateX) () as XLogicObject,
 							// item, layer, depth
@@ -317,7 +317,7 @@ package GX.Zone {
 					{
 						__gateItemObject = xxx.getXLogicManager ().initXLogicObject (
 							// parent
-							GX.app$.getLevelObject (),
+							GX.appX.getLevelObject (),
 							// logicObject
 							new (m_Vert_GateX) () as XLogicObject,
 							// item, layer, depth
@@ -330,11 +330,11 @@ package GX.Zone {
 						) as GateX;	
 					}
 							
-					GX.app$.getLevelObject ().addXLogicObject (__gateItemObject);
+					GX.appX.getLevelObject ().addXLogicObject (__gateItemObject);
 							
 					__item.inuse++;
 							
-					__gateItemObject.setXMapModel (GX.app$.__getMickeyObject ().getLayer () + 1, xxx.getXMapModel (), GX.app$.getLevelObject ());	
+					__gateItemObject.setXMapModel (GX.appX.__getMickeyObject ().getLayer () + 1, xxx.getXMapModel (), GX.appX.getLevelObject ());	
 				}
 			);
 					
@@ -355,7 +355,7 @@ package GX.Zone {
 					if (__item.XMapItem == "Horz_Door_Item") {
 						__doorItemObject = xxx.getXLogicManager ().initXLogicObject (
 							// parent
-							GX.app$.getLevelObject (),
+							GX.appX.getLevelObject (),
 							// logicObject
 							new (m_Horz_DoorX) () as XLogicObject,
 							// item, layer, depth
@@ -370,7 +370,7 @@ package GX.Zone {
 					{
 						__doorItemObject = xxx.getXLogicManager ().initXLogicObject (
 							// parent
-							GX.app$.getLevelObject (),
+							GX.appX.getLevelObject (),
 							// logicObject
 							new (m_Vert_DoorX) () as XLogicObject,
 							// item, layer, depth
@@ -382,11 +382,11 @@ package GX.Zone {
 						) as DoorX;	
 					}
 							
-					GX.app$.getLevelObject ().addXLogicObject (__doorItemObject);
+					GX.appX.getLevelObject ().addXLogicObject (__doorItemObject);
 							
 					__item.inuse++;
 							
-					__doorItemObject.setXMapModel (GX.app$.__getMickeyObject ().getLayer () + 1, xxx.getXMapModel (), GX.app$.getLevelObject ());	
+					__doorItemObject.setXMapModel (GX.appX.__getMickeyObject ().getLayer () + 1, xxx.getXMapModel (), GX.appX.getLevelObject ());	
 				}
 			);
 					
@@ -405,7 +405,7 @@ package GX.Zone {
 							
 					__currentGateItemObject = xxx.getXLogicManager ().initXLogicObject (
 						// parent
-						GX.app$.getLevelObject (),
+						GX.appX.getLevelObject (),
 						// logicObject
 						new CurrentGateX () as XLogicObject,
 						// item, layer, depth
@@ -417,11 +417,11 @@ package GX.Zone {
 						m_WaterCurrentX
 					) as CurrentGateX;
 							
-					GX.app$.getLevelObject ().addXLogicObject (__currentGateItemObject);
+					GX.appX.getLevelObject ().addXLogicObject (__currentGateItemObject);
 							
 					__item.inuse++;
 							
-					__currentGateItemObject.setXMapModel (GX.app$.__getMickeyObject ().getLayer () + 1, xxx.getXMapModel (), GX.app$.getLevelObject ());	
+					__currentGateItemObject.setXMapModel (GX.appX.__getMickeyObject ().getLayer () + 1, xxx.getXMapModel (), GX.appX.getLevelObject ());	
 				}
 			);
 		}
@@ -460,9 +460,9 @@ package GX.Zone {
 			var __logicObject:StarterRingControllerX = m_starterRingItemObjects.get (__zone) as StarterRingControllerX;
 					
 			if (__logicObject.getZone () == __zone) {
-				GX.app$.__getMickeyObject ().oX = __logicObject.oX
-				GX.app$.__getMickeyObject ().oY = __logicObject.oY;
-				GX.app$.__getMickeyObject ().oRotation = 0;
+				GX.appX.__getMickeyObject ().oX = __logicObject.oX
+				GX.appX.__getMickeyObject ().oY = __logicObject.oY;
+				GX.appX.__getMickeyObject ().oRotation = 0;
 			}
 		}
 				
@@ -489,7 +489,7 @@ package GX.Zone {
 						
 				function ():void {
 					if (m_zoneKillCount == 0) {
-						GX.app$.fireZoneFinishedSignal ();
+						GX.appX.fireZoneFinishedSignal ();
 					}
 				},
 						

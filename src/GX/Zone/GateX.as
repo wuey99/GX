@@ -117,8 +117,8 @@ package GX.Zone {
 				}
 			}
 			
-			GX.app$.addZoneStartedListener (onZoneStarted);
-			GX.app$.addZoneFinishedListener (onZoneFinished);
+			GX.appX.addZoneStartedListener (onZoneStarted);
+			GX.appX.addZoneFinishedListener (onZoneFinished);
 			
 			createGoSprite ();
 			
@@ -146,8 +146,8 @@ package GX.Zone {
 		public override function cleanup ():void {
 			super.cleanup ();
 			
-			GX.app$.removeZoneStartedListener (onZoneStarted);
-			GX.app$.removeZoneFinishedListener (onZoneFinished);
+			GX.appX.removeZoneStartedListener (onZoneStarted);
+			GX.appX.removeZoneFinishedListener (onZoneFinished);
 		}
 
 		//------------------------------------------------------------------------------------------
@@ -194,7 +194,7 @@ package GX.Zone {
 						function ():void {
 							var __logicObject:XLogicObject = xxx.getXLogicManager ().initXLogicObject (
 								// parent
-								GX.app$.getLevelObject (),
+								GX.appX.getLevelObject (),
 								// logicObject
 								new m_GateArrowX () as XLogicObject,
 								// item, layer, depth
@@ -206,7 +206,7 @@ package GX.Zone {
 								m_direction
 							) as XLogicObject;	
 							
-							GX.app$.getLevelObject ().addXLogicObject (__logicObject);
+							GX.appX.getLevelObject ().addXLogicObject (__logicObject);
 						},
 					
 					XTask.NEXT,

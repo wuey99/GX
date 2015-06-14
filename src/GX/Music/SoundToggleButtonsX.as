@@ -81,45 +81,45 @@ package GX.Music {
 				function ():void {
 					m_BGMToggleButton = xxx.getXLogicManager ().initXLogicObject (
 						// parent
-						GX.app$.getLevelObject (),
+						GX.appX.getLevelObject (),
 						// logicObject
 						new BGMToggleButtonX () as XLogicObject,
 						// item, layer, depth
-						null, GX.app$.PLAYFIELD_LAYER, 100000,
+						null, GX.appX.PLAYFIELD_LAYER, 100000,
 						// x, y, z
 						oX, oY, 0,
 						// scale, rotation
 						1.0, 0,
-						GX.app$.getBGMVolume ()
+						GX.appX.getBGMVolume ()
 					) as BGMToggleButtonX;
 					
-					GX.app$.getLevelObject ().addXLogicObject (m_BGMToggleButton);
+					GX.appX.getLevelObject ().addXLogicObject (m_BGMToggleButton);
 					
 					m_BGMToggleButton.addToggleListener (
 						function (__volume:Number):void {	
-							GX.app$.setBGMVolume (__volume);
+							GX.appX.setBGMVolume (__volume);
 						}
 					);
 					
 					m_SFXToggleButton = xxx.getXLogicManager ().initXLogicObject (
 						// parent
-						GX.app$.getLevelObject (),
+						GX.appX.getLevelObject (),
 						// logicObject
 						new SFXToggleButtonX () as XLogicObject,
 						// item, layer, depth
-						null, GX.app$.PLAYFIELD_LAYER, 100000,
+						null, GX.appX.PLAYFIELD_LAYER, 100000,
 						// x, y, z
 						oX + 52, oY, 0,
 						// scale, rotation
 						1.0, 0,
-						GX.app$.getSFXVolume ()
+						GX.appX.getSFXVolume ()
 					) as SFXToggleButtonX;
 					
-					GX.app$.getLevelObject ().addXLogicObject (m_SFXToggleButton);
+					GX.appX.getLevelObject ().addXLogicObject (m_SFXToggleButton);
 					
 					m_SFXToggleButton.addToggleListener (
 						function (__volume:Number):void {
-							GX.app$.setSFXVolume (__volume);
+							GX.appX.setSFXVolume (__volume);
 						}
 					);
 				},

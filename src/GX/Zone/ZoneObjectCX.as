@@ -64,7 +64,7 @@ package GX.Zone {
 				trace (": ZoneObjectCX: cleanup: ", this, m_persistedObject);
 				
 				if (m_persistedObject) {
-					GX.app$.removeFromZoneKillCount ();
+					GX.appX.removeFromZoneKillCount ();
 				}
 				
 				m_removed = true;

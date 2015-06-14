@@ -74,8 +74,8 @@ package GX.Zone {
 			
 			setCX (-64, +64, -64, +64);
 	
-			GX.app$.addZoneStartedListener (onZoneStarted);
-			GX.app$.addZoneFinishedListener (onZoneFinished);
+			GX.appX.addZoneStartedListener (onZoneStarted);
+			GX.appX.addZoneFinishedListener (onZoneFinished);
 			
 			__setupItemParamsXML ();
 			__setupSpawnScript ();
@@ -88,8 +88,8 @@ package GX.Zone {
 		public override function cleanup ():void {
 			super.cleanup ();
 			
-			GX.app$.removeZoneStartedListener (onZoneStarted);
-			GX.app$.removeZoneFinishedListener (onZoneFinished);
+			GX.appX.removeZoneStartedListener (onZoneStarted);
+			GX.appX.removeZoneFinishedListener (onZoneFinished);
 		}
 		
 		//------------------------------------------------------------------------------------------
@@ -181,8 +181,8 @@ package GX.Zone {
 					XTask.WAIT, 0x0600,
 					
 					function ():void {
-						__dx = Math.abs (GX.app$.__getMickeyObject ().oX - oX);
-						__dy = Math.abs (GX.app$.__getMickeyObject ().oY - oY);
+						__dx = Math.abs (GX.appX.__getMickeyObject ().oX - oX);
+						__dy = Math.abs (GX.appX.__getMickeyObject ().oY - oY);
 						
 						if (__dx < 512 && __dy < 512) {
 							__spawnWaterCurrent ();	
@@ -254,9 +254,9 @@ package GX.Zone {
 					XTask.WAIT, 0x0100,
 					
 					XTask.FLAGS, function (__task:XTask):void {
-						if (!GX.app$.getLevelComplete ()) {
-							GX.app$.__getMickeyObject ().getCX ().copy2 (__mickeyRect);
-							__mickeyRect.offsetPoint (GX.app$.__getMickeyObject ().getPos ());
+						if (!GX.appX.getLevelComplete ()) {
+							GX.appX.__getMickeyObject ().getCX ().copy2 (__mickeyRect);
+							__mickeyRect.offsetPoint (GX.appX.__getMickeyObject ().getPos ());
 							
 							__task.ifTrue (__currentRect.intersects (__mickeyRect));
 						}
@@ -271,7 +271,7 @@ package GX.Zone {
 							var __dx:Number;
 							var __dy:Number;
 							
-							__dx = GX.app$.__getMickeyObject ().extraDX;
+							__dx = GX.appX.__getMickeyObject ().extraDX;
 							if (m_currentX < 0) {
 								__dx = Math.max (-16, __dx + m_currentX);
 							}
@@ -279,9 +279,9 @@ package GX.Zone {
 							{
 								__dx = Math.min (+16, __dx + m_currentX);
 							}
-							GX.app$.__getMickeyObject ().extraDX = __dx;
+							GX.appX.__getMickeyObject ().extraDX = __dx;
 							
-							__dy = GX.app$.__getMickeyObject ().extraDY;
+							__dy = GX.appX.__getMickeyObject ().extraDY;
 							if (m_currentY < 0) {
 								__dy = Math.max (-16, __dy + m_currentY);
 							}
@@ -289,7 +289,7 @@ package GX.Zone {
 							{
 								__dy = Math.min (+16, __dy + m_currentY);
 							}
-							GX.app$.__getMickeyObject ().extraDY = __dy;
+							GX.appX.__getMickeyObject ().extraDY = __dy;
 						},
 						
 						XTask.GOTO, "loop",

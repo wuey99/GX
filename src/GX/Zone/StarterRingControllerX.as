@@ -82,7 +82,7 @@ package GX.Zone {
 		//------------------------------------------------------------------------------------------
 		public function create ():void {
 			
-			GX.app$.__getMickeyObject ().addWaitingListener (
+			GX.appX.__getMickeyObject ().addWaitingListener (
 				function ():void {
 					trace (": waiting: ");
 					
@@ -90,7 +90,7 @@ package GX.Zone {
 				}
 			);
 			
-			GX.app$.__getMickeyObject ().addPlayingListener (
+			GX.appX.__getMickeyObject ().addPlayingListener (
 				function ():void {
 					trace (": playing: ");
 					
@@ -223,7 +223,7 @@ package GX.Zone {
 
 		//------------------------------------------------------------------------------------------	
 		private function getDistanceToMickey ():Number {
-			var __mickeyObject:_MickeyX = GX.app$.__getMickeyObject ();
+			var __mickeyObject:_MickeyX = GX.appX.__getMickeyObject ();
 			
 			var __dx:Number = __mickeyObject.oX - oX;
 			var __dy:Number = __mickeyObject.oY - oY;

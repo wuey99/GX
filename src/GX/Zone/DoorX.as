@@ -87,7 +87,7 @@ package GX.Zone {
 			
 			Idle_Script ();
 			
-			GX.app$.addTriggerListener (triggerDoor);
+			GX.appX.addTriggerListener (triggerDoor);
 			
 			m_opened = false;
 			
@@ -108,7 +108,7 @@ package GX.Zone {
 		public override function cleanup ():void {
 			super.cleanup ();
 			
-			GX.app$.removeTriggerListener (triggerDoor);
+			GX.appX.removeTriggerListener (triggerDoor);
 		}
 		
 		//------------------------------------------------------------------------------------------

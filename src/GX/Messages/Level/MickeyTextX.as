@@ -84,7 +84,7 @@ package GX.Messages.Level {
 				m_message = m_xml.getAttribute ("message");
 			}
 			
-			GX.app$.setMickeyMessage (m_message);
+			GX.appX.setMickeyMessage (m_message);
 		}
 		
 		//------------------------------------------------------------------------------------------

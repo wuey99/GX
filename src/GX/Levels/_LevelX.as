@@ -141,7 +141,7 @@ package GX.Levels {
 					// layer
 					i + 0,
 					// logicClassNameToClass
-					GX.app$.logicClassNameToClass
+					GX.appX.logicClassNameToClass
 				) as XMapLayerView;
 				
 				addXLogicObject (m_layerView[i+0]);
@@ -251,7 +251,7 @@ package GX.Levels {
 		
 //------------------------------------------------------------------------------------------
 		public function setLevelAlpha (__alpha:Number):void {
-			GX.app$.setMaskAlpha (__alpha);
+			GX.appX.setMaskAlpha (__alpha);
 		}
 
 //------------------------------------------------------------------------------------------
@@ -338,9 +338,9 @@ package GX.Levels {
 							XTask.WAIT, 0x0100,
 							
 							XTask.FLAGS, function (__task:XTask):void {
-								setLevelAlpha (Math.max (0.0, GX.app$.getMaskAlpha () - 0.025));
+								setLevelAlpha (Math.max (0.0, GX.appX.getMaskAlpha () - 0.025));
 								
-								__task.ifTrue (GX.app$.getMaskAlpha () == 0.0 && __levelId != "");
+								__task.ifTrue (GX.appX.getMaskAlpha () == 0.0 && __levelId != "");
 							}, XTask.BNE, "loop",
 							
 							function ():void {
@@ -426,7 +426,7 @@ package GX.Levels {
 							XTask.WAIT, 0x0100,
 							
 							function ():void {
-								setLevelAlpha (Math.min (1.0, GX.app$.getMaskAlpha () + 0.05));
+								setLevelAlpha (Math.min (1.0, GX.appX.getMaskAlpha () + 0.05));
 							},
 							
 							XTask.GOTO, "loop",

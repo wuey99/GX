@@ -105,25 +105,25 @@ package GX.Triggers {
 							XTask.WAIT, 0x0100,
 							
 							function ():void {
-								x_dx = oX - GX.app$.__getMickeyObject ().getPos ().x;
-								x_dy = oY - GX.app$.__getMickeyObject ().getPos ().y;
+								x_dx = oX - GX.appX.__getMickeyObject ().getPos ().x;
+								x_dy = oY - GX.appX.__getMickeyObject ().getPos ().y;
 								
 								x_dx = Math.abs (x_dx);  x_dy = Math.abs (x_dy);
 									
 								if (m_direction == null && xxx.approxDistance (x_dx, x_dy) < m_distance) {	
-									GX.app$.fireTriggerSignal (m_trigger);
+									GX.appX.fireTriggerSignal (m_trigger);
 									
 									return;									
 								}
 								
 								if ((m_direction == "horz" || m_direction == "both") && x_dy < 32 && x_dx < m_distance) {
-									GX.app$.fireTriggerSignal (m_trigger);
+									GX.appX.fireTriggerSignal (m_trigger);
 									
 									return;
 								}
 								
 								if ((m_direction == "vert" || m_direction == "both") && x_dx < 32 && x_dy < m_distance) {
-									GX.app$.fireTriggerSignal (m_trigger);
+									GX.appX.fireTriggerSignal (m_trigger);
 									
 									return;
 								}

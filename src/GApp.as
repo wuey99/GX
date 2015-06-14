@@ -658,12 +658,12 @@ package
 		
 		//------------------------------------------------------------------------------------------
 		public function addMickeyPlayingListener (__listener:Function):void {
-			GX.app$.__getMickeyObject ().addPlayingListener (__listener);
+			GX.appX.__getMickeyObject ().addPlayingListener (__listener);
 		}
 		
 		//------------------------------------------------------------------------------------------
 		public function removeMickeyPlayingListener (__listener:Function):void {
-			GX.app$.__getMickeyObject ().removePlayingListener (__listener);
+			GX.appX.__getMickeyObject ().removePlayingListener (__listener);
 		}
 
 		//------------------------------------------------------------------------------------------
