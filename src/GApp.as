@@ -246,8 +246,8 @@ package
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function getEmptyTask$ ():Array {
-			return m_XTaskSubManager.getEmptyTask$ ();
+		public function getEmptyTaskX ():Array {
+			return m_XTaskSubManager.getEmptyTaskX ();
 		}	
 		
 		//------------------------------------------------------------------------------------------

@@ -65,7 +65,7 @@ package GX.Messages {
 			gravity = addEmptyTask ();
 			script = addEmptyTask ();
 			
-			gravity.gotoTask (getPhysicsTask$ (0.25));
+			gravity.gotoTask (getPhysicsTaskX (0.25));
 
 			Idle_Script ();
 		}
@@ -96,7 +96,7 @@ package GX.Messages {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function getPhysicsTask$ (DECCEL:Number):Array {
+		public function getPhysicsTaskX (DECCEL:Number):Array {
 			return [
 				XTask.LABEL, "loop",
 					XTask.WAIT, 0x0100,

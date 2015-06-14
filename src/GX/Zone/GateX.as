@@ -125,7 +125,7 @@ package GX.Zone {
 			gravity = addEmptyTask ();
 			script = addEmptyTask ();
 			
-			gravity.gotoTask (getPhysicsTask$ (0.25));
+			gravity.gotoTask (getPhysicsTaskX (0.25));
 			
 			Locked_Script ();
 			
@@ -370,7 +370,7 @@ package GX.Zone {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function getPhysicsTask$ (DECCEL:Number):Array {
+		public function getPhysicsTaskX (DECCEL:Number):Array {
 			return [
 				XTask.LABEL, "loop",
 					XTask.WAIT, 0x0100,
@@ -456,7 +456,7 @@ package GX.Zone {
 				// animation
 				//------------------------------------------------------------------------------------------	
 				XTask.LABEL, "loop",	
-					XTask.EXEC, openGateAnimation$ (),
+					XTask.EXEC, openGateAnimationX (),
 					
 					function ():void {
 						__finally ();
@@ -506,7 +506,7 @@ package GX.Zone {
 				// animation
 				//------------------------------------------------------------------------------------------	
 				XTask.LABEL, "loop",
-					XTask.EXEC, closeGateAnimation$ (),
+					XTask.EXEC, closeGateAnimationX (),
 					
 					function ():void {
 						__finally ();
@@ -629,14 +629,14 @@ package GX.Zone {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function openGateAnimation$ ():Array {
+		public function openGateAnimationX ():Array {
 			return [				
 				XTask.RETN,
 			];
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function closeGateAnimation$ ():Array {
+		public function closeGateAnimationX ():Array {
 			return [
 				XTask.RETN,
 			];
