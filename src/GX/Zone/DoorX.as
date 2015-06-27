@@ -158,7 +158,7 @@ package GX.Zone {
 			
 			var __length:Number = (c2-c1) * (r2-r1);
 			
-			var __tiles:Array = new Array (__length)
+			var __tiles:Array /* <Int> */ = new Array (__length)
 	
 			var i:Number;
 			
@@ -192,7 +192,7 @@ package GX.Zone {
 			
 			var __length:Number = (c2-c1) * (r2-r1);
 			
-			var __tiles:Array = new Array (__length)
+			var __tiles:Array /* <Int> */ = new Array (__length)
 			
 			var i:Number;
 			
