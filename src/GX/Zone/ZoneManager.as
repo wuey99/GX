@@ -310,7 +310,9 @@ package GX.Zone {
 							__item.x, __item.y, 0,
 							// scale, rotation
 							1.0, 0,
-							m_GateArrowX
+							[
+								m_GateArrowX
+							]
 						) as GateX;
 					}
 					else
@@ -326,7 +328,9 @@ package GX.Zone {
 							__item.x, __item.y, 0,
 							// scale, rotation
 							1.0, 0,
-							m_GateArrowX
+							[
+								m_GateArrowX
+							]
 						) as GateX;	
 					}
 							
@@ -414,7 +418,9 @@ package GX.Zone {
 						__item.x, __item.y, 0,
 						// scale, rotation
 						1.0, 0,
-						m_WaterCurrentX
+						[
+							m_WaterCurrentX
+						]
 					) as CurrentGateX;
 							
 					GX.appX.getLevelObject ().addXLogicObject (__currentGateItemObject);

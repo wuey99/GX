@@ -203,7 +203,9 @@ package GX.Zone {
 								getPos ().x + (__r.right - __r.left)/2, getPos ().y + (__r.bottom - __r.top)/2 , 0,
 								// scale, rotation
 								1.0, 0,
-								m_direction
+								[
+									m_direction
+								]
 							) as XLogicObject;	
 							
 							GX.appX.getLevelObject ().addXLogicObject (__logicObject);

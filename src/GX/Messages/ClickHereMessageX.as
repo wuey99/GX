@@ -85,7 +85,9 @@ package GX.Messages {
 				0, 0, 0,
 				// scale, rotation
 				1.0, 0,
-				"CLICK HERE"
+				[
+					"CLICK HERE"
+				]
 			) as CircularSmallSpriteTextX;
 			
 			addXLogicObject (__logicObject);

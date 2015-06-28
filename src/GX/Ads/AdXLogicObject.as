@@ -110,7 +110,9 @@ package GX.Ads {
 					0, 0, 0,
 					// scale, rotation
 					1.0, 0,
-					getAdID ()
+					[
+						getAdID ()
+					]
 				) as FGLAdX;
 			}
 			else
@@ -126,7 +128,9 @@ package GX.Ads {
 					700/2 - 300/2, 550/2 - 250/2, 0,
 					// scale, rotation
 					1.0, 0,
-					getAdID ()
+					[
+						getAdID ()
+					]
 				) as CPMStarAdX;
 			}
 		}

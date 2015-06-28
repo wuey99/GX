@@ -460,7 +460,9 @@ package
 				__x, __y, 0,
 				// scale, rotation
 				1.0, 0,
-				m_mickeyCursorObject
+				[
+					m_mickeyCursorObject
+				]
 			) as _MickeyX;
 		}
 		

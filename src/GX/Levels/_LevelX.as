@@ -134,14 +134,16 @@ package GX.Levels {
 					0, 0, 0,
 					// scale, rotation
 					1.0, 0,
-					// XMapView
-					this,
-					// XMapModel
-					m_XMapModel,
-					// layer
-					i + 0,
-					// logicClassNameToClass
-					GX.appX.logicClassNameToClass
+					[
+						// XMapView
+						this,
+						// XMapModel
+						m_XMapModel,
+						// layer
+						i + 0,
+						// logicClassNameToClass
+						GX.appX.logicClassNameToClass
+					]
 				) as XMapLayerView;
 				
 				addXLogicObject (m_layerView[i+0]);
@@ -157,12 +159,14 @@ package GX.Levels {
 					0, 0, 0,
 					// scale, rotation
 					1.0, 0,
-					// XMapView
-					this,
-					// XMapModel
-					m_XMapModel,
-					// layer
-					i + 1
+					[
+						// XMapView
+						this,
+						// XMapModel
+						m_XMapModel,
+						// layer
+						i + 1
+					]
 				) as XMapLayerCachedView;
 				
 				addXLogicObject (m_layerView[i+1]);				

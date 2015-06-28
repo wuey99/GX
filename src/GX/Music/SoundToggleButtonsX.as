@@ -90,7 +90,9 @@ package GX.Music {
 						oX, oY, 0,
 						// scale, rotation
 						1.0, 0,
-						GX.appX.getBGMVolume ()
+						[
+							GX.appX.getBGMVolume ()
+						]
 					) as BGMToggleButtonX;
 					
 					GX.appX.getLevelObject ().addXLogicObject (m_BGMToggleButton);
@@ -112,7 +114,9 @@ package GX.Music {
 						oX + 52, oY, 0,
 						// scale, rotation
 						1.0, 0,
-						GX.appX.getSFXVolume ()
+						[
+							GX.appX.getSFXVolume ()
+						]
 					) as SFXToggleButtonX;
 					
 					GX.appX.getLevelObject ().addXLogicObject (m_SFXToggleButton);
