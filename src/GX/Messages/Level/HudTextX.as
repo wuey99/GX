@@ -52,7 +52,7 @@ package GX.Messages.Level {
 		//------------------------------------------------------------------------------------------
 		public override function cleanup ():void {
 			if (GX.appX.getHudMessageObject ().getOwnerItem () == item) {
-				GX.appX.getHudMessageObject ().setMessage ("", 32.0, 0x000000, 32, 32, "left", 0.0, -12.0);
+				GX.appX.getHudMessageObject ().setMessage ("", 32.0, 0x000000, 32, 32, "left", 0.0, -12.0, "Aller");
 				
 				GX.appX.getHudMessageObject ().setOwnerItem (null);
 			}
@@ -80,7 +80,9 @@ package GX.Messages.Level {
 				// spacing
 				m_spacing,
 				// leading
-				m_leading
+				m_leading,
+				// fontName
+				m_fontName
 			);
 			
 			GX.appX.getHudMessageObject ().oX = m_textX;

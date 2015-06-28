@@ -58,6 +58,7 @@ package GX.Messages.Level {
 		public var m_textY:Number;
 		public var m_spacing:Number;
 		public var m_leading:Number;
+		public var m_fontName:String;
 
 		//------------------------------------------------------------------------------------------
 		public function LevelTextX () {
@@ -94,6 +95,7 @@ package GX.Messages.Level {
 		//   width=""
 		//   height=""
 		//   alignment=""
+		//   fontName=""
 		// />
 		//------------------------------------------------------------------------------------------
 		public function setupParams ():void {
@@ -148,6 +150,11 @@ package GX.Messages.Level {
 			m_leading = getDefaultLeading ();
 			if (m_xml.hasAttribute ("leading")) {
 				m_leading = m_xml.getAttribute ("leading");
+			}
+			
+			m_fontName = getDefaultFontName ();
+			if (m_xml.hasAttribute ("fontName")) {
+				m_fontName = m_xml.getAttribute ("fontName");
 			}
 		}
 		
@@ -210,7 +217,9 @@ package GX.Messages.Level {
 				// spacing
 				m_spacing,
 				// leading
-				m_leading
+				m_leading,
+				// fontName
+				m_fontName
 			);
 		}
 
@@ -252,6 +261,11 @@ package GX.Messages.Level {
 		//------------------------------------------------------------------------------------------
 		public function getDefaultLeading ():Number {
 			return -12.0;
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function getDefaultFontName ():String {
+			return "Aller";
 		}
 		
 	//------------------------------------------------------------------------------------------

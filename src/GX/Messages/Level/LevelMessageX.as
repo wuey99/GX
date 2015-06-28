@@ -119,7 +119,9 @@ package GX.Messages.Level {
 			__height:Number,
 			__alignment:String,
 			__spacing:Number,
-			__leading:Number):void {
+			__leading:Number,
+			__fontName:String
+		):void {
 			
 			m_text.text = __message;	
 			m_text.selectable = false;
@@ -127,8 +129,10 @@ package GX.Messages.Level {
 			m_text.wordWrap = true;
 //			m_text.embedFonts = true;
 			
-			var __font:Font = new XAssets.ArialFontClass ();	
-			m_text.font = __font.fontName;
+//			var __font:Font = new XAssets.ArialFontClass ();	
+//			m_text.font = __font.fontName;
+			
+			m_text.font = __fontName;
 			
 			m_text.color = __color;
 			m_text.size = __size;
