@@ -150,7 +150,7 @@ package GX.Zone {
 								isValidZoneObjectItem (__item.XMapItem)) {
 								trace (": itemRect: ", __item.logicClassName, __itemRect);
 								
-								__list.put (__item.id, __item);
+								__list.set (__item.id, __item);
 							}
 						}
 					);
@@ -250,7 +250,7 @@ package GX.Zone {
 							
 					__item.inuse++;
 							
-					m_zoneItemObjects.put (__zoneItemObject.getZone (), __zoneItemObject);
+					m_zoneItemObjects.set (__zoneItemObject.getZone (), __zoneItemObject);
 				}
 			);
 					
@@ -280,7 +280,7 @@ package GX.Zone {
 							
 					__item.inuse++;
 							
-					m_starterRingItemObjects.put (__starterRingItemObject.getZone (), __starterRingItemObject);
+					m_starterRingItemObjects.set (__starterRingItemObject.getZone (), __starterRingItemObject);
 				}
 			);
 					
