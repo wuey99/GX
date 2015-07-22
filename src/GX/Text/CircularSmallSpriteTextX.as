@@ -141,8 +141,8 @@ package GX.Text {
 			
 			var __angle:Number = m_angle;
 			
-			for (var i:Number=0; i<m_text.length; i++) {
-				var __c:Number = m_text.charCodeAt (i) - 32;
+			for (var i:int=0; i<m_text.length; i++) {
+				var __c:int = m_text.charCodeAt (i) - 32;
 				if (__c >= 64) __c -= 32;
 				m_bitmap[i].gotoAndStop (__c + 1);
 //				m_bitmap[i].setRegistration (getWidths ()[__c]/2, 21);

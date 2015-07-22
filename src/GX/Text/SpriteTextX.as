@@ -82,7 +82,7 @@ package GX.Text {
 		public override function cleanup ():void {
 			super.cleanup ();
 			
-			var i:Number;
+			var i:int;
 			
 			for (i=0; i<m_bitmap.length; i++) {
 				m_bitmap[i].cleanup ();
@@ -96,8 +96,8 @@ package GX.Text {
 			m_bitmap = new Array (m_text.length);
 			x_sprite = new Array (m_text.length);
 
-			for (var i:Number=0; i<m_text.length; i++) {
-				var __c:Number = m_text.charCodeAt (i) - 32;
+			for (var i:int=0; i<m_text.length; i++) {
+				var __c:int = m_text.charCodeAt (i) - 32;
 				if (__c >= 64) __c -= 32;
 				m_bitmap[i] = new XBitmap ();
 				m_bitmap[i].setup ();
@@ -115,8 +115,8 @@ package GX.Text {
 		public function updateSprites ():void {
 			var __x:Number = 0;
 			
-			for (var i:Number=0; i<m_text.length; i++) {
-				var __c:Number = m_text.charCodeAt (i) - 32;
+			for (var i:int=0; i<m_text.length; i++) {
+				var __c:int = m_text.charCodeAt (i) - 32;
 				if (__c >= 64) __c -= 32;
 				m_bitmap[i].gotoAndStop (__c + 1);
 				x_sprite[i].setRegistration (m_bitmap[i].dx + __x, m_bitmap[i].dy);
@@ -156,7 +156,7 @@ package GX.Text {
 			removeAllHudSprites ();
 			removeAllXLogicObjects ();
 			
-			var i:Number;
+			var i:int;
 			
 			for (i=0; i<m_bitmap.length; i++) {
 				m_bitmap[i].cleanup ();

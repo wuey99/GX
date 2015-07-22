@@ -55,7 +55,7 @@ package GX.Levels {
 		protected var m_layerShake:Array;
 		protected var m_layerScroll:Array;
 		
-		protected var m_maxLayers:Number;
+		protected var m_maxLayers:int;
 		
 		protected var m_levelSelectSignal:XSignal;
 		protected var m_gameStateChangedSignal:XSignal;
@@ -90,7 +90,7 @@ package GX.Levels {
 			
 			m_viewRect = new XRect ();
 			
-			var i:Number;
+			var i:int;
 			
 			for (i=0; i < m_maxLayers; i++) {
 				m_layerPos[i] = new XPoint (0, 0);
@@ -120,7 +120,7 @@ package GX.Levels {
 // create sprites
 //------------------------------------------------------------------------------------------
 		public function createSprites9 ():void {			
-			var i:Number;
+			var i:int;
 			
 			for (i=0; i < m_maxLayers; i += 2) {
 				m_layerView[i+0] = xxx.getXLogicManager ().initXLogicObject (
@@ -186,14 +186,14 @@ package GX.Levels {
 		}
 		
 //------------------------------------------------------------------------------------------
-		public override function scrollTo (__layer:Number, __x:Number, __y:Number):void {
+		public override function scrollTo (__layer:int, __x:Number, __y:Number):void {
 			m_layerPos[__layer].x = __x;
 			m_layerPos[__layer].y = __y;
 		}
 
 //------------------------------------------------------------------------------------------
 		public override function updateScroll ():void {
-			var i:Number;
+			var i:int;
 			
 			for (i=0; i < m_maxLayers; i++) {
 				m_layerPos[i].copy2 (m_layerScroll[i]);
@@ -207,7 +207,7 @@ package GX.Levels {
 		
 //------------------------------------------------------------------------------------------
 		public override function updateFromXMapModel ():void {
-			var i:Number;
+			var i:int;
 			
 			for (i=0; i < m_maxLayers; i++) {
 				m_layerView[i].updateFromXMapModel ();
@@ -216,7 +216,7 @@ package GX.Levels {
 		
 //------------------------------------------------------------------------------------------
 		public override function prepareUpdateScroll ():void {
-			var i:Number;
+			var i:int;
 			
 			for (i=0; i < m_maxLayers; i++) {
 				m_layerPos[i].copy2 (m_layerScroll[i]);
@@ -237,7 +237,7 @@ package GX.Levels {
 		
 //------------------------------------------------------------------------------------------
 		public override function finishUpdateScroll ():void {
-			var i:Number;
+			var i:int;
 			
 			for (i=0; i < m_maxLayers; i++) {
 				xxx.getXWorldLayer (i).setPos (m_layerScroll[i]);
@@ -259,7 +259,7 @@ package GX.Levels {
 		}
 
 //------------------------------------------------------------------------------------------
-		public function addXShake (__count:Number=15, __delayValue:Number=0x0100):void {
+		public function addXShake (__count:int=15, __delayValue:Number=0x0100):void {
 			var __delay:XNumber = new XNumber (0);
 			__delay.value = __delayValue;
 			
@@ -282,7 +282,7 @@ package GX.Levels {
 			]);
 			
 			function __setX (__dy:Number):void {
-				var i:Number;
+				var i:int;
 				
 				for (i=0; i < m_maxLayers; i++) {
 					m_layerShake[i].x = __dy;
@@ -294,7 +294,7 @@ package GX.Levels {
 		}
 		
 //------------------------------------------------------------------------------------------
-		public function addYShake (__count:Number=15, __delayValue:Number=0x0100):void {
+		public function addYShake (__count:int=15, __delayValue:Number=0x0100):void {
 			var __delay:XNumber = new XNumber (0);
 			__delay.value = __delayValue;
 			
@@ -317,7 +317,7 @@ package GX.Levels {
 			]);
 			
 			function __setY (__dy:Number):void {
-				var i:Number;
+				var i:int;
 				
 				for (i=0; i < m_maxLayers; i++) {
 					m_layerShake[i].x = __dy;
@@ -482,7 +482,7 @@ package GX.Levels {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function fireGameStateChangedSignal (__gameState:Number):void {
+		public function fireGameStateChangedSignal (__gameState:int):void {
 			m_gameStateChangedSignal.fireSignal (__gameState);
 		}
 		

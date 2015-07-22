@@ -43,7 +43,7 @@ package GX.Util  {
 	public class FrameRateAdjust extends XTextLogicObject {
 		public var m_stage:Stage;
 		public var m_frameSamples:Array;
-		public var m_maxSamples:Number;
+		public var m_maxSamples:int;
 		public var m_adjustedFrameRate:Number;
 		
 //------------------------------------------------------------------------------------------
@@ -64,7 +64,7 @@ package GX.Util  {
 			
 			m_frameSamples = new Array (m_maxSamples);
 			
-			for (var i:Number = 0; i < m_maxSamples; i++) {
+			for (var i:int = 0; i < m_maxSamples; i++) {
 				m_frameSamples.push (xxx.getIdealFPS ());
 			}
 			
@@ -127,7 +127,7 @@ package GX.Util  {
 
 								var __averageFrameRate:Number = 0;
 								
-								for (var i:Number=0; i < m_maxSamples; i++) {
+								for (var i:int=0; i < m_maxSamples; i++) {
 									__averageFrameRate += m_frameSamples[i];	
 								}
 								

@@ -49,7 +49,7 @@ package GX.Mickey {
 		protected var m_waitingSignal:XSignal;
 		protected var m_playingSignal:XSignal;
 		protected var m_ready:Boolean;
-		protected var m_invincible:Number;
+		protected var m_invincible:int;
 		protected var m_levelCompleteSignal:XSignal;
 		protected var m_extraDX:Number;
 		protected var m_extraDY:Number;

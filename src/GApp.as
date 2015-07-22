@@ -75,8 +75,8 @@ package
 		public var m_gameHudObject:_HudX;
 		public var m_hudObject:XLogicObject;
 		public var m_hudMessageObject:HudMessageX;
-		public var PLAYFIELD_LAYER:Number = 0;
-		public var m_gameState:Number;
+		public var PLAYFIELD_LAYER:int = 0;
+		public var m_gameState:int;
 		public var m_levelData:*;
 		public var m_levelName:String;
 		public var m_levelComplete:Boolean;	
@@ -94,7 +94,7 @@ package
 		
 		private var m_globalTextureManager:XSubTextureManager;
 		
-		protected var m_lives:Number;
+		protected var m_lives:int;
 		protected var m_livesChangedSignal:XSignal;
 		
 		private var m_zoneManager:ZoneManager;
@@ -114,7 +114,7 @@ package
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function setup (__assetsClass:Class, __mickeyClass:Class, __parent:*, __timerInterval:Number=32, __layers:Number=4):void {	
+		public function setup (__assetsClass:Class, __mickeyClass:Class, __parent:*, __timerInterval:Number=32, __layers:int=4):void {	
 			m_app = this;
 			
 			m_XApp = new XApp ();
@@ -331,12 +331,12 @@ package
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function addXShake (__count:Number=15, __delayValue:Number=0x0100):void {
+		public function addXShake (__count:int=15, __delayValue:Number=0x0100):void {
 			m_levelObject.addXShake (__count, __delayValue);
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function addYShake (__count:Number=15, __delayValue:Number=0x0100):void {
+		public function addYShake (__count:int=15, __delayValue:Number=0x0100):void {
 			m_levelObject.addYShake (__count, __delayValue);
 		}
 		
@@ -404,7 +404,7 @@ package
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function getLevelLayer (__layer:Number):XMapView { // XMapLayerView
+		public function getLevelLayer (__layer:int):XMapView { // XMapLayerView
 			return m_levelObject;
 		}
 
@@ -587,7 +587,7 @@ package
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function getZoneKillCount ():Number {
+		public function getZoneKillCount ():int {
 			return getZoneManager ().getZoneKillCount ();
 		}
 
@@ -622,12 +622,12 @@ package
 		}
 
 		//------------------------------------------------------------------------------------------
-		public function get lives ():Number {
+		public function get lives ():int {
 			return  m_lives;
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function set lives (__value:Number):void {
+		public function set lives (__value:int):void {
 			m_lives = __value;
 			
 			m_livesChangedSignal.fireSignal ();
@@ -644,7 +644,7 @@ package
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function fireMickeyDeathSignal (__trigger:Number):void {
+		public function fireMickeyDeathSignal (__trigger:int):void {
 			m_mickeyDeathSignal.fireSignal (__trigger);
 		}
 		
@@ -669,7 +669,7 @@ package
 		}
 
 		//------------------------------------------------------------------------------------------
-		public function fireTriggerSignal (__trigger:Number):void {
+		public function fireTriggerSignal (__trigger:int):void {
 			m_triggerSignal.fireSignal (__trigger);
 		}
 		
@@ -710,7 +710,7 @@ package
 
 		//------------------------------------------------------------------------------------------
 		public function firePingSignal (
-			__id:Number,
+			__id:int,
 			__type:String,
 			__logicObject:XLogicObject,
 			__callback:Function

@@ -51,7 +51,7 @@ package GX.Zone {
 		public var script:XTask;
 		public var gravity:XTask;
 		
-		public var m_trigger:Number;
+		public var m_trigger:int;
 		
 		public var m_opened:Boolean = false;
 		
@@ -116,7 +116,7 @@ package GX.Zone {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public override function setXMapModel (__layer:Number, __XMapModel:XMapModel, __XMapView:XMapView=null):void {
+		public override function setXMapModel (__layer:int, __XMapModel:XMapModel, __XMapView:XMapView=null):void {
 			trace (":  GateX: setXMapModel: ", __layer, __XMapModel, __XMapView);
 			trace (": xml: ", m_xml.toXMLString ());
 			
@@ -128,7 +128,7 @@ package GX.Zone {
 		}
 
 		//------------------------------------------------------------------------------------------
-		public function triggerDoor (__trigger:Number):void {
+		public function triggerDoor (__trigger:int):void {
 			if (m_opened) {
 				return;
 			}
@@ -156,11 +156,11 @@ package GX.Zone {
 			c2 = Math.floor (__r.right/XSubmapModel.CX_TILE_WIDTH);
 			r2 = Math.floor (__r.bottom/XSubmapModel.CX_TILE_HEIGHT);
 			
-			var __length:Number = (c2-c1) * (r2-r1);
+			var __length:int = (c2-c1) * (r2-r1);
 			
 			var __tiles:Array /* <Int> */ = new Array (__length)
 	
-			var i:Number;
+			var i:int;
 			
 			for (i=0; i<__length; i++) {
 				__tiles[i] = XSubmapModel.CX_EMPTY;
@@ -190,11 +190,11 @@ package GX.Zone {
 			c2 = Math.floor (__r.right/XSubmapModel.CX_TILE_WIDTH);
 			r2 = Math.floor (__r.bottom/XSubmapModel.CX_TILE_HEIGHT);
 			
-			var __length:Number = (c2-c1) * (r2-r1);
+			var __length:int = (c2-c1) * (r2-r1);
 			
 			var __tiles:Array /* <Int> */ = new Array (__length)
 			
-			var i:Number;
+			var i:int;
 			
 			for (i=0; i<__length; i++) {
 				__tiles[i] = XSubmapModel.CX_SOLID;

@@ -41,7 +41,7 @@ package GX.Mickey {
 	
 	//------------------------------------------------------------------------------------------
 	public class EnemyCollidableX extends XLogicObjectCX {
-		protected var m_health:Number;
+		protected var m_health:int;
 		
 		//------------------------------------------------------------------------------------------
 		public function EnemyCollidableX () {

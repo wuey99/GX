@@ -103,7 +103,7 @@ package GX.Zone {
 		}
 
 		//------------------------------------------------------------------------------------------
-		public override function setXMapModel (__layer:Number, __XMapModel:XMapModel, __XMapView:XMapView=null):void {
+		public override function setXMapModel (__layer:int, __XMapModel:XMapModel, __XMapView:XMapView=null):void {
 			super.setXMapModel (__layer, __XMapModel, __XMapView);
 			
 			if (!hasItemStorage ()) {

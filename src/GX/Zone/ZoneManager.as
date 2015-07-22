@@ -56,9 +56,9 @@ package GX.Zone {
 		private var m_doorItems:XDict;
 		private var m_doorItemObjects:XDict;
 		
-		private var m_zoneKillCount:Number;
+		private var m_zoneKillCount:int;
 		
-		private var m_playFieldLayer:Number;
+		private var m_playFieldLayer:int;
 		private var m_zoneObjectsMap:Object;
 		private var m_zoneObjectsMapNoKill:Object;
 		private var m_Horz_GateX:Class;
@@ -78,7 +78,7 @@ package GX.Zone {
 		public function setup (
 			__xxx:XWorld,
 			__XApp:XApp,
-			__playfieldLayer:Number,
+			__playfieldLayer:int,
 			__zoneObjectsMap:Object,
 			__zoneObjectsMapNoKill:Object,
 			__Horz_GateX:Class,
@@ -136,7 +136,7 @@ package GX.Zone {
 			trace (": zoneRect: ", __currentZoneItemObject.boundingRect);
 			
 			__layerModel.iterateAllSubmaps (
-				function (__XSubmapModel:XSubmapModel, __row:Number, __col:Number):void {
+				function (__XSubmapModel:XSubmapModel, __row:int, __col:int):void {
 					__XSubmapModel.iterateAllItems (
 						function (x:*):void {
 							var __item:XMapItemModel = x as XMapItemModel;
@@ -504,7 +504,7 @@ package GX.Zone {
 		}
 						
 		//------------------------------------------------------------------------------------------
-		public function getZoneKillCount ():Number {
+		public function getZoneKillCount ():int {
 			return m_zoneKillCount;
 		}
 					
