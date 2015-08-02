@@ -29,17 +29,17 @@ package
 {
 	
 // GX
-	import GX.Assets.*;
-	import GX.Game.*;
-	import GX.Hud.*;
-	import GX.Levels.*;
-	import GX.Messages.*;
-	import GX.Messages.Level.*;
-	import GX.Mickey.*;
-	import GX.Music.*;
-	import GX.Text.*;
-	import GX.Zone.*;
-	import GX.Game.*;
+	import gx.assets.*;
+	import gx.game.*;
+	import gx.hud.*;
+	import gx.levels.*;
+	import gx.messages.*;
+	import gx.messages.level.*;
+	import gx.mickey.*;
+	import gx.music.*;
+	import gx.text.*;
+	import gx.zone.*;
+	import gx.game.*;
 	
 	import x.*;
 	import x.bitmap.XBitmapDataAnim;
