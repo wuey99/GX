@@ -27,14 +27,14 @@
 //------------------------------------------------------------------------------------------
 package GX.Zone {
 	
-	import X.Collections.*;
-	import X.Geom.*;
-	import X.Pool.*;
-	import X.Task.*;
-	import X.World.*;
-	import X.World.Logic.*;
-	import X.XApp;
-	import X.XMap.*;
+	import x.collections.*;
+	import x.geom.*;
+	import x.pool.*;
+	import x.task.*;
+	import x.world.*;
+	import x.world.logic.*;
+	import x.*;
+	import x.xmap.*;
 	
 	//------------------------------------------------------------------------------------------
 	public class ZoneManager extends Object {

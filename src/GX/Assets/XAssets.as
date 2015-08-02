@@ -27,8 +27,8 @@
 //------------------------------------------------------------------------------------------
 package GX.Assets {
 	
-	import X.*;
-	import X.Resource.Manager.*;
+	import x.*;
+	import x.resource.manager.*;
 	
 	//------------------------------------------------------------------------------------------	
 	public class XAssets extends Object {

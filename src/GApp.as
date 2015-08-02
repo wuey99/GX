@@ -41,20 +41,20 @@ package
 	import GX.Zone.*;
 	import GX.Game.*;
 	
-	import X.*;
-	import X.Bitmap.XBitmapDataAnim;
-	import X.Collections.*;
-	import X.Game.*;
-	import X.Geom.*;
-	import X.Keyboard.*;
-	import X.Resource.*;
-	import X.Signals.XSignal;
-	import X.Task.*;
-	import X.Texture.*;
-	import X.World.*;
-	import X.World.Logic.*;
-	import X.XML.*;
-	import X.XMap.*;
+	import x.*;
+	import x.bitmap.XBitmapDataAnim;
+	import x.collections.*;
+	import x.game.*;
+	import x.geom.*;
+	import x.keyboard.*;
+	import x.resource.*;
+	import x.signals.XSignal;
+	import x.task.*;
+	import x.texture.*;
+	import x.world.*;
+	import x.world.logic.*;
+	import x.xml.*;
+	import x.xmap.*;
 	
 	import flash.external.*;
 	import flash.net.*;

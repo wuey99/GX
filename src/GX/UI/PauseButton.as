@@ -2,14 +2,14 @@
 package GX.UI {
 
 // X classes
-	import X.*;
-	import X.Signals.*;
-	import X.Task.*;
-	import X.World.*;
-	import X.World.Collision.*;
-	import X.World.Logic.*;
-	import X.World.UI.*;
-	import X.World.Sprite.*;
+	import x.*;
+	import x.signals.*;
+	import x.task.*;
+	import x.world.*;
+	import x.world.collision.*;
+	import x.world.logic.*;
+	import x.world.ui.*;
+	import x.world.sprite.*;
 	
 	import flash.events.*;
 	import flash.text.*;
