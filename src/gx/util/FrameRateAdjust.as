@@ -27,13 +27,13 @@
 //------------------------------------------------------------------------------------------
 package gx.util  {
 	
-	import x.*;
-	import x.task.*;
-	import x.text.*;
-	import x.world.*;
-	import x.world.collision.*;
-	import x.world.logic.*;
-	import x.world.sprite.*;
+	import kx.*;
+	import kx.task.*;
+	import kx.text.*;
+	import kx.world.*;
+	import kx.world.collision.*;
+	import kx.world.logic.*;
+	import kx.world.sprite.*;
 	
 	import flash.display.Stage;
 	

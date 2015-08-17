@@ -28,10 +28,10 @@
 package gx.music {
 	
 // X
-	import x.*;
-	import x.task.*;
-	import x.world.*;
-	import x.world.logic.*;
+	import kx.*;
+	import kx.task.*;
+	import kx.world.*;
+	import kx.world.logic.*;
 	
 	import flash.utils.*;
 	

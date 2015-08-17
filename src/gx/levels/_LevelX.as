@@ -29,16 +29,16 @@ package gx.levels {
 	
 	import gx.assets.*;
 	
-	import x.*;
-	import x.collections.*;
-	import x.geom.*;
-	import x.signals.*;
-	import x.task.*;
-	import x.world.*;
-	import x.world.logic.*;
-	import x.world.sprite.*;
-	import x.xml.*;
-	import x.xmap.*;
+	import kx.*;
+	import kx.collections.*;
+	import kx.geom.*;
+	import kx.signals.*;
+	import kx.task.*;
+	import kx.world.*;
+	import kx.world.logic.*;
+	import kx.world.sprite.*;
+	import kx.xml.*;
+	import kx.xmap.*;
 	
 	import flash.geom.*;
 	import flash.text.*;

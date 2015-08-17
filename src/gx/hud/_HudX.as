@@ -28,13 +28,13 @@
 package gx.hud {
 
 // X
-	import x.*;
-	import x.geom.*;
-	import x.task.*;
-	import x.world.*;
-	import x.world.collision.*;
-	import x.world.logic.*;
-	import x.world.sprite.*;
+	import kx.*;
+	import kx.geom.*;
+	import kx.task.*;
+	import kx.world.*;
+	import kx.world.collision.*;
+	import kx.world.logic.*;
+	import kx.world.sprite.*;
 	
 	//------------------------------------------------------------------------------------------
 	public class _HudX extends XLogicObject {

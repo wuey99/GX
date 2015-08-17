@@ -30,14 +30,14 @@ package gx.messages.level {
 	import gx.assets.*;	
 	import gx.text.*;
 	
-	import x.*;
-	import x.geom.*;
-	import x.task.*;
-	import x.world.*;
-	import x.world.collision.*;
-	import x.world.logic.*;
-	import x.world.sprite.*;
-	import x.xmap.*;
+	import kx.*;
+	import kx.geom.*;
+	import kx.task.*;
+	import kx.world.*;
+	import kx.world.collision.*;
+	import kx.world.logic.*;
+	import kx.world.sprite.*;
+	import kx.xmap.*;
 	
 	import flash.geom.*;
 	import flash.text.*;

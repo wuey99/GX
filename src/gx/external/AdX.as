@@ -27,14 +27,14 @@
 //------------------------------------------------------------------------------------------
 package gx.external {
 	
-	import x.*;
-	import x.geom.*;
-	import x.signals.*;
-	import x.task.*;
-	import x.world.*;
-	import x.world.collision.*;
-	import x.world.logic.*;
-	import x.world.sprite.*;
+	import kx.*;
+	import kx.geom.*;
+	import kx.signals.*;
+	import kx.task.*;
+	import kx.world.*;
+	import kx.world.collision.*;
+	import kx.world.logic.*;
+	import kx.world.sprite.*;
 	
 	import flash.display.*;
 	import flash.events.*;

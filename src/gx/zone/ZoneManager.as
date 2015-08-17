@@ -27,14 +27,14 @@
 //------------------------------------------------------------------------------------------
 package gx.zone {
 	
-	import x.collections.*;
-	import x.geom.*;
-	import x.pool.*;
-	import x.task.*;
-	import x.world.*;
-	import x.world.logic.*;
-	import x.*;
-	import x.xmap.*;
+	import kx.collections.*;
+	import kx.geom.*;
+	import kx.pool.*;
+	import kx.task.*;
+	import kx.world.*;
+	import kx.world.logic.*;
+	import kx.*;
+	import kx.xmap.*;
 	
 	//------------------------------------------------------------------------------------------
 	public class ZoneManager extends Object {

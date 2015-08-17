@@ -41,20 +41,20 @@ package
 	import gx.zone.*;
 	import gx.game.*;
 	
-	import x.*;
-	import x.bitmap.XBitmapDataAnim;
-	import x.collections.*;
-	import x.game.*;
-	import x.geom.*;
-	import x.keyboard.*;
-	import x.resource.*;
-	import x.signals.XSignal;
-	import x.task.*;
-	import x.texture.*;
-	import x.world.*;
-	import x.world.logic.*;
-	import x.xml.*;
-	import x.xmap.*;
+	import kx.*;
+	import kx.bitmap.XBitmapDataAnim;
+	import kx.collections.*;
+	import kx.game.*;
+	import kx.geom.*;
+	import kx.keyboard.*;
+	import kx.resource.*;
+	import kx.signals.XSignal;
+	import kx.task.*;
+	import kx.texture.*;
+	import kx.world.*;
+	import kx.world.logic.*;
+	import kx.xml.*;
+	import kx.xmap.*;
 	
 	import flash.external.*;
 	import flash.net.*;
