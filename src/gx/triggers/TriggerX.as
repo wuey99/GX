@@ -1,6 +1,8 @@
 //------------------------------------------------------------------------------------------
 package gx.triggers {
 	
+	import gx.*;
+	
 	import kx.*;
 	import kx.geom.*;
 	import kx.task.*;

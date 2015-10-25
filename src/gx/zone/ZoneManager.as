@@ -27,6 +27,8 @@
 //------------------------------------------------------------------------------------------
 package gx.zone {
 	
+	import gx.*;
+	
 	import kx.collections.*;
 	import kx.geom.*;
 	import kx.pool.*;

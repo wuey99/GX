@@ -27,6 +27,7 @@
 //------------------------------------------------------------------------------------------
 package gx.messages.level {
 	
+	import gx.*;
 	import gx.assets.*;
 	import gx.text.*;
 	

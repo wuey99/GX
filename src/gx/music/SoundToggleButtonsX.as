@@ -27,6 +27,8 @@
 //------------------------------------------------------------------------------------------
 package gx.music {
 	
+	import gx.*;
+	
 	import kx.*;
 	import kx.geom.*;
 	import kx.signals.*;
