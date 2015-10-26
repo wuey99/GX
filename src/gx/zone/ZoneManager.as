@@ -240,7 +240,7 @@ package gx.zone {
 						// parent
 						GX.appX.getLevelObject (),
 						// logicObject
-						new ZoneX () as XLogicObject,
+						/* @:cast */ new ZoneX () as XLogicObject,
 						// item, layer, depth
 						__item, m_playFieldLayer + 0, 10000,
 						// x, y, z
@@ -270,7 +270,7 @@ package gx.zone {
 						// parent
 						GX.appX.getLevelObject (),
 						// logicObject
-						XType.createInstance (m_StarterRingControllerX) as XLogicObject,
+						/* @:cast */ XType.createInstance (m_StarterRingControllerX) as XLogicObject,
 						// item, layer, depth
 						__item, m_playFieldLayer + 0, 10000,
 						// x, y, z
@@ -306,7 +306,7 @@ package gx.zone {
 							// parent
 							GX.appX.getLevelObject (),
 							// logicObject
-							XType.createInstance (m_Horz_GateX) as XLogicObject,
+							/* @:cast */ XType.createInstance (m_Horz_GateX) as XLogicObject,
 							// item, layer, depth
 							__item, m_playFieldLayer + 0, 10000,
 							// x, y, z
@@ -324,7 +324,7 @@ package gx.zone {
 							// parent
 							GX.appX.getLevelObject (),
 							// logicObject
-							XType.createInstance (m_Vert_GateX) as XLogicObject,
+							/* @:cast */ XType.createInstance (m_Vert_GateX) as XLogicObject,
 							// item, layer, depth
 							__item, m_playFieldLayer + 0, 10000,
 							// x, y, z
@@ -364,7 +364,7 @@ package gx.zone {
 							// parent
 							GX.appX.getLevelObject (),
 							// logicObject
-							XType.createInstance (m_Horz_DoorX) as XLogicObject,
+							/* @:cast */ XType.createInstance (m_Horz_DoorX) as XLogicObject,
 							// item, layer, depth
 							__item, m_playFieldLayer + 0, 10000,
 							// x, y, z
@@ -379,7 +379,7 @@ package gx.zone {
 							// parent
 							GX.appX.getLevelObject (),
 							// logicObject
-							XType.createInstance (m_Vert_DoorX) as XLogicObject,
+							/* @:cast */ XType.createInstance (m_Vert_DoorX) as XLogicObject,
 							// item, layer, depth
 							__item, m_playFieldLayer + 0, 10000,
 							// x, y, z
@@ -414,7 +414,7 @@ package gx.zone {
 						// parent
 						GX.appX.getLevelObject (),
 						// logicObject
-						new CurrentGateX () as XLogicObject,
+						/* @:cast */ new CurrentGateX () as XLogicObject,
 						// item, layer, depth
 						__item, m_playFieldLayer + 0, 10000,
 						// x, y, z
