@@ -33,6 +33,7 @@ package gx.zone {
 	import kx.geom.*;
 	import kx.pool.*;
 	import kx.task.*;
+	import kx.type.*;
 	import kx.world.*;
 	import kx.world.logic.*;
 	import kx.*;
@@ -63,13 +64,13 @@ package gx.zone {
 		private var m_playFieldLayer:int;
 		private var m_zoneObjectsMap:Object;
 		private var m_zoneObjectsMapNoKill:Object;
-		private var m_Horz_GateX:Class;
-		private var m_Vert_GateX:Class;
-		private var m_Horz_DoorX:Class;
-		private var m_Vert_DoorX:Class;
-		private var m_GateArrowX:Class;
-		private var m_WaterCurrentX:Class;
-		private var m_StarterRingControllerX:Class;
+		private var m_Horz_GateX:Class; // <Dynamic>
+		private var m_Vert_GateX:Class; // <Dynamic>
+		private var m_Horz_DoorX:Class; // <Dynamic>
+		private var m_Vert_DoorX:Class; // <Dynamic>
+		private var m_GateArrowX:Class; // <Dynamic>
+		private var m_WaterCurrentX:Class; // <Dynamic>
+		private var m_StarterRingControllerX:Class; // <Dynamic>
 		
 		//------------------------------------------------------------------------------------------
 		public function ZoneManager () {
@@ -83,13 +84,13 @@ package gx.zone {
 			__playfieldLayer:int,
 			__zoneObjectsMap:Object,
 			__zoneObjectsMapNoKill:Object,
-			__Horz_GateX:Class,
-			__Vert_GateX:Class,
-			__Horz_DoorX:Class,
-			__Vert_DoorX:Class,
-			__GateArrowX:Class,
-			__WaterCurrentX:Class,
-			__StarterRingControllerX:Class
+			__Horz_GateX:Class /* <Dynamic> */,
+			__Vert_GateX:Class /* <Dynamic> */,
+			__Horz_DoorX:Class /* <Dynamic> */,
+			__Vert_DoorX:Class /* <Dynamic> */,
+			__GateArrowX:Class /* <Dynamic> */,
+			__WaterCurrentX:Class /* <Dynamic> */,
+			__StarterRingControllerX:Class  /* <Dynamic> */
 		):void {
 			xxx = __xxx;
 			m_XApp = __XApp;
@@ -269,7 +270,7 @@ package gx.zone {
 						// parent
 						GX.appX.getLevelObject (),
 						// logicObject
-						new (m_StarterRingControllerX) () as XLogicObject,
+						XType.createInstance (m_StarterRingControllerX) as XLogicObject,
 						// item, layer, depth
 						__item, m_playFieldLayer + 0, 10000,
 						// x, y, z
@@ -305,7 +306,7 @@ package gx.zone {
 							// parent
 							GX.appX.getLevelObject (),
 							// logicObject
-							new (m_Horz_GateX) () as XLogicObject,
+							XType.createInstance (m_Horz_GateX) as XLogicObject,
 							// item, layer, depth
 							__item, m_playFieldLayer + 0, 10000,
 							// x, y, z
@@ -323,7 +324,7 @@ package gx.zone {
 							// parent
 							GX.appX.getLevelObject (),
 							// logicObject
-							new (m_Vert_GateX) () as XLogicObject,
+							XType.createInstance (m_Vert_GateX) as XLogicObject,
 							// item, layer, depth
 							__item, m_playFieldLayer + 0, 10000,
 							// x, y, z
@@ -363,7 +364,7 @@ package gx.zone {
 							// parent
 							GX.appX.getLevelObject (),
 							// logicObject
-							new (m_Horz_DoorX) () as XLogicObject,
+							XType.createInstance (m_Horz_DoorX) as XLogicObject,
 							// item, layer, depth
 							__item, m_playFieldLayer + 0, 10000,
 							// x, y, z
@@ -378,7 +379,7 @@ package gx.zone {
 							// parent
 							GX.appX.getLevelObject (),
 							// logicObject
-							new (m_Vert_DoorX) () as XLogicObject,
+							XType.createInstance (m_Vert_DoorX) as XLogicObject,
 							// item, layer, depth
 							__item, m_playFieldLayer + 0, 10000,
 							// x, y, z
