@@ -61,7 +61,7 @@ package gx.text {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public override function getWidths ():Array {
+		public override function getWidths ():Array /* <Float> */ {
 			return  [
 				10,		// space
 				6,		// !

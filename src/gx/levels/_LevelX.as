@@ -51,10 +51,10 @@ package gx.levels {
 		
 		public var script:XTask;
 		
-		protected var m_layerView:Array;
-		protected var m_layerPos:Array;
-		protected var m_layerShake:Array;
-		protected var m_layerScroll:Array;
+		protected var m_layerView:Array; // <XLogicObject>
+		protected var m_layerPos:Array; // <XPoint>
+		protected var m_layerShake:Array; // <XPoint>
+		protected var m_layerScroll:Array; // <XPoint>
 		
 		protected var m_maxLayers:int;
 		
@@ -84,10 +84,10 @@ package gx.levels {
 
 			m_maxLayers = xxx.MAX_LAYERS;
 			
-			m_layerPos = new Array (m_maxLayers);
-			m_layerShake = new Array (m_maxLayers);
-			m_layerScroll = new Array (m_maxLayers);
-			m_layerView = new Array (m_maxLayers);
+			m_layerPos = new Array (m_maxLayers); // <XPoint>
+			m_layerShake = new Array (m_maxLayers); // <XPoint>
+			m_layerScroll = new Array (m_maxLayers); // <XPoint>
+			m_layerView = new Array (m_maxLayers); // <XLogicObject>
 			
 			m_viewRect = new XRect ();
 			

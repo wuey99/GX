@@ -160,7 +160,7 @@ package gx.zone {
 			
 			var __length:int = (c2-c1) * (r2-r1);
 			
-			var __tiles:Array /* <Int> */ = new Array (__length)
+			var __tiles:Array /* <Int> */ = new Array (__length); /* <Int> */
 	
 			var i:int;
 			
@@ -194,7 +194,7 @@ package gx.zone {
 			
 			var __length:int = (c2-c1) * (r2-r1);
 			
-			var __tiles:Array /* <Int> */ = new Array (__length)
+			var __tiles:Array /* <Int> */ = new Array (__length); /* <Int> */
 			
 			var i:int;
 			
@@ -215,7 +215,7 @@ package gx.zone {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function getPhysicsTaskX (DECCEL:Number):Array {
+		public function getPhysicsTaskX (DECCEL:Number):Array /* <Dynamic> */ {
 			return [
 				XTask.LABEL, "loop",
 					XTask.WAIT, 0x0100,
@@ -322,14 +322,14 @@ package gx.zone {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function openGateAnimationX ():Array {
+		public function openGateAnimationX ():Array /* <Dynamic> */ {
 			return [				
 				XTask.RETN,
 			];
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function closeGateAnimationX ():Array {
+		public function closeGateAnimationX ():Array /* <Dynamic> */ {
 			return [
 				XTask.RETN,
 			];

@@ -43,8 +43,8 @@ package gx.text {
 	
 	//------------------------------------------------------------------------------------------
 	public class SpriteTextX extends XLogicObject {
-		public var m_bitmap:Array;
-		public var x_sprite:Array;
+		public var m_bitmap:Array; // <XBitmap>
+		public var x_sprite:Array; // <XDepthSprite>
 		public var m_text:String;
 		public var m_totalWidth:Number;
 	
@@ -137,7 +137,7 @@ package gx.text {
 		}
 		
 	//------------------------------------------------------------------------------------------
-		public function getWidths ():Array {
+		public function getWidths ():Array /* <Float> */ {
 			return [];
 		}
 		

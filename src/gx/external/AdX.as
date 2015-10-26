@@ -58,7 +58,7 @@ package gx.external {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public override function setup (__xxx:XWorld, args:Array):void {
+		public override function setup (__xxx:XWorld, args:Array /* <Dynamic> */):void {
 			super.setup (__xxx, args);
 		
 			adID = getArg (args, 0);

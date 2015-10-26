@@ -98,7 +98,7 @@ package gx.messages {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function getPhysicsTaskX (DECCEL:Number):Array {
+		public function getPhysicsTaskX (DECCEL:Number):Array /* <Dynamic> */ {
 			return [
 				XTask.LABEL, "loop",
 					XTask.WAIT, 0x0100,
