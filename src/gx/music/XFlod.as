@@ -35,13 +35,17 @@ package gx.music {
 	
 	import flash.utils.*;
 	
+	// <HAXE>
+	// </HAXE>
+	// <AS3>
 	import neoart.flod.FileLoader;
 	import neoart.flod.core.CorePlayer;
-	
+	// </AS3>
+		
 	//------------------------------------------------------------------------------------------
 	public class XFlod extends XLogicObject {
 		public var m_player:CorePlayer;
-		public var m_source:Class;
+		public var m_source:Class; // <Dynamic>
 		public var m_volume:Number;
 		
 		//------------------------------------------------------------------------------------------
@@ -75,6 +79,9 @@ package gx.music {
 				return;
 			}
 			
+			// <HAXE>
+			// </HAXE>
+			// <AS3>
 			var __stream:ByteArray;
 			
 			var loader:FileLoader = new FileLoader ();
@@ -84,6 +91,7 @@ package gx.music {
 //			m_player.loop = true;
 			m_player.play ();
 			m_player.volume = getVolume ();
+			// </AS3>
 		}
 
 		//------------------------------------------------------------------------------------------
@@ -167,6 +175,32 @@ package gx.music {
 		
 	//------------------------------------------------------------------------------------------
 	}
+	
+	//------------------------------------------------------------------------------------------
+	// <HAXE>
+	/*
+	class CorePlayer {
+		public var volume:Int;
+		
+		public new () {
+			
+		}
+		
+		public function play ():Void {
+			
+		}
+		
+		public function pause ():Void {
+			
+		}
+		
+		public function stop ():Void {
+			
+		}
+	}
+	*/
+	// <AS3>
+	// </AS3>
 	
 //------------------------------------------------------------------------------------------
 }
