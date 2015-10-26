@@ -45,19 +45,19 @@ package gx.zone {
 		private var m_XApp:XApp;
 		
 		private var m_starterRingItems:XDict; /* <Int, XMapItemModel> */
-		private var m_starterRingItemObjects:XDict;
+		private var m_starterRingItemObjects:XDict; /* <Int>, StarterRingControllerX> */
 		
 		private var m_zoneItems:XDict; /* <Int, XMapItemModel> */
-		private var m_zoneItemObjects:XDict;
+		private var m_zoneItemObjects:XDict; /* <Int, ZoneX> */
 		
 		private var m_gateItems:XDict; /* <Int, XMapItemModel> */
-		private var m_gateItemObjects:XDict;
+		private var m_gateItemObjects:XDict; /* <Int, GateX> */
 		
 		private var m_currentGateItems:XDict; /* <Int, XMapItemModel> */
-		private var m_currentGateItemObjects:XDict;	
+		private var m_currentGateItemObjects:XDict;	/* <Int, CurrentGateX> */
 		
 		private var m_doorItems:XDict; /* <Int, XMapItemModel> */
-		private var m_doorItemObjects:XDict;
+		private var m_doorItemObjects:XDict; /* <Int, DoorX> */
 		
 		private var m_zoneKillCount:int;
 		
@@ -122,7 +122,7 @@ package gx.zone {
 			var __layerModel:XMapLayerModel = xxx.getXMapModel ().getLayer (m_playFieldLayer + 0);
 			var __currentZoneItemObject:ZoneX = getZoneItemObject (getCurrentZone ());
 			var __itemRect:XRect = new XRect ();
-			var __list:XDict = new XDict ();
+			var __list:XDict /* <Int, XMapItemModel> */ = new XDict (); // <Int, XMapItemModel>
 			
 			//------------------------------------------------------------------------------------------
 			trace (": currentItemZoneObject: ", __currentZoneItemObject, __currentZoneItemObject.boundingRect);
@@ -230,7 +230,7 @@ package gx.zone {
 			//------------------------------------------------------------------------------------------
 			m_zoneItems = __layerModel.lookForItem ("Zone_Item");
 					
-			m_zoneItemObjects = new XDict ();
+			m_zoneItemObjects = new XDict (); /* <Int, ZoneX> */
 					
 			m_zoneItems.forEach (
 				function (__id:*):void {
@@ -260,7 +260,7 @@ package gx.zone {
 			//------------------------------------------------------------------------------------------
 			m_starterRingItems = __layerModel.lookForItem ("StarterRing_Item");
 					
-			m_starterRingItemObjects = new XDict ();
+			m_starterRingItemObjects = new XDict (); /* <Int, StarterRingControllerX> */
 					
 			m_starterRingItems.forEach (
 				function (__id:*):void {
@@ -291,7 +291,7 @@ package gx.zone {
 			m_gateItems = __layerModel.lookForItem ("Horz_Gate_Item");
 			m_gateItems = __layerModel.lookForItem ("Vert_Gate_Item", m_gateItems);
 					
-			m_gateItemObjects = new XDict ();
+			m_gateItemObjects = new XDict (); /* <Int, GateX> */
 					
 			if (m_Horz_GateX != null && m_Vert_GateX != null) m_gateItems.forEach (
 				function (__id:*):void {
@@ -349,7 +349,7 @@ package gx.zone {
 			m_doorItems = __layerModel.lookForItem ("Horz_Door_Item");
 			m_doorItems = __layerModel.lookForItem ("Vert_Door_Item", m_doorItems);
 					
-			m_doorItemObjects = new XDict ();
+			m_doorItemObjects = new XDict (); /* <Int, DoorX> */
 					
 			if (m_Horz_DoorX != null && m_Vert_DoorX != null) m_doorItems.forEach (
 				function (__id:*):void {
@@ -400,7 +400,7 @@ package gx.zone {
 			//------------------------------------------------------------------------------------------
 			m_currentGateItems = __layerModel.lookForItem ("Current_Gate_Item");
 					
-			m_currentGateItemObjects = new XDict ();
+			m_currentGateItemObjects = new XDict (); /* <Int, CurrentGateX> */
 					
 			m_currentGateItems.forEach (
 				function (__id:*):void {
@@ -446,7 +446,7 @@ package gx.zone {
 		}
 				
 		//------------------------------------------------------------------------------------------
-		public function getZoneItems ():XDict {
+		public function getZoneItems ():XDict /* <Int, ZoneX> */ {
 			return m_zoneItems;
 		}
 				
@@ -460,7 +460,7 @@ package gx.zone {
 		}
 				
 		//------------------------------------------------------------------------------------------
-		public function getStarterRingItems ():XDict {
+		public function getStarterRingItems ():XDict /* <Int, StarterRingControllerX> */ {
 			return m_starterRingItems;
 		}
 				
