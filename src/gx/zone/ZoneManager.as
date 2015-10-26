@@ -44,19 +44,19 @@ package gx.zone {
 		private var xxx:XWorld;
 		private var m_XApp:XApp;
 		
-		private var m_starterRingItems:XDict;
+		private var m_starterRingItems:XDict; /* <Int, XMapItemModel> */
 		private var m_starterRingItemObjects:XDict;
 		
-		private var m_zoneItems:XDict;
+		private var m_zoneItems:XDict; /* <Int, XMapItemModel> */
 		private var m_zoneItemObjects:XDict;
 		
-		private var m_gateItems:XDict;
+		private var m_gateItems:XDict; /* <Int, XMapItemModel> */
 		private var m_gateItemObjects:XDict;
 		
-		private var m_currentGateItems:XDict;
+		private var m_currentGateItems:XDict; /* <Int, XMapItemModel> */
 		private var m_currentGateItemObjects:XDict;	
 		
-		private var m_doorItems:XDict;
+		private var m_doorItems:XDict; /* <Int, XMapItemModel> */
 		private var m_doorItemObjects:XDict;
 		
 		private var m_zoneKillCount:int;
@@ -114,7 +114,7 @@ package gx.zone {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function setCurrentZone (__zone:Number):void {
+		public function setCurrentZone (__zone:int):void {
 			GX.appX.m_currentZone = __zone;
 			
 			resetZoneKillCount ();
@@ -207,7 +207,7 @@ package gx.zone {
 		}
 				
 		//------------------------------------------------------------------------------------------
-		public function getCurrentZone ():Number {
+		public function getCurrentZone ():int {
 			return GX.appX.m_currentZone;
 		}
 		

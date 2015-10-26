@@ -46,7 +46,7 @@ package gx.zone {
 	public class ZoneX extends XLogicObjectCX {
 		public var script:XTask;
 		
-		public var m_zone:Number;
+		public var m_zone:int;
 		public var m_direction:String;
 		public var m_size:Number
 		
@@ -81,7 +81,7 @@ package gx.zone {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function getZone ():Number {
+		public function getZone ():int {
 			return m_zone;
 		}
 
