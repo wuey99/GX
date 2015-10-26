@@ -64,22 +64,32 @@ package gx.mickey {
 		}
 
 //------------------------------------------------------------------------------------------
+		/* @:get, set extraDX Float */
+		
 		public function get extraDX ():Number {
 			return m_extraDX;
 		}
 		
-		public function set extraDX (__value:Number):void {
+		public function set extraDX (__value:Number): /* @:set_type */ void {
 			m_extraDX = __value;
+			
+			/* @:set_return 0; */			
 		}
+		/* @:end */
 		
 //------------------------------------------------------------------------------------------
+		/* @:get, set extraDY Float */
+		
 		public function get extraDY ():Number {
 			return m_extraDY;
 		}
 		
-		public function set extraDY (__value:Number):void {
+		public function set extraDY (__value:Number): /* @:set_type */ void {
 			m_extraDY = __value;
+			
+			/* @:set_return 0; */			
 		}
+		/* @:end */
 		
 //------------------------------------------------------------------------------------------
 		public function addLevelCompleteListener (__listener:Function):void {

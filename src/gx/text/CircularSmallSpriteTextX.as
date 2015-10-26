@@ -91,46 +91,62 @@ package gx.text {
 				XTask.RETN,
 			]);
 		}
-				
+
 		//------------------------------------------------------------------------------------------
-		public function set angle (__value:Number):void {
-			m_angle = __value
-		}
+		/* @:get, set angle Float */
 		
-		//------------------------------------------------------------------------------------------
 		public function get angle ():Number {
 			return m_angle;
 		}
 		
-		//------------------------------------------------------------------------------------------
-		public function set dist (__value:Number):void {
-			m_dist = __value
+		public function set angle (__value:Number): /* @:set_type */ void {
+			m_angle = __value;
+				
+			/* @:set_return 0; */			
 		}
+		/* @:end */
 		
 		//------------------------------------------------------------------------------------------
+		/* @:get, set dist Float */
+		
 		public function get dist ():Number {
 			return m_dist;
 		}
-		
-		//------------------------------------------------------------------------------------------
-		public function set delta (__value:Number):void {
-			m_delta = __value
+
+		public function set dist (__value:Number): /* @:set_type */ void {
+			m_dist = __value;
+				
+			/* @:set_return 0; */			
 		}
+		/* @:end */
 		
 		//------------------------------------------------------------------------------------------
+		/* @:get, set delta Float */
+		
 		public function get delta ():Number {
 			return m_delta;
 		}
 		
-		//------------------------------------------------------------------------------------------
-		public function set speed (__value:Number):void {
-			m_speed = __value
+		public function set delta (__value:Number): /* @:set_type */ void {
+			m_delta = __value;
+			
+			/* @:set_return 0; */			
 		}
+		/* @:end */
 		
 		//------------------------------------------------------------------------------------------
+		/* @:get, set speed Float */
+		
 		public function get speed ():Number {
 			return m_speed;
 		}
+		
+		public function set speed (__value:Number): /* @:set_type */ void {
+			m_speed = __value;
+			
+			/* @:set_return 0; */			
+		}
+		/* @:end */
 		
 		//------------------------------------------------------------------------------------------
 		public override function updateSprites ():void {

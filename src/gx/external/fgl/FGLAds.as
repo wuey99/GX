@@ -185,7 +185,9 @@ package gx.external.fgl {
 		 * this variable will return null.
 		 */	
 		//------------------------------------------------------------------------------------------
-		public static function get api():FGLAds	{
+		/* @:get, set api FGLAds */
+		
+		public static function get api ():FGLAds {
 			if(_instance == null) {
 				trace("FGLAds: Instance Error: Attempted to get instance before construction.");
 				return null;
@@ -193,6 +195,11 @@ package gx.external.fgl {
 			return _instance;
 		}
 		
+		public function set api (__value:FGLAds): /* @:set_type */ void {
+			/* @:set_return null; */			
+		}
+		
+		/* @:end */
 		/**
 		 * Displays an ad popup that appears over the current swf and lowers the lights.
 		 * @param format the format of the ad to request, use one of the FORMAT_ constants.
@@ -217,9 +224,16 @@ package gx.external.fgl {
 		 * </ul>
 		 */
 		//------------------------------------------------------------------------------------------
-		public function get status():String {
+		/* @:get, set status String */
+		
+		public function get status ():String {
 			return _status;
 		}		
+		
+		public function set status (__value:String): /* @:set_type */ void {
+			/* @:set_return ""; */			
+		}
+		/* @:end */	
 		
 		//------------------------------------------------------------------------------------------
 		/**
@@ -227,9 +241,16 @@ package gx.external.fgl {
 		 * call new FGLAds(stage) - passing the stage or root displayobject in. 
 		 */
 		//------------------------------------------------------------------------------------------
-		public static function get apiLoaded():Boolean {
+		/* @:get, set apiLoaded Bool */
+		
+		public static function get apiLoaded ():Boolean {
 			return _instance != null;
 		}
+		
+		public static function set apiLoaded (__value:Boolean): /* @:set_type */ void {
+			/* @:set_return true; */			
+		}
+		/* @:end */
 		
 		//------------------------------------------------------------------------------------------
 		/**
@@ -290,8 +311,19 @@ package gx.external.fgl {
 		//------------------------------------------------------------------------------------------
 		
 		//------------------------------------------------------------------------------------------
-		/** @private */ public function set onNetworkingError(func:Function):void { _evt_NetworkingError = func; }
-		/** @private */ public function get onNetworkingError():Function {return _evt_NetworkingError;}
+		/* @:get, set a Float */
+		
+		public function get onNetworkingError():Function {
+			return _evt_NetworkingError;
+		}
+		
+		public function set onNetworkingError(func:Function): /* @:set_type */ void {
+			_evt_NetworkingError = func; 
+			
+			/* @:set_return null; */			
+		}
+		/* @:end */
+		
 		//------------------------------------------------------------------------------------------
 		private function e_onNetworkingError(e:Event):void {
 			if(_evt_NetworkingError != null) _evt_NetworkingError();
@@ -299,8 +331,19 @@ package gx.external.fgl {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		/** @private */ public function set onApiReady(func:Function):void { _evt_ApiReady = func; }
-		/** @private */ public function get onApiReady():Function {return _evt_ApiReady;}
+		/* @:get, set onApiReady Function */
+		
+		public function get onApiReady():Function {
+			return _evt_ApiReady;
+		}
+		
+		public function set onApiReady(func:Function): /* @:set_type */ void {
+			_evt_ApiReady = func;
+			
+			/* @:set_return null; */			
+		}
+		/* @:end */
+		
 		//------------------------------------------------------------------------------------------
 		private function e_onApiReady(e:Event):void {
 			if(_evt_ApiReady != null) _evt_ApiReady();
@@ -308,8 +351,19 @@ package gx.external.fgl {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		/** @private */ public function set onAdLoaded(func:Function):void { _evt_AdLoaded = func; }
-		/** @private */ public function get onAdLoaded():Function {return _evt_AdLoaded;}
+		/* @:get, set onAdLoaded Function */
+		
+		public function get onAdLoaded():Function {
+			return _evt_AdLoaded;
+		}
+		
+		public function set onAdLoaded(func:Function): /* @:set_type */ void {
+			_evt_AdLoaded = func;
+			
+			/* @:set_return null; */			
+		}
+		/* @:end */
+		
 		//------------------------------------------------------------------------------------------
 		private function e_onAdLoaded(e:Event):void {
 			if(_evt_AdLoaded != null) _evt_AdLoaded();
@@ -317,8 +371,19 @@ package gx.external.fgl {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		/** @private */ public function set onAdShown(func:Function):void { _evt_AdShown = func; }
-		/** @private */ public function get onAdShown():Function {return _evt_AdShown;}
+		/* @:get, set onAdShown Function */
+		
+		public function get onAdShown():Function {
+			return _evt_AdShown;
+		}
+		
+		public function set onAdShown(func:Function): /* @:set_type */ void {
+			_evt_AdShown = func;
+			
+			/* @:set_return null; */			
+		}
+		/* @:end */
+		
 		//------------------------------------------------------------------------------------------
 		private function e_onAdShown(e:Event):void {
 			if(_evt_AdShown != null) _evt_AdShown();
@@ -326,8 +391,19 @@ package gx.external.fgl {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		/** @private */ public function set onAdClicked(func:Function):void { _evt_AdClicked = func; }
-		/** @private */ public function get onAdClicked():Function {return _evt_AdClicked;}
+		/* @:get, set onAdClicked Function */
+		
+		public function get onAdClicked():Function {
+			return _evt_AdClicked;
+		}
+		
+		public function set onAdClicked(func:Function): /* @:set_type */ void {
+			_evt_AdClicked = func;
+			
+			/* @:set_return null; */			
+		}
+		/* @:end */
+		
 		//------------------------------------------------------------------------------------------
 		private function e_onAdClicked(e:Event):void {
 			if(_evt_AdClicked != null) _evt_AdClicked();
@@ -335,8 +411,19 @@ package gx.external.fgl {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		/** @private */ public function set onAdClosed(func:Function):void { _evt_AdClosed = func; }
-		/** @private */ public function get onAdClosed():Function {return _evt_AdClosed;}
+		/* @:get, set onAdClosed Function */
+		
+		public function get onAdClosed():Function {
+			return _evt_AdClosed;
+		}
+		
+		public function set onAdClosed(func:Function): /* @:set_type */ void {
+			_evt_AdClosed = func;
+			
+			/* @:set_return null; */			
+		}
+		/* @:end */
+		
 		//------------------------------------------------------------------------------------------
 		private function e_onAdClosed(e:Event):void {
 			if(_evt_AdClosed != null) _evt_AdClosed();
@@ -344,8 +431,19 @@ package gx.external.fgl {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		/** @private */ public function set onAdUnavailable(func:Function):void { _evt_AdUnavailable = func; }
-		/** @private */ public function get onAdUnavailable():Function {return _evt_AdUnavailable;}
+		/* @:get, set onAdUnavailable Function */
+		
+		public function get onAdUnavailable():Function {
+			return _evt_AdUnavailable;
+		}
+		
+		public function set onAdUnavailable(func:Function): /* @:set_type */ void {
+			_evt_AdUnavailable = func;
+			
+			/* @:set_return null; */			
+		}
+		/* @:end */
+		
 		//------------------------------------------------------------------------------------------
 		private function e_onAdUnavailable(e:Event):void {
 			if(_evt_AdUnavailable != null) _evt_AdUnavailable();
@@ -353,8 +451,19 @@ package gx.external.fgl {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		/** @private */ public function set onAdLoadingError(func:Function):void { _evt_AdLoadingError = func; }
-		/** @private */ public function get onAdLoadingError():Function {return _evt_AdLoadingError;}
+		/* @:get, set onAdLoadingError Function */
+		
+		public function get onAdLoadingError():Function {
+			return _evt_AdLoadingError;
+		}
+		
+		public function set onAdLoadingError(func:Function): /* @:set_type */ void {
+			_evt_AdLoadingError = func;
+			
+			/* @:set_return null; */			
+		}
+		/* @:end */
+		
 		//------------------------------------------------------------------------------------------
 		private function e_onAdLoadingError(e:Event):void {
 			if(_evt_AdLoadingError != null) _evt_AdLoadingError();

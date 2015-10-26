@@ -170,7 +170,7 @@ package gx.zone {
 					
 					var __logicObject:ZoneObjectCX;
 					
-					if (!__item.inuse) {
+					if (__item.inuse == 0) {
 						__logicObject = GX.appX.getLevelObject ().addXMapItem (__item, 0) as ZoneObjectCX;
 					}
 					else

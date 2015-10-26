@@ -340,9 +340,16 @@ package gx {
 		}
 		
 		//------------------------------------------------------------------------------------------
+		/* @:get, set player XFlod */
+		
 		public function get player ():XFlod {
 			return m_player;
 		}
+		
+		public function set player (__value:XFlod): /* @:set_type */ void {
+			/* @:set_return null; */			
+		}
+		/* @:end */
 		
 		//------------------------------------------------------------------------------------------
 		public function Null_HndlrX ():XLogicObject {
