@@ -34,6 +34,7 @@ package gx.zone {
 	import kx.*;
 	import kx.geom.*;
 	import kx.task.*;
+	import kx.type.*;
 	import kx.world.*;
 	import kx.world.collision.*;
 	import kx.world.logic.*;
@@ -61,7 +62,7 @@ package gx.zone {
 		public var m_direction:String;
 		public var m_go:Boolean;
 		
-		public var m_GateArrowX:Class;
+		public var m_GateArrowX:Class; // <Dynamic>
 		
 		//------------------------------------------------------------------------------------------
 		public function GateX () {
@@ -199,7 +200,7 @@ package gx.zone {
 								// parent
 								GX.appX.getLevelObject (),
 								// logicObject
-								new m_GateArrowX () as XLogicObject,
+								/* @:cast */ XType.createInstance (m_GateArrowX) as XLogicObject,
 								// item, layer, depth
 								null, 0, getDepth () + 1,
 								// x, y, z

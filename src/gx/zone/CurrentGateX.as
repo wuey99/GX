@@ -33,6 +33,7 @@ package gx.zone {
 	import kx.*;
 	import kx.geom.*;
 	import kx.task.*;
+	import kx.type.*;
 	import kx.world.*;
 	import kx.world.collision.*;
 	import kx.world.logic.*;
@@ -48,7 +49,7 @@ package gx.zone {
 	public class CurrentGateX extends XLogicObjectCX {
 		public var script:XTask;
 		
-		public var m_WaterCurrentX:Class;
+		public var m_WaterCurrentX:Class; // <Dynamic>
 		
 		public var m_direction:String;
 		public var m_currentX:Number;
@@ -204,7 +205,7 @@ package gx.zone {
 				// parent
 				this,
 				// logicObject
-				new m_WaterCurrentX () as XLogicObject,
+				/* @:cast */ XType.createInstance (m_WaterCurrentX) as XLogicObject,
 				// item, layer, depth
 				null, getLayer (), getDepth (),
 				// x, y, z
