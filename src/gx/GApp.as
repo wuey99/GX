@@ -538,7 +538,7 @@ package gx {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function getZoneItems ():XDict {
+		public function getZoneItems ():XDict /* <Int, ZoneX> */ {
 			return getZoneManager ().getZoneItems ();
 		}
 		
@@ -548,7 +548,7 @@ package gx {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function getStarterRingItems ():XDict {
+		public function getStarterRingItems ():XDict /* <Int, StarterRingControllerX> */ {
 			return getZoneManager ().getStarterRingItems ();
 		}
 		
