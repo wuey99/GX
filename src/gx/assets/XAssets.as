@@ -33,6 +33,9 @@ package gx.assets {
 	//------------------------------------------------------------------------------------------	
 	public class XAssets extends Object {
 
+		// <HAXE>
+		// </HAXE>
+		// <AS3>
 		[Embed(source="Aller_Rg.ttf",
 			fontName="Aller",  
 			mimeType="application/x-font"
@@ -44,6 +47,7 @@ package gx.assets {
 			mimeType="application/x-font"
 		)]
 		public static const ArialFontClass:Class;
+		// </AS3>
 		
 		//------------------------------------------------------------------------------------------
 		public var m_XApp:XApp;

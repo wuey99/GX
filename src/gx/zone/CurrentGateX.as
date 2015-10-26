@@ -62,7 +62,7 @@ package gx.zone {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public override function setup (__xxx:XWorld, args:Array):void {
+		public override function setup (__xxx:XWorld, args:Array  /* <Dynamic> */):void {
 			super.setup (__xxx, args);
 		
 			m_WaterCurrentX = getArg (args, 0);
