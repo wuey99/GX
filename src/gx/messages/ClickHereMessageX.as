@@ -78,7 +78,7 @@ package gx.messages {
 				// parent
 				this,
 				// logicObject
-				new CircularSmallSpriteTextX () as XLogicObject,
+				/* @:cast */ new CircularSmallSpriteTextX () as XLogicObject,
 				// item, layer, depth
 				null, 0, 0,
 				// x, y, z

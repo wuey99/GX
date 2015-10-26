@@ -103,7 +103,7 @@ package gx.ads {
 					// parent
 					null,
 					// logicObject
-					new FGLAdX () as XLogicObject,
+					/* @:cast */ new FGLAdX () as XLogicObject,
 					// item, layer, depth
 					null, -1, 2000000,
 					// x, y, z

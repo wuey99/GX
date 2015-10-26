@@ -137,7 +137,7 @@ package gx {
 				// parent
 				null,
 				// logicObject
-				new XFlod () as XLogicObject,
+				/* @:cast */ new XFlod () as XLogicObject,
 				// item, layer, depth
 				null, 0, 0,
 				// x, y, z
@@ -377,7 +377,7 @@ package gx {
 				// parent
 				null,
 				// logicObject
-				new XLogicObject () as XLogicObject,
+				/* @:cast */ new XLogicObject () as XLogicObject,
 				// item, layer, depth
 				null, -1, 25000,
 				// x, y, z
@@ -459,7 +459,7 @@ package gx {
 				// parent
 				null,
 				// logicObject
-				__mickey as XLogicObject,
+				/* @:cast */ __mickey as XLogicObject,
 				// item, layer, depth
 				null, PLAYFIELD_LAYER, 10000,
 				// x, y, z
@@ -484,7 +484,7 @@ package gx {
 				// parent
 				null,
 				// logicObject
-				new _MickeyCursorX () as XLogicObject,
+				/* @:cast */ new _MickeyCursorX () as XLogicObject,
 				// item, layer, depth
 				null, PLAYFIELD_LAYER, 10000,
 				// x, y, z
