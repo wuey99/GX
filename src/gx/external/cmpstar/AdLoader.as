@@ -37,7 +37,9 @@ package gx.external.cmpstar {
 		private var contentspotid:String;
 		
 		//------------------------------------------------------------------------------------------
-		public function AdLoader(contentspotid:String) {
+		public function AdLoader (contentspotid:String) {
+			super ();
+			
 			this.contentspotid = contentspotid;
 			
 			addEventListener(Event.ADDED, addedHandler);

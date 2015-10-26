@@ -70,8 +70,7 @@ package gx.external.fgl {
 	//------------------------------------------------------------------------------------------
 	
 	//------------------------------------------------------------------------------------------
-	dynamic public class FGLAds extends Sprite
-	{
+	public class FGLAds extends Sprite {
 		public static const version:String = "01";
 		
 		//singleton var
@@ -135,8 +134,9 @@ package gx.external.fgl {
 		 * @param gameID The game's ID, as issued on the FGL or FGD website.
 		 */
 		//------------------------------------------------------------------------------------------
-		public function FGLAds(parent:*, gameID:String):void
-		{
+		public function FGLAds (parent:*, gameID:String):void {
+			super ();
+			
 			if(_instance == null) {
 				_instance = this;
 			} else {
@@ -207,7 +207,7 @@ package gx.external.fgl {
 		 * @param timeout how long before the ad closes itself
 		 */
 		//------------------------------------------------------------------------------------------
-		public function showAdPopup(format:String = FGLAds.FORMAT_AUTO, delay:Number = 3000, timeout:Number = 0):void {
+		public function showAdPopup (format:String = FGLAds.FORMAT_AUTO, delay:Number = 3000, timeout:Number = 0):void {
 			if(_loaded == false) return;
 			_fglAds.showAdPopup(format, delay, timeout);
 		}
@@ -257,7 +257,7 @@ package gx.external.fgl {
 		 * Disable the API. This will stop FGLAds from processing any requests. Use enable() to re-enable the API.
 		 */
 		//------------------------------------------------------------------------------------------
-		public function disable():void {
+		public function disable ():void {
 			if(_status == "Ready"){
 				_status = "Disabled";
 				_loaded = false;
@@ -269,7 +269,7 @@ package gx.external.fgl {
 		 * Re-enables the API if it's been disabled using the disable() function.
 		 */
 		//------------------------------------------------------------------------------------------
-		public function enable():void {
+		public function enable ():void {
 			if(_status == "Disabled"){
 				_status = "Ready";
 				_loaded = true;
@@ -296,12 +296,12 @@ package gx.external.fgl {
 		 * </ul> 
 		 */
 		//------------------------------------------------------------------------------------------
-		public function setStyle(name:String, value:*):void {
+		public function setStyle (name:String, value:*):void {
 			if(_loaded == false){
 				_tmpSkin[name] = value;
 				return;
 			}
-			var o:Object = new Object();
+			var o:Object = new Object ();
 			o[name] = value;
 			_fglAds.setSkin(o);
 		}
@@ -313,11 +313,11 @@ package gx.external.fgl {
 		//------------------------------------------------------------------------------------------
 		/* @:get, set a Float */
 		
-		public function get onNetworkingError():Function {
+		public function get onNetworkingError ():Function {
 			return _evt_NetworkingError;
 		}
 		
-		public function set onNetworkingError(func:Function): /* @:set_type */ void {
+		public function set onNetworkingError (func:Function): /* @:set_type */ void {
 			_evt_NetworkingError = func; 
 			
 			/* @:set_return null; */			
@@ -325,7 +325,7 @@ package gx.external.fgl {
 		/* @:end */
 		
 		//------------------------------------------------------------------------------------------
-		private function e_onNetworkingError(e:Event):void {
+		private function e_onNetworkingError (e:Event):void {
 			if(_evt_NetworkingError != null) _evt_NetworkingError();
 			dispatchEvent(e);
 		}
@@ -333,11 +333,11 @@ package gx.external.fgl {
 		//------------------------------------------------------------------------------------------
 		/* @:get, set onApiReady Function */
 		
-		public function get onApiReady():Function {
+		public function get onApiReady ():Function {
 			return _evt_ApiReady;
 		}
 		
-		public function set onApiReady(func:Function): /* @:set_type */ void {
+		public function set onApiReady (func:Function): /* @:set_type */ void {
 			_evt_ApiReady = func;
 			
 			/* @:set_return null; */			
@@ -345,7 +345,7 @@ package gx.external.fgl {
 		/* @:end */
 		
 		//------------------------------------------------------------------------------------------
-		private function e_onApiReady(e:Event):void {
+		private function e_onApiReady (e:Event):void {
 			if(_evt_ApiReady != null) _evt_ApiReady();
 			dispatchEvent(e);
 		}
@@ -353,11 +353,11 @@ package gx.external.fgl {
 		//------------------------------------------------------------------------------------------
 		/* @:get, set onAdLoaded Function */
 		
-		public function get onAdLoaded():Function {
+		public function get onAdLoaded ():Function {
 			return _evt_AdLoaded;
 		}
 		
-		public function set onAdLoaded(func:Function): /* @:set_type */ void {
+		public function set onAdLoaded (func:Function): /* @:set_type */ void {
 			_evt_AdLoaded = func;
 			
 			/* @:set_return null; */			
@@ -365,7 +365,7 @@ package gx.external.fgl {
 		/* @:end */
 		
 		//------------------------------------------------------------------------------------------
-		private function e_onAdLoaded(e:Event):void {
+		private function e_onAdLoaded (e:Event):void {
 			if(_evt_AdLoaded != null) _evt_AdLoaded();
 			dispatchEvent(e);
 		}
@@ -373,11 +373,11 @@ package gx.external.fgl {
 		//------------------------------------------------------------------------------------------
 		/* @:get, set onAdShown Function */
 		
-		public function get onAdShown():Function {
+		public function get onAdShown ():Function {
 			return _evt_AdShown;
 		}
 		
-		public function set onAdShown(func:Function): /* @:set_type */ void {
+		public function set onAdShown (func:Function): /* @:set_type */ void {
 			_evt_AdShown = func;
 			
 			/* @:set_return null; */			
@@ -385,7 +385,7 @@ package gx.external.fgl {
 		/* @:end */
 		
 		//------------------------------------------------------------------------------------------
-		private function e_onAdShown(e:Event):void {
+		private function e_onAdShown (e:Event):void {
 			if(_evt_AdShown != null) _evt_AdShown();
 			dispatchEvent(e);
 		}
@@ -393,11 +393,11 @@ package gx.external.fgl {
 		//------------------------------------------------------------------------------------------
 		/* @:get, set onAdClicked Function */
 		
-		public function get onAdClicked():Function {
+		public function get onAdClicked ():Function {
 			return _evt_AdClicked;
 		}
 		
-		public function set onAdClicked(func:Function): /* @:set_type */ void {
+		public function set onAdClicked (func:Function): /* @:set_type */ void {
 			_evt_AdClicked = func;
 			
 			/* @:set_return null; */			
@@ -405,7 +405,7 @@ package gx.external.fgl {
 		/* @:end */
 		
 		//------------------------------------------------------------------------------------------
-		private function e_onAdClicked(e:Event):void {
+		private function e_onAdClicked (e:Event):void {
 			if(_evt_AdClicked != null) _evt_AdClicked();
 			dispatchEvent(e);
 		}
@@ -413,11 +413,11 @@ package gx.external.fgl {
 		//------------------------------------------------------------------------------------------
 		/* @:get, set onAdClosed Function */
 		
-		public function get onAdClosed():Function {
+		public function get onAdClosed ():Function {
 			return _evt_AdClosed;
 		}
 		
-		public function set onAdClosed(func:Function): /* @:set_type */ void {
+		public function set onAdClosed (func:Function): /* @:set_type */ void {
 			_evt_AdClosed = func;
 			
 			/* @:set_return null; */			
@@ -425,7 +425,7 @@ package gx.external.fgl {
 		/* @:end */
 		
 		//------------------------------------------------------------------------------------------
-		private function e_onAdClosed(e:Event):void {
+		private function e_onAdClosed (e:Event):void {
 			if(_evt_AdClosed != null) _evt_AdClosed();
 			dispatchEvent(e);
 		}
@@ -433,11 +433,11 @@ package gx.external.fgl {
 		//------------------------------------------------------------------------------------------
 		/* @:get, set onAdUnavailable Function */
 		
-		public function get onAdUnavailable():Function {
+		public function get onAdUnavailable ():Function {
 			return _evt_AdUnavailable;
 		}
 		
-		public function set onAdUnavailable(func:Function): /* @:set_type */ void {
+		public function set onAdUnavailable (func:Function): /* @:set_type */ void {
 			_evt_AdUnavailable = func;
 			
 			/* @:set_return null; */			
@@ -445,7 +445,7 @@ package gx.external.fgl {
 		/* @:end */
 		
 		//------------------------------------------------------------------------------------------
-		private function e_onAdUnavailable(e:Event):void {
+		private function e_onAdUnavailable (e:Event):void {
 			if(_evt_AdUnavailable != null) _evt_AdUnavailable();
 			dispatchEvent(e);
 		}
@@ -453,11 +453,11 @@ package gx.external.fgl {
 		//------------------------------------------------------------------------------------------
 		/* @:get, set onAdLoadingError Function */
 		
-		public function get onAdLoadingError():Function {
+		public function get onAdLoadingError ():Function {
 			return _evt_AdLoadingError;
 		}
 		
-		public function set onAdLoadingError(func:Function): /* @:set_type */ void {
+		public function set onAdLoadingError (func:Function): /* @:set_type */ void {
 			_evt_AdLoadingError = func;
 			
 			/* @:set_return null; */			
@@ -465,7 +465,7 @@ package gx.external.fgl {
 		/* @:end */
 		
 		//------------------------------------------------------------------------------------------
-		private function e_onAdLoadingError(e:Event):void {
+		private function e_onAdLoadingError (e:Event):void {
 			if(_evt_AdLoadingError != null) _evt_AdLoadingError();
 			dispatchEvent(e);
 		}
@@ -475,7 +475,7 @@ package gx.external.fgl {
 		//------------------------------------------------------------------------------------------
 		
 		//------------------------------------------------------------------------------------------
-		private function resizeStage(e:Event):void {
+		private function resizeStage (e:Event):void {
 			if(_loaded == false) return;
 			_stageWidth = _stage.stageWidth;
 			_stageHeight = _stage.stageHeight;
@@ -484,7 +484,7 @@ package gx.external.fgl {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		private function setupStage(e:Event):void {
+		private function setupStage (e:Event):void {
 			if(stage == null) return;
 			_stage = stage;
 			_stage.addEventListener(Event.RESIZE, resizeStage);
@@ -501,7 +501,7 @@ package gx.external.fgl {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		private function onLoadingComplete(e:Event):void {
+		private function onLoadingComplete (e:Event):void {
 			_status = "Ready";
 			_loaded = true;
 			_fglAds = _loader.content as Object;
@@ -530,7 +530,7 @@ package gx.external.fgl {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		private function onLoadingError(e:IOErrorEvent):void {
+		private function onLoadingError (e:IOErrorEvent):void {
 			_loaded = false;
 			_status = "Failed";
 			trace("FGLAds: Failed to load client SWF");				
