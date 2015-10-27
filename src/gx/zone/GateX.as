@@ -90,7 +90,7 @@ package gx.zone {
 		public override function setupX ():void {
 			super.setupX ();
 			
-			setCX (-8, +8, -8, +8);
+			setCX (-8, 8, -8, 8);
 			
 			var __xml:XSimpleXMLNode = m_xml = new XSimpleXMLNode ();
 			__xml.setupWithXMLString (item.params);

@@ -27,6 +27,10 @@
 //------------------------------------------------------------------------------------------
 package gx.levels {
 	
+	import flash.geom.*;
+	import flash.text.*;
+	import flash.utils.*;
+	
 	import gx.*;
 	import gx.assets.*;
 	
@@ -38,12 +42,8 @@ package gx.levels {
 	import kx.world.*;
 	import kx.world.logic.*;
 	import kx.world.sprite.*;
-	import kx.xml.*;
 	import kx.xmap.*;
-	
-	import flash.geom.*;
-	import flash.text.*;
-	import flash.utils.*;
+	import kx.xml.*;
 		
 //------------------------------------------------------------------------------------------
 	public class _LevelX extends XMapView {
@@ -51,7 +51,7 @@ package gx.levels {
 		
 		public var script:XTask;
 		
-		protected var m_layerView:Array; // <XLogicObject>
+		protected var m_layerView:Array; // <XMapLayerView>
 		protected var m_layerPos:Array; // <XPoint>
 		protected var m_layerShake:Array; // <XPoint>
 		protected var m_layerScroll:Array; // <XPoint>
@@ -85,19 +85,20 @@ package gx.levels {
 
 			m_maxLayers = xxx.MAX_LAYERS;
 			
-			m_layerPos = new Array (m_maxLayers); // <XPoint>
-			m_layerShake = new Array (m_maxLayers); // <XPoint>
-			m_layerScroll = new Array (m_maxLayers); // <XPoint>
-			m_layerView = new Array (m_maxLayers); // <XLogicObject>
+			m_layerPos = new Array (); // <XPoint>
+			m_layerShake = new Array (); // <XPoint>
+			m_layerScroll = new Array (); // <XPoint>
+			m_layerView = new Array (); // <XMapLayerView>
 			
 			m_viewRect = new XRect ();
 			
 			var i:int;
 			
 			for (i=0; i < m_maxLayers; i++) {
-				m_layerPos[i] = new XPoint (0, 0);
-				m_layerShake[i] = new XPoint (0, 0);
-				m_layerScroll[i] = new XPoint (0, 0);
+				m_layerPos.push (new XPoint (0, 0));
+				m_layerShake.push (new XPoint (0, 0));
+				m_layerScroll.push (new XPoint (0, 0));
+				m_layerView.push (null);
 			}
 			
 			createSprites9 ();
@@ -262,6 +263,17 @@ package gx.levels {
 
 //------------------------------------------------------------------------------------------
 		public function addXShake (__count:int=15, __delayValue:Number=0x0100):void {
+			function __setX (__dy:Number):void {
+				var i:int;
+				
+				for (i=0; i < m_maxLayers; i++) {
+					m_layerShake[i].x = __dy;
+					m_layerShake[i].y = __dy;
+				}
+				
+				updateScroll ();
+			}
+			
 			var __delay:XNumber = new XNumber (0);
 			__delay.value = __delayValue;
 			
@@ -282,8 +294,11 @@ package gx.levels {
 				
 				XTask.RETN,
 			]);
-			
-			function __setX (__dy:Number):void {
+		}
+		
+//------------------------------------------------------------------------------------------
+		public function addYShake (__count:int=15, __delayValue:Number=0x0100):void {
+			function __setY (__dy:Number):void {
 				var i:int;
 				
 				for (i=0; i < m_maxLayers; i++) {
@@ -293,10 +308,7 @@ package gx.levels {
 				
 				updateScroll ();
 			}
-		}
-		
-//------------------------------------------------------------------------------------------
-		public function addYShake (__count:int=15, __delayValue:Number=0x0100):void {
+			
 			var __delay:XNumber = new XNumber (0);
 			__delay.value = __delayValue;
 			
@@ -317,17 +329,6 @@ package gx.levels {
 					
 				XTask.RETN,
 			]);
-			
-			function __setY (__dy:Number):void {
-				var i:int;
-				
-				for (i=0; i < m_maxLayers; i++) {
-					m_layerShake[i].x = __dy;
-					m_layerShake[i].y = __dy;
-				}
-				
-				updateScroll ();
-			}
 		}
 		
 		//------------------------------------------------------------------------------------------

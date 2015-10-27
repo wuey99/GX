@@ -439,16 +439,16 @@ package gx.zone {
 				
 		//------------------------------------------------------------------------------------------
 		public function isValidZoneObjectItem (__itemName:String):Boolean {
-			return __itemName in m_zoneObjectsMap;
+			return XType.hasField (m_zoneObjectsMap, __itemName);
 		}
 				
 		//------------------------------------------------------------------------------------------
 		public function isZoneObjectItemNoKill (__itemName:String):Boolean {
-			return __itemName in m_zoneObjectsMapNoKill;
+			return XType.hasField (m_zoneObjectsMapNoKill, __itemName);
 		}
 				
 		//------------------------------------------------------------------------------------------
-		public function getZoneItems ():XDict /* <Int, ZoneX> */ {
+		public function getZoneItems ():XDict /* <Int, XMapItemModel> */ {
 			return m_zoneItems;
 		}
 				
@@ -462,7 +462,7 @@ package gx.zone {
 		}
 				
 		//------------------------------------------------------------------------------------------
-		public function getStarterRingItems ():XDict /* <Int, StarterRingControllerX> */ {
+		public function getStarterRingItems ():XDict /* <Int, XMapItemModel> */ {
 			return m_starterRingItems;
 		}
 				

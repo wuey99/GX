@@ -50,7 +50,7 @@ package gx.zone {
 		public var m_sprite:XBitmap;
 		public var x_sprite:XDepthSprite;
 		public var script:XTask;
-		public var m_zone:Number;
+		public var m_zone:int;
 		
 		//------------------------------------------------------------------------------------------
 		public function StarterRingControllerX () {
@@ -68,7 +68,7 @@ package gx.zone {
 		public override function setupX ():void {
 			super.setupX ();
 			
-			setCX (-8, +8, -8, +8);
+			setCX (-8, 8, -8, 8);
 			
 			var __xml:XSimpleXMLNode = new XSimpleXMLNode ();
 			__xml.setupWithXMLString (item.params);
@@ -171,7 +171,7 @@ package gx.zone {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function getZone ():Number {
+		public function getZone ():int {
 			return m_zone;
 		}
 		

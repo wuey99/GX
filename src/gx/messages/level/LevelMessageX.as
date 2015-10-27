@@ -114,13 +114,13 @@ package gx.messages.level {
 		//------------------------------------------------------------------------------------------
 		public function setMessage (
 			__message:String,
-			__size:Number,
-			__color:Number,
+			__size:int,
+			__color:int,
 			__width:Number,
 			__height:Number,
 			__alignment:String,
 			__spacing:Number,
-			__leading:Number,
+			__leading:int,
 			__fontName:String
 		):void {
 			
@@ -139,7 +139,7 @@ package gx.messages.level {
 			m_text.size = __size;
 			m_text.letterSpacing = __spacing;
 			m_text.leading = __leading;
-			m_text.align = __alignment
+			m_text.align = __alignment;
 			
 			m_text.width = __width;
 			m_text.height = __height;

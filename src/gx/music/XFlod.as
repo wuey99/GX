@@ -66,7 +66,7 @@ package gx.music {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function playSong (__source:Class):void {
+		public function playSong (__source:Class /* <Dynamic> */):void {
 			if (m_player != null) {
 				stopSong ();
 			}
@@ -98,11 +98,11 @@ package gx.music {
 		public function setVolume (__volume:Number):void {
 			m_volume = __volume;
 
-			if (m_player) {
+			if (m_player != null) {
 				m_player.volume = m_volume;
 			}
 
-			if (!m_player && m_source && m_volume) {
+			if (m_player == null && m_source != null && m_volume > 0.0) {
 				playSong (m_source);
 			}
 		}
@@ -124,7 +124,7 @@ package gx.music {
 						XTask.FLAGS, function (__task:XTask):void {
 							__volume = Math.max (0.0, __volume - 0.10);
 							
-							m_player.volume = __volume;
+							m_player.volume = int (__volume);
 							
 							__task.ifTrue (__volume == 0.0);
 						}, XTask.BNE, "loop",

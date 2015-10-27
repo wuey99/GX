@@ -28,6 +28,11 @@
 package gx {
 	
 // GX
+	import flash.external.*;
+	import flash.net.*;
+	import flash.ui.*;
+	import flash.utils.*;
+	
 	import gx.assets.*;
 	import gx.game.*;
 	import gx.hud.*;
@@ -38,7 +43,6 @@ package gx {
 	import gx.music.*;
 	import gx.text.*;
 	import gx.zone.*;
-	import gx.game.*;
 	
 	import kx.*;
 	import kx.bitmap.XBitmapDataAnim;
@@ -49,17 +53,12 @@ package gx {
 	import kx.resource.*;
 	import kx.signals.XSignal;
 	import kx.task.*;
-	import kx.type.*;
 	import kx.texture.*;
+	import kx.type.*;
 	import kx.world.*;
 	import kx.world.logic.*;
-	import kx.xml.*;
 	import kx.xmap.*;
-	
-	import flash.external.*;
-	import flash.net.*;
-	import flash.ui.*;
-	import flash.utils.*;
+	import kx.xml.*;
 	
 	include "..\\flash.h";
 	
@@ -80,7 +79,7 @@ package gx {
 		public var m_levelData:*;
 		public var m_levelName:String;
 		public var m_levelComplete:Boolean;	
-		public var m_currentZone:Number;
+		public var m_currentZone:int;
 		
 		public var m_setMickeyToStartSignal:XSignal;
 		public var m_zoneStartedSignal:XSignal;
@@ -562,22 +561,22 @@ package gx {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function getZoneItems ():XDict /* <Int, ZoneX> */ {
+		public function getZoneItems ():XDict /* <Int, XMapItemModel> */ {
 			return getZoneManager ().getZoneItems ();
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function getZoneItemObject (__zone:Number):ZoneX {
+		public function getZoneItemObject (__zone:int):ZoneX {
 			return getZoneManager ().getZoneItemObject (__zone);
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function getStarterRingItems ():XDict /* <Int, StarterRingControllerX> */ {
+		public function getStarterRingItems ():XDict /* <Int, XMapItemModel> */ {
 			return getZoneManager ().getStarterRingItems ();
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function setMickeyToStartPosition (__zone:Number):void {	
+		public function setMickeyToStartPosition (__zone:int):void {	
 			getZoneManager ().setMickeyToStartPosition (__zone);
 		}
 		
@@ -756,7 +755,7 @@ package gx {
 			
 			__request.method = URLRequestMethod.POST;
 			
-			navigateToURL (__request, "_blank");	
+			__navigateToURL (__request, "_blank");	
 		}
 		
 		//------------------------------------------------------------------------------------------
@@ -764,20 +763,26 @@ package gx {
 			var isString:Boolean = XType.isType (url, String);
 			var req:URLRequest = isString ? new URLRequest(url) : url;
 			if (!ExternalInterface.available) {
-				navigateToURL(req, window);
+				__navigateToURL(req, window);
 			} else {
 				var strUserAgent:String = String(ExternalInterface.call("function() {return navigator.userAgent;}")).toLowerCase();
-				if (strUserAgent.indexOf("firefox") != -1 || (strUserAgent.indexOf("msie") != -1 && uint(strUserAgent.substr(strUserAgent.indexOf("msie") + 5, 3)) >= 7)) {
+				var msieIndex:uint = XType.parseInt (strUserAgent.substr(strUserAgent.indexOf("msie") + 5, 3));
+				if (strUserAgent.indexOf("firefox") != -1 || (strUserAgent.indexOf("msie") != -1 && msieIndex >= 7)) {
 					ExternalInterface.call("window.open", req.url, window, specs);
 				} else {
-					navigateToURL(req, window);
+					__navigateToURL(req, window);
 				}
 			}
 		}
 		
 		//------------------------------------------------------------------------------------------
 		public function getNetworkingRestriction():String {
-			
+			// <HAXE>
+			/* --
+			return "";
+			-- */
+			// </HAXE>
+			// <AS3>
 			var result:String = "all"; // default level
 			
 			try {
@@ -799,6 +804,7 @@ package gx {
 			}
 			
 			return result;
+			// </AS3>
 		}
 		
 		//------------------------------------------------------------------------------------------
@@ -841,6 +847,18 @@ package gx {
 			trace (": ", __urlString);
 			
 			return __urlString;
+		}
+		
+		//------------------------------------------------------------------------------------------
+		private function __navigateToURL (__req:URLRequest, __url):void {
+			// <HAXE>
+			/* --
+			openfl.Lib.getURL(__req, __url);
+			-- */
+			// </HAXE>
+			// <AS3>
+			navigateToURL (__req, __url);
+			// </AS3>
 		}
 		
 	//------------------------------------------------------------------------------------------

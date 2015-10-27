@@ -63,7 +63,7 @@ package gx.zone {
 		public override function setupX ():void {
 			super.setupX ();
 			
-			setCX (-8, +8, -8, +8);
+			setCX (-8, 8, -8, 8);
 			
 			script = addEmptyTask ();
 			
