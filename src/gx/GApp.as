@@ -86,7 +86,7 @@ package gx {
 		public var m_zoneFinishedSignal:XSignal;
 		public var m_mickeyDeathSignal:XSignal;
 		public var m_triggerSignal:XSignal;
-		public var m_trigger$Signal:XSignal;
+		public var m_triggerXSignal:XSignal;
 		public var m_pingSignal:XSignal;
 		
 		public var m_player:XFlod;
@@ -177,7 +177,7 @@ package gx {
 			m_zoneStartedSignal = new XSignal ();
 			m_zoneFinishedSignal = new XSignal ();
 			m_triggerSignal = new XSignal ();
-			m_trigger$Signal = new XSignal ();
+			m_triggerXSignal = new XSignal ();
 			m_pingSignal = new XSignal ();
 		}
 
@@ -700,17 +700,17 @@ package gx {
 		
 		//------------------------------------------------------------------------------------------
 		public function fireTriggerXSignal (__trigger:String):void {
-			m_trigger$Signal.fireSignal (__trigger);
+			m_triggerXSignal.fireSignal (__trigger);
 		}
 		
 		//------------------------------------------------------------------------------------------
 		public function addTriggerXListener (__listener:Function):void {
-			m_trigger$Signal.addListener (__listener);
+			m_triggerXSignal.addListener (__listener);
 		}
 		
 		//------------------------------------------------------------------------------------------
 		public function removeTriggerXListener (__listener:Function):void {
-			m_trigger$Signal.removeListener (__listener);
+			m_triggerXSignal.removeListener (__listener);
 		}
 		
 		//------------------------------------------------------------------------------------------
