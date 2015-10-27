@@ -122,7 +122,7 @@ package gx.ads {
 					// parent
 					null,
 					// logicObject
-					new CPMStarAdX () as XLogicObject,
+					/* @:cast */ new CPMStarAdX () as XLogicObject,
 					// item, layer, depth
 					null, -1, 2000000,
 					// x, y, z

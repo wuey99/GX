@@ -86,7 +86,7 @@ package gx.music {
 						// parent
 						GX.appX.getLevelObject (),
 						// logicObject
-						new BGMToggleButtonX () as XLogicObject,
+						/* @:cast */ new BGMToggleButtonX () as XLogicObject,
 						// item, layer, depth
 						null, GX.appX.PLAYFIELD_LAYER, 100000,
 						// x, y, z
@@ -110,7 +110,7 @@ package gx.music {
 						// parent
 						GX.appX.getLevelObject (),
 						// logicObject
-						new SFXToggleButtonX () as XLogicObject,
+						/* @:cast */ new SFXToggleButtonX () as XLogicObject,
 						// item, layer, depth
 						null, GX.appX.PLAYFIELD_LAYER, 100000,
 						// x, y, z

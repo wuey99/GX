@@ -129,7 +129,7 @@ package gx.levels {
 					// parent
 					this,
 					// logicObject
-					new XMapLayerView () as XLogicObject,
+					/* @:cast */ new XMapLayerView () as XLogicObject,
 					// item, layer, depth
 					null, 0, 1000,
 					// x, y, z
@@ -154,7 +154,7 @@ package gx.levels {
 					// parent
 					this,
 					// logicObject
-					new XMapLayerCachedView () as XLogicObject,
+					/* @:cast */ new XMapLayerCachedView () as XLogicObject,
 					// item, layer, depth
 					null, 0, 1000,
 					// x, y, z

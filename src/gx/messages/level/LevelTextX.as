@@ -190,7 +190,7 @@ package gx.messages.level {
 				// parent
 				this,
 				// logicObject
-				new LevelMessageX () as XLogicObject,
+				/* @:cast */ new LevelMessageX () as XLogicObject,
 				// item, layer, depth
 				null, getLayer (), 1000,
 				// x, y, z

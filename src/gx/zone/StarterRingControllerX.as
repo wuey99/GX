@@ -34,6 +34,7 @@ package gx.zone {
 	import kx.*;
 	import kx.geom.*;
 	import kx.task.*;
+	import kx.type.*;
 	import kx.world.*;
 	import kx.world.collision.*;
 	import kx.world.logic.*;
@@ -128,7 +129,7 @@ package gx.zone {
 				// parent
 				this,
 				// logicObject
-				new ClickHereMessageX () as XLogicObject,
+				/* @:cast */ new ClickHereMessageX () as XLogicObject,
 				// item, layer, depth
 				null, 0, 0,
 				// x, y, z
@@ -150,7 +151,7 @@ package gx.zone {
 				// parent
 				this,
 				// class
-				StarterRingX,
+				/* @:cast */ StarterRingX,
 				// item, layer, depth
 				null, getLayer (), getDepth (),
 				// x, y, z

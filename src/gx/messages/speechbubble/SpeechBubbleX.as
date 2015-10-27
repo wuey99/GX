@@ -114,7 +114,7 @@ package gx.messages.speechbubble {
 							// parent
 							self,
 							// logicObject
-							new LevelMessageX () as XLogicObject,
+							/* @:cast */ new LevelMessageX () as XLogicObject,
 							// item, layer, depth
 							null, getLayer (), getDepth () + 100,
 							// x, y, z
