@@ -32,6 +32,7 @@ package gx.text {
 	import kx.*;
 	import kx.geom.*;
 	import kx.task.*;
+	import kx.type.*;
 	import kx.world.*;
 	import kx.world.collision.*;
 	import kx.world.logic.*;
@@ -94,9 +95,12 @@ package gx.text {
 		// create sprites
 		//------------------------------------------------------------------------------------------
 		public override function createSprites ():void {
-			m_bitmap = new Array (m_text.length); // <XBitmap>
-			x_sprite = new Array (m_text.length); // <XDepthSprite>
+			m_bitmap = new Array (); // <XBitmap>
+			x_sprite = new Array (); // <XDepthSprite>
 
+			XType.initArray (m_bitmap, m_text.length, null);
+			XType.initArray (x_sprite, m_text.length, null);
+			
 			for (var i:int=0; i<m_text.length; i++) {
 				var __c:int = m_text.charCodeAt (i) - 32;
 				if (__c >= 64) __c -= 32;

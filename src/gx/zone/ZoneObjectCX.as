@@ -77,7 +77,7 @@ package gx.zone {
 
 		//------------------------------------------------------------------------------------------
 		public function setAsPersistedObject (__flag:Boolean):void {
-			m_persistedObject = __flag
+			m_persistedObject = __flag;
 		}
 		
 		//------------------------------------------------------------------------------------------

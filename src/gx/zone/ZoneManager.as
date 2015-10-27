@@ -130,7 +130,7 @@ package gx.zone {
 			
 			//------------------------------------------------------------------------------------------
 			if (__currentZoneItemObject == null) {
-				throw (Error ("no zone item object found!"));	
+				throw (XType.createError ("no zone item object found!"));	
 			}
 			
 			//------------------------------------------------------------------------------------------

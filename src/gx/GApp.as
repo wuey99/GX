@@ -162,7 +162,8 @@ package gx {
 				1.0, 0
 			) as XFlod;
 			
-			m_gameState = null;
+			m_gameState = 0;
+			m_gameStateObject = null;
 			
 			m_livesChangedSignal = new XSignal ();
 			

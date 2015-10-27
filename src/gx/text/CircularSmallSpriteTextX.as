@@ -58,7 +58,7 @@ package gx.text {
 			super.setupX ();
 			
 			angle = 45;
-			dist = 75
+			dist = 75;
 			delta = 25;
 			speed = 4.0;
 

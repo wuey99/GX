@@ -305,12 +305,12 @@ package gx.zone {
 			
 			var __length:int = (c2-c1) * (r2-r1);
 			
-			var __tiles:Array /* <Int> */ = new Array (__length); /* <Int> */
+			var __tiles:Array /* <Int> */ = new Array (); /* <Int> */
 	
 			var i:int;
 			
 			for (i=0; i<__length; i++) {
-				__tiles[i] = XSubmapModel.CX_EMPTY;
+				__tiles.push (XSubmapModel.CX_EMPTY);
 			}
 			
 			trace (": xml: ", m_xml.toXMLString ());
@@ -339,12 +339,12 @@ package gx.zone {
 			
 			var __length:int = (c2-c1) * (r2-r1);
 			
-			var __tiles:Array /* <Int> */ = new Array (__length); /* <Int> */
+			var __tiles:Array /* <Int> */ = new Array (); /* <Int> */
 			
 			var i:int;
 			
 			for (i=0; i<__length; i++) {
-				__tiles[i] = XSubmapModel.CX_SOLID;
+				__tiles.push (XSubmapModel.CX_SOLID);
 			}
 
 			trace (": ----------------------------------------------: ");

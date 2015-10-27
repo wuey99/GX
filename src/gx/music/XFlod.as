@@ -99,7 +99,7 @@ package gx.music {
 			m_volume = __volume;
 
 			if (m_player != null) {
-				m_player.volume = m_volume;
+				m_player.volume = int (m_volume);
 			}
 
 			if (m_player == null && m_source != null && m_volume > 0.0) {
@@ -164,7 +164,7 @@ package gx.music {
 		
 		//------------------------------------------------------------------------------------------
 		public function isPlaying ():Boolean {
-			if (m_player) {
+			if (m_player != null) {
 				return true;
 			}
 			else
