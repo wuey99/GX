@@ -49,6 +49,7 @@ package gx {
 	import kx.resource.*;
 	import kx.signals.XSignal;
 	import kx.task.*;
+	import kx.type.*;
 	import kx.texture.*;
 	import kx.world.*;
 	import kx.world.logic.*;
@@ -137,7 +138,14 @@ package gx {
 			
 			xxx.grabFocus ();
 			
+			// <HAXE>
+			/* --
+			m_assets = Type.createInstance (__assetsClass, [m_XApp, __parent]);
+			-- */
+			// </HAXE>
+			// <AS3>
 			m_assets = new __assetsClass (m_XApp, __parent);
+			// </AS3>
 			m_assets.load ();
 		
 			GX.setup (this, m_XApp);
@@ -196,7 +204,7 @@ package gx {
 						// parent
 						null,
 						// logicObject
-						new __gameState (),
+						/* @:cast */ XType.createInstance (__gameState) as XLogicObject,
 						// item, layer, depth
 						null, 0, 0,
 						// x, y, z
@@ -331,7 +339,7 @@ package gx {
 			
 			m_XApp.getAllClassNames ().forEach (
 				function (x:*):void {
-					t.add (x as String);					
+					t.add (/* @:safe_cast */ x as String);					
 				}
 			);
 			
@@ -637,16 +645,20 @@ package gx {
 		}
 
 		//------------------------------------------------------------------------------------------
+		/* @:get, set lives Int */
+		
 		public function get lives ():int {
 			return  m_lives;
 		}
 		
-		//------------------------------------------------------------------------------------------
-		public function set lives (__value:int):void {
+		public function set lives (__value:int): /* @:set_type */ void {
 			m_lives = __value;
 			
 			m_livesChangedSignal.fireSignal ();
+			
+			/* @:set_return 0; */			
 		}
+		/* @:end */
 		
 		//------------------------------------------------------------------------------------------
 		public function addLivesChangedListener (__listener:Function):void {
@@ -749,7 +761,8 @@ package gx {
 		
 		//------------------------------------------------------------------------------------------
 		public  function openURLInBrowserWithJavascript (url:*, window:String = "_blank", specs:String=""):void {
-			var req:URLRequest = url is String ? new URLRequest(url) : url;
+			var isString:Boolean = XType.isType (url, String);
+			var req:URLRequest = isString ? new URLRequest(url) : url;
 			if (!ExternalInterface.available) {
 				navigateToURL(req, window);
 			} else {
