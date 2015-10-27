@@ -69,7 +69,7 @@ package gx {
 		public var m_app:GApp;
 		public var m_assets:XAssets;
 		public var m_mickeyObject:_MickeyX;
-		public var m_mickeyCursorObject:_MickeyCursorX;;
+		public var m_mickeyCursorObject:_MickeyCursorX;
 		public var m_levelObject:_LevelX;
 		public var m_gameHudObject:_HudX;
 		public var m_hudObject:XLogicObject;
@@ -699,17 +699,17 @@ package gx {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function fireTrigger$Signal (__trigger:String):void {
+		public function fireTriggerXSignal (__trigger:String):void {
 			m_trigger$Signal.fireSignal (__trigger);
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function addTrigger$Listener (__listener:Function):void {
+		public function addTriggerXListener (__listener:Function):void {
 			m_trigger$Signal.addListener (__listener);
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function removeTrigger$Listener (__listener:Function):void {
+		public function removeTriggerXListener (__listener:Function):void {
 			m_trigger$Signal.removeListener (__listener);
 		}
 		
