@@ -293,57 +293,58 @@ package gx.zone {
 					
 			m_gateItemObjects = new XDict (); /* <Int, GateX> */
 					
-			if (m_Horz_GateX != null && m_Vert_GateX != null) m_gateItems.forEach (
-				function (__id:*):void {
-					var __item:XMapItemModel = m_gateItems.get (__id);
-							
-					var __gateItemObject:GateX;
-							
-					trace (": gateItems: ", __item.id, __item.XMapItem);
-							
-					if (__item.XMapItem == "Horz_Gate_Item") {
-						__gateItemObject = xxx.getXLogicManager ().initXLogicObject (
-							// parent
-							GX.appX.getLevelObject (),
-							// logicObject
-							/* @:cast */ XType.createInstance (m_Horz_GateX) as XLogicObject,
-							// item, layer, depth
-							__item, m_playFieldLayer + 0, 10000,
-							// x, y, z
-							__item.x, __item.y, 0,
-							// scale, rotation
-							1.0, 0,
-							[
-								m_GateArrowX
-							]
-						) as GateX;
+			if (m_Horz_GateX != null && m_Vert_GateX != null)
+				m_gateItems.forEach (
+					function (__id:*):void {
+						var __item:XMapItemModel = m_gateItems.get (__id);
+								
+						var __gateItemObject:GateX;
+								
+						trace (": gateItems: ", __item.id, __item.XMapItem);
+								
+						if (__item.XMapItem == "Horz_Gate_Item") {
+							__gateItemObject = xxx.getXLogicManager ().initXLogicObject (
+								// parent
+								GX.appX.getLevelObject (),
+								// logicObject
+								/* @:cast */ XType.createInstance (m_Horz_GateX) as XLogicObject,
+								// item, layer, depth
+								__item, m_playFieldLayer + 0, 10000,
+								// x, y, z
+								__item.x, __item.y, 0,
+								// scale, rotation
+								1.0, 0,
+								[
+									m_GateArrowX
+								]
+							) as GateX;
+						}
+						else
+						{
+							__gateItemObject = xxx.getXLogicManager ().initXLogicObject (
+								// parent
+								GX.appX.getLevelObject (),
+								// logicObject
+								/* @:cast */ XType.createInstance (m_Vert_GateX) as XLogicObject,
+								// item, layer, depth
+								__item, m_playFieldLayer + 0, 10000,
+								// x, y, z
+								__item.x, __item.y, 0,
+								// scale, rotation
+								1.0, 0,
+								[
+									m_GateArrowX
+								]
+							) as GateX;	
+						}
+								
+						GX.appX.getLevelObject ().addXLogicObject (__gateItemObject);
+								
+						__item.inuse++;
+								
+						__gateItemObject.setXMapModel (GX.appX.__getMickeyObject ().getLayer () + 1, xxx.getXMapModel (), GX.appX.getLevelObject ());	
 					}
-					else
-					{
-						__gateItemObject = xxx.getXLogicManager ().initXLogicObject (
-							// parent
-							GX.appX.getLevelObject (),
-							// logicObject
-							/* @:cast */ XType.createInstance (m_Vert_GateX) as XLogicObject,
-							// item, layer, depth
-							__item, m_playFieldLayer + 0, 10000,
-							// x, y, z
-							__item.x, __item.y, 0,
-							// scale, rotation
-							1.0, 0,
-							[
-								m_GateArrowX
-							]
-						) as GateX;	
-					}
-							
-					GX.appX.getLevelObject ().addXLogicObject (__gateItemObject);
-							
-					__item.inuse++;
-							
-					__gateItemObject.setXMapModel (GX.appX.__getMickeyObject ().getLayer () + 1, xxx.getXMapModel (), GX.appX.getLevelObject ());	
-				}
-			);
+				);
 					
 			//------------------------------------------------------------------------------------------
 			m_doorItems = __layerModel.lookForItem ("Horz_Door_Item");
@@ -351,51 +352,52 @@ package gx.zone {
 					
 			m_doorItemObjects = new XDict (); /* <Int, DoorX> */
 					
-			if (m_Horz_DoorX != null && m_Vert_DoorX != null) m_doorItems.forEach (
-				function (__id:*):void {
-					var __item:XMapItemModel = m_doorItems.get (__id);
-							
-					var __doorItemObject:DoorX;
-							
-					trace (": doorItems: ", __item.id, __item.XMapItem);
-							
-					if (__item.XMapItem == "Horz_Door_Item") {
-						__doorItemObject = xxx.getXLogicManager ().initXLogicObject (
-							// parent
-							GX.appX.getLevelObject (),
-							// logicObject
-							/* @:cast */ XType.createInstance (m_Horz_DoorX) as XLogicObject,
-							// item, layer, depth
-							__item, m_playFieldLayer + 0, 10000,
-							// x, y, z
-							__item.x, __item.y, 0,
-							// scale, rotation
-							1.0, 0
-						) as DoorX;
+			if (m_Horz_DoorX != null && m_Vert_DoorX != null)
+				m_doorItems.forEach (
+					function (__id:*):void {
+						var __item:XMapItemModel = m_doorItems.get (__id);
+								
+						var __doorItemObject:DoorX;
+								
+						trace (": doorItems: ", __item.id, __item.XMapItem);
+								
+						if (__item.XMapItem == "Horz_Door_Item") {
+							__doorItemObject = xxx.getXLogicManager ().initXLogicObject (
+								// parent
+								GX.appX.getLevelObject (),
+								// logicObject
+								/* @:cast */ XType.createInstance (m_Horz_DoorX) as XLogicObject,
+								// item, layer, depth
+								__item, m_playFieldLayer + 0, 10000,
+								// x, y, z
+								__item.x, __item.y, 0,
+								// scale, rotation
+								1.0, 0
+							) as DoorX;
+						}
+						else
+						{
+							__doorItemObject = xxx.getXLogicManager ().initXLogicObject (
+								// parent
+								GX.appX.getLevelObject (),
+								// logicObject
+								/* @:cast */ XType.createInstance (m_Vert_DoorX) as XLogicObject,
+								// item, layer, depth
+								__item, m_playFieldLayer + 0, 10000,
+								// x, y, z
+								__item.x, __item.y, 0,
+								// scale, rotation
+								1.0, 0
+							) as DoorX;	
+						}
+								
+						GX.appX.getLevelObject ().addXLogicObject (__doorItemObject);
+								
+						__item.inuse++;
+								
+						__doorItemObject.setXMapModel (GX.appX.__getMickeyObject ().getLayer () + 1, xxx.getXMapModel (), GX.appX.getLevelObject ());	
 					}
-					else
-					{
-						__doorItemObject = xxx.getXLogicManager ().initXLogicObject (
-							// parent
-							GX.appX.getLevelObject (),
-							// logicObject
-							/* @:cast */ XType.createInstance (m_Vert_DoorX) as XLogicObject,
-							// item, layer, depth
-							__item, m_playFieldLayer + 0, 10000,
-							// x, y, z
-							__item.x, __item.y, 0,
-							// scale, rotation
-							1.0, 0
-						) as DoorX;	
-					}
-							
-					GX.appX.getLevelObject ().addXLogicObject (__doorItemObject);
-							
-					__item.inuse++;
-							
-					__doorItemObject.setXMapModel (GX.appX.__getMickeyObject ().getLayer () + 1, xxx.getXMapModel (), GX.appX.getLevelObject ());	
-				}
-			);
+				);
 					
 			//------------------------------------------------------------------------------------------
 			m_currentGateItems = __layerModel.lookForItem ("Current_Gate_Item");
