@@ -223,22 +223,6 @@ package gx.zone {
 					
 					XTask.RETN,
 			]);
-			
-			/*
-			xxx.getXLogicManager ().initXLogicObject (
-				// parent
-				null,
-				// logicObject
-				new SpriteTextX () as XLogicObject,
-				// item, layer, depth
-				null, 0, getDepth () + 1,
-				// x, y, z
-				getPos ().x + (__r.right - __r.left)/2 - 16, getPos ().y + (__r.bottom - __r.top)/2 - 12 , 0,
-				// scale, rotation
-				1.0, 0,
-				"GO!"
-			) as SpriteTextX;
-			*/
 		}
 		
 		//------------------------------------------------------------------------------------------

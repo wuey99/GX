@@ -48,7 +48,7 @@ package gx.zone {
 		
 		public var m_zone:int;
 		public var m_direction:String;
-		public var m_size:Number
+		public var m_size:Number;
 		
 		//------------------------------------------------------------------------------------------
 		public function ZoneX () {
@@ -66,7 +66,7 @@ package gx.zone {
 		public override function setupX ():void {
 			super.setupX ();
 			
-			setCX (+0, +96, +0, +96);
+			setCX (0, 96, 0, 96);
 		
 			__setupItemParamsXML ();
 		}

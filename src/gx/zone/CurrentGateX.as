@@ -281,7 +281,7 @@ package gx.zone {
 							}
 							else
 							{
-								__dx = Math.min (+16, __dx + m_currentX);
+								__dx = Math.min ( 16, __dx + m_currentX);
 							}
 							GX.appX.__getMickeyObject ().extraDX = __dx;
 							
@@ -291,7 +291,7 @@ package gx.zone {
 							}
 							else
 							{
-								__dy = Math.min (+16, __dy + m_currentY);
+								__dy = Math.min ( 16, __dy + m_currentY);
 							}
 							GX.appX.__getMickeyObject ().extraDY = __dy;
 						},

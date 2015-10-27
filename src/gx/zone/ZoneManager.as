@@ -45,7 +45,7 @@ package gx.zone {
 		private var m_XApp:XApp;
 		
 		private var m_starterRingItems:XDict; /* <Int, XMapItemModel> */
-		private var m_starterRingItemObjects:XDict; /* <Int>, StarterRingControllerX> */
+		private var m_starterRingItemObjects:XDict; /* <Int, StarterRingControllerX> */
 		
 		private var m_zoneItems:XDict; /* <Int, XMapItemModel> */
 		private var m_zoneItemObjects:XDict; /* <Int, ZoneX> */
@@ -453,7 +453,7 @@ package gx.zone {
 		}
 				
 		//------------------------------------------------------------------------------------------
-		public function getZoneItemObject (__zone:Number):ZoneX {
+		public function getZoneItemObject (__zone:int):ZoneX {
 			if (m_zoneItemObjects.exists (__zone)) {
 				return m_zoneItemObjects.get (__zone) as ZoneX;
 			}
@@ -467,11 +467,11 @@ package gx.zone {
 		}
 				
 		//------------------------------------------------------------------------------------------
-		public function setMickeyToStartPosition (__zone:Number):void {	
+		public function setMickeyToStartPosition (__zone:int):void {	
 			var __logicObject:StarterRingControllerX = m_starterRingItemObjects.get (__zone) as StarterRingControllerX;
 					
 			if (__logicObject.getZone () == __zone) {
-				GX.appX.__getMickeyObject ().oX = __logicObject.oX
+				GX.appX.__getMickeyObject ().oX = __logicObject.oX;
 				GX.appX.__getMickeyObject ().oY = __logicObject.oY;
 				GX.appX.__getMickeyObject ().oRotation = 0;
 			}

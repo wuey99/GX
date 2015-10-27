@@ -267,8 +267,8 @@ package gx.levels {
 			
 			addTask ([
 				XTask.LABEL, "loop",
-				function ():void {__setX (-__count) }, XTask.WAIT, __delay,
-				function ():void {__setX (+__count) }, XTask.WAIT, __delay,
+				function ():void {__setX (-__count); }, XTask.WAIT, __delay,
+				function ():void {__setX ( __count); }, XTask.WAIT, __delay,
 				
 				XTask.FLAGS, function (__task:XTask):void {
 					__count--;
@@ -302,8 +302,8 @@ package gx.levels {
 			
 			addTask ([
 				XTask.LABEL, "loop",
-					function ():void {__setY (-__count) }, XTask.WAIT, __delay,
-					function ():void {__setY (+__count) }, XTask.WAIT, __delay,
+					function ():void {__setY (-__count); }, XTask.WAIT, __delay,
+					function ():void {__setY ( __count); }, XTask.WAIT, __delay,
 				
 					XTask.FLAGS, function (__task:XTask):void {
 						__count--;
