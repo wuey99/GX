@@ -94,8 +94,8 @@ package gx.text {
 		// create sprites
 		//------------------------------------------------------------------------------------------
 		public override function createSprites ():void {
-			m_bitmap = new Array (m_text.length);
-			x_sprite = new Array (m_text.length);
+			m_bitmap = new Array (m_text.length); // <XBitmap>
+			x_sprite = new Array (m_text.length); // <XDepthSprite>
 
 			for (var i:int=0; i<m_text.length; i++) {
 				var __c:int = m_text.charCodeAt (i) - 32;

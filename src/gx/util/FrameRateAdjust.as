@@ -36,13 +36,11 @@ package gx.util  {
 	import kx.world.sprite.*;
 	
 	import flash.display.Stage;
-	
-	import mx.charts.chartClasses.NumericAxis;
-	
+
 //------------------------------------------------------------------------------------------
 	public class FrameRateAdjust extends XTextLogicObject {
 		public var m_stage:Stage;
-		public var m_frameSamples:Array;
+		public var m_frameSamples:Array; // <Float>
 		public var m_maxSamples:int;
 		public var m_adjustedFrameRate:Number;
 		
@@ -62,7 +60,7 @@ package gx.util  {
 			
 			m_maxSamples = 16;
 			
-			m_frameSamples = new Array (m_maxSamples);
+			m_frameSamples = new Array (m_maxSamples); // <Float>
 			
 			for (var i:int = 0; i < m_maxSamples; i++) {
 				m_frameSamples.push (xxx.getIdealFPS ());
