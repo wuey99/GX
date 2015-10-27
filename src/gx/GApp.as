@@ -115,7 +115,14 @@ package gx {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function setup (__assetsClass:Class, __mickeyClass:Class, __parent:*, __timerInterval:Number=32, __layers:int=4):void {	
+		public function setup (
+			__assetsClass:Class /* <Dynamic> */,
+			__mickeyClass:Class /* <Dynamic> */,
+			__parent:*,
+			__timerInterval:Number=32,
+			__layers:int=4
+			):void {
+			
 			m_app = this;
 			
 			m_XApp = new XApp ();
@@ -180,7 +187,7 @@ package gx {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function launchGamestate (__gameState:Class):void {
+		public function launchGamestate (__gameState:Class /* <Dynamic> */):void {
 			m_XApp.getXTaskManager ().addTask ([
 				XTask.WAIT, 0x0800,
 				
