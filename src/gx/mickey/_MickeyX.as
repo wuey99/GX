@@ -113,13 +113,13 @@ package gx.mickey {
 		}
 
 //------------------------------------------------------------------------------------------
-		public function addWaitingListener (__callback:Function):void {
-			m_waitingSignal.addListener (__callback);
+		public function addWaitingListener (__listener:Function):void {
+			m_waitingSignal.addListener (__listener);
 		}
 		
 //------------------------------------------------------------------------------------------
-		public function removeWaitingListener (__callback:Function):void {
-			m_waitingSignal.removeListener (__callback);
+		public function removeWaitingListener (__listener:Function):void {
+			m_waitingSignal.removeListener (__listener);
 		}
 		
 //------------------------------------------------------------------------------------------
@@ -128,13 +128,13 @@ package gx.mickey {
 		}
 
 //------------------------------------------------------------------------------------------
-		public function addPlayingListener (__callback:Function):void {
-			m_playingSignal.addListener (__callback);
+		public function addPlayingListener (__listener:Function):void {
+			m_playingSignal.addListener (__listener);
 		}
 		
 //------------------------------------------------------------------------------------------
-		public function removePlayingListener (__callback:Function):void {
-			m_playingSignal.removeListener (__callback);
+		public function removePlayingListener (__listener:Function):void {
+			m_playingSignal.removeListener (__listener);
 		}
 		
 //------------------------------------------------------------------------------------------

@@ -740,9 +740,9 @@ package gx {
 			__id:int,
 			__type:String,
 			__logicObject:XLogicObject,
-			__callback:Function
+			__listener:Function
 		):void {
-			m_pingSignal.fireSignal (__id, __type, __logicObject, __callback);
+			m_pingSignal.fireSignal (__id, __type, __logicObject, __listener);
 		}
 		
 		//------------------------------------------------------------------------------------------
