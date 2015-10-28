@@ -420,7 +420,7 @@ package gx.zone {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function Opening_Script (__finally:Function):void {
+		public function Opening_Script (__finallyCallback:Function):void {
 
 			script.gotoTask ([
 				
@@ -449,7 +449,7 @@ package gx.zone {
 					XTask.EXEC, openGateAnimationX (),
 					
 					function ():void {
-						__finally ();
+						__finallyCallback ();
 					},
 	
 //						XTask.GOTO, "loop",
@@ -463,7 +463,7 @@ package gx.zone {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function Lowering_Script (__finally:Function):void {
+		public function Lowering_Script (__finallyCallback:Function):void {
 
 			setCXTiles ();
 			
@@ -499,7 +499,7 @@ package gx.zone {
 					XTask.EXEC, closeGateAnimationX (),
 					
 					function ():void {
-						__finally ();
+						__finallyCallback ();
 					},
 				
 //					XTask.GOTO, "loop",

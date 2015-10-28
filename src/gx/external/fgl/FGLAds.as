@@ -195,7 +195,7 @@ package gx.external.fgl {
 			return _instance;
 		}
 		
-		public function set api (__value:FGLAds): /* @:set_type */ void {
+		public function set api (__val:FGLAds): /* @:set_type */ void {
 			/* @:set_return null; */			
 		}
 		
@@ -230,7 +230,7 @@ package gx.external.fgl {
 			return _status;
 		}		
 		
-		public function set status (__value:String): /* @:set_type */ void {
+		public function set status (__val:String): /* @:set_type */ void {
 			/* @:set_return ""; */			
 		}
 		/* @:end */	
@@ -247,7 +247,7 @@ package gx.external.fgl {
 			return _instance != null;
 		}
 		
-		public static function set apiLoaded (__value:Boolean): /* @:set_type */ void {
+		public static function set apiLoaded (__val:Boolean): /* @:set_type */ void {
 			/* @:set_return true; */			
 		}
 		/* @:end */

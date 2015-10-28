@@ -277,7 +277,7 @@ package gx.zone {
 		
 		
 		//------------------------------------------------------------------------------------------
-		public function Open_Script (__finally:Function):void {
+		public function Open_Script (__finallyCallback:Function):void {
 			
 			script.gotoTask ([
 				
@@ -306,7 +306,7 @@ package gx.zone {
 					XTask.EXEC, openGateAnimationX (),
 					
 					function ():void {
-						__finally ();
+						__finallyCallback ();
 					},
 	
 				XTask.LABEL, "wait",

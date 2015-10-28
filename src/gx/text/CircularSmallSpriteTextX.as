@@ -99,8 +99,8 @@ package gx.text {
 			return m_angle;
 		}
 		
-		public function set angle (__value:Number): /* @:set_type */ void {
-			m_angle = __value;
+		public function set angle (__val:Number): /* @:set_type */ void {
+			m_angle = __val;
 				
 			/* @:set_return 0; */			
 		}
@@ -113,8 +113,8 @@ package gx.text {
 			return m_dist;
 		}
 
-		public function set dist (__value:Number): /* @:set_type */ void {
-			m_dist = __value;
+		public function set dist (__val:Number): /* @:set_type */ void {
+			m_dist = __val;
 				
 			/* @:set_return 0; */			
 		}
@@ -127,8 +127,8 @@ package gx.text {
 			return m_delta;
 		}
 		
-		public function set delta (__value:Number): /* @:set_type */ void {
-			m_delta = __value;
+		public function set delta (__val:Number): /* @:set_type */ void {
+			m_delta = __val;
 			
 			/* @:set_return 0; */			
 		}
@@ -141,8 +141,8 @@ package gx.text {
 			return m_speed;
 		}
 		
-		public function set speed (__value:Number): /* @:set_type */ void {
-			m_speed = __value;
+		public function set speed (__val:Number): /* @:set_type */ void {
+			m_speed = __val;
 			
 			/* @:set_return 0; */			
 		}

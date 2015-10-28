@@ -363,7 +363,7 @@ package gx {
 			return m_player;
 		}
 		
-		public function set player (__value:XFlod): /* @:set_type */ void {
+		public function set player (__val:XFlod): /* @:set_type */ void {
 			/* @:set_return null; */			
 		}
 		/* @:end */
@@ -651,8 +651,8 @@ package gx {
 			return  m_lives;
 		}
 		
-		public function set lives (__value:int): /* @:set_type */ void {
-			m_lives = __value;
+		public function set lives (__val:int): /* @:set_type */ void {
+			m_lives = __val;
 			
 			m_livesChangedSignal.fireSignal ();
 			

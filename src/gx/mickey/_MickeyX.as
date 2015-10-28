@@ -71,8 +71,8 @@ package gx.mickey {
 			return m_extraDX;
 		}
 		
-		public function set extraDX (__value:Number): /* @:set_type */ void {
-			m_extraDX = __value;
+		public function set extraDX (__val:Number): /* @:set_type */ void {
+			m_extraDX = __val;
 			
 			/* @:set_return 0; */			
 		}
@@ -85,8 +85,8 @@ package gx.mickey {
 			return m_extraDY;
 		}
 		
-		public function set extraDY (__value:Number): /* @:set_type */ void {
-			m_extraDY = __value;
+		public function set extraDY (__val:Number): /* @:set_type */ void {
+			m_extraDY = __val;
 			
 			/* @:set_return 0; */			
 		}
