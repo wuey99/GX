@@ -164,13 +164,13 @@ package gx.zone {
 						m_currentX = -1.0;
 						break;
 					case "right":
-						m_currentX = +1.0;
+						m_currentX = 1.0;
 						break;
 					case "up":
 						m_currentY = -1.0;
 						break;
 					case "down":
-						m_currentY = +1.0;
+						m_currentY = 1.0;
 						break;
 				}
 			}
@@ -222,7 +222,7 @@ package gx.zone {
 					__logicObject.oRotation = 90.0;
 					break;
 				case "right":
-					__logicObject.oDX = +6.0;
+					__logicObject.oDX = 6.0;
 					__logicObject.oX += Math.random () * 32 - 16;
 					__logicObject.oY += Math.random () * 96 - 48;
 					__logicObject.oRotation = 270.0;
@@ -234,7 +234,7 @@ package gx.zone {
 					__logicObject.oRotation = 0.0;
 					break;
 				case "down":
-					__logicObject.oDY = +6.0;
+					__logicObject.oDY = 6.0;
 					__logicObject.oX += Math.random () * 96 - 48;
 					__logicObject.oX += Math.random () * 32 - 16;
 					__logicObject.oRotation = 180.0;

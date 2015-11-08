@@ -298,10 +298,10 @@ package gx.zone {
 			getBoundingRect ().copy2 (__r);
 			__r.offsetPoint (getPos ());
 	
-			c1 = Math.floor (__r.left/XSubmapModel.CX_TILE_WIDTH);
-			r1 = Math.floor (__r.top/XSubmapModel.CX_TILE_HEIGHT);
-			c2 = Math.floor (__r.right/XSubmapModel.CX_TILE_WIDTH);
-			r2 = Math.floor (__r.bottom/XSubmapModel.CX_TILE_HEIGHT);
+			c1 = int (__r.left/XSubmapModel.CX_TILE_WIDTH);
+			r1 = int (__r.top/XSubmapModel.CX_TILE_HEIGHT);
+			c2 = int (__r.right/XSubmapModel.CX_TILE_WIDTH);
+			r2 = int (__r.bottom/XSubmapModel.CX_TILE_HEIGHT);
 			
 			var __length:int = (c2-c1) * (r2-r1);
 			
@@ -332,10 +332,10 @@ package gx.zone {
 			getBoundingRect ().copy2 (__r);
 			__r.offsetPoint (getPos ());
 			
-			c1 = Math.floor (__r.left/XSubmapModel.CX_TILE_WIDTH);
-			r1 = Math.floor (__r.top/XSubmapModel.CX_TILE_HEIGHT);
-			c2 = Math.floor (__r.right/XSubmapModel.CX_TILE_WIDTH);
-			r2 = Math.floor (__r.bottom/XSubmapModel.CX_TILE_HEIGHT);
+			c1 = int (__r.left/XSubmapModel.CX_TILE_WIDTH);
+			r1 = int (__r.top/XSubmapModel.CX_TILE_HEIGHT);
+			c2 = int (__r.right/XSubmapModel.CX_TILE_WIDTH);
+			r2 = int (__r.bottom/XSubmapModel.CX_TILE_HEIGHT);
 			
 			var __length:int = (c2-c1) * (r2-r1);
 			
