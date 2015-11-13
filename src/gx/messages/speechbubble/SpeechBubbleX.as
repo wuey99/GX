@@ -155,7 +155,7 @@ package gx.messages.speechbubble {
 					//						__spacing:Number,
 					0.0,
 					//						__leading:Number,
-					0.0,
+					0,
 					//						__fontName:String,
 					"Aller"
 				);		

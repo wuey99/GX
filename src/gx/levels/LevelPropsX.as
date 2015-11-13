@@ -25,32 +25,58 @@
 // SOFTWARE.
 // <$end$/>
 //------------------------------------------------------------------------------------------
-package gx.zone {
-	import kx.*;
-	import kx.geom.*;
-	import kx.task.*;
-	import kx.world.*;
-	import kx.world.collision.*;
-	import kx.world.logic.*;
-	import kx.world.sprite.*;
-	
+package gx.levels {
+		
 	import flash.geom.*;
 	import flash.text.*;
 	import flash.utils.*;
 	
+	import gx.*;
+	import gx.assets.*;
+	
+	import kx.*;
+	import kx.collections.*;
+	import kx.geom.*;
+	import kx.signals.*;
+	import kx.task.*;
+	import kx.world.*;
+	import kx.world.logic.*;
+	import kx.world.sprite.*;
+	import kx.xmap.*;
+	import kx.xml.*;
+	
 	//------------------------------------------------------------------------------------------
-	public class ZoneDynamicObjectCX extends ZoneObjectCX {
+	public class LevelPropsX extends Object {
+		public var m_props:XDict; // <String, Dynamic>
 		
 		//------------------------------------------------------------------------------------------
-		public function ZoneDynamicObjectCX () {
+		public function LevelPropsX () {
 			super ();
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public override function setup (__xxx:XWorld, args:Array /* <Dynamic> */):void {
-			super.setup (__xxx, args);
+		public function setup (args:Array /* <Dynamic> */):LevelPropsX {
+			m_props = new XDict (); // <String, Dynamic>
 			
-//			G.app$.addToZoneKillCount ();
+			var i:int = 0;
+
+			while (i < args.length) {
+				setProperty (args[i+0], args[i+1]);
+				
+				i += 2;
+			}
+			
+			return this;
+		}
+
+		//------------------------------------------------------------------------------------------
+		public function getProperty (__key:String):* {
+			return m_props.get (__key);
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function setProperty (__key:String, __val:*):void {
+			m_props.set (__key, __val);
 		}
 		
 		//------------------------------------------------------------------------------------------

@@ -3,14 +3,13 @@
  * Please retain this message if you re-distribute!
  */
 
-package gx.messages.speechbubble 
-{
+package gx.messages.speechbubble {
 	import flash.display.Graphics;
 	import flash.display.Sprite;
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
 	
-	public final class SpeechBubble
+	public class SpeechBubble
 	{
 		/**
 		 * Draw a speech bubble with the drawing API

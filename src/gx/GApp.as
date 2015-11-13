@@ -76,7 +76,7 @@ package gx {
 		public var m_hudMessageObject:HudMessageX;
 		public var PLAYFIELD_LAYER:int = 0;
 		public var m_gameState:int;
-		public var m_levelData:*;
+		public var m_levelProps:*;
 		public var m_levelName:String;
 		public var m_levelComplete:Boolean;	
 		public var m_currentZone:int;
@@ -384,8 +384,13 @@ package gx {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function getLevelData (__levelName:String):* {
+		public function getLevelProps (__levelName:String):* {
 			return null;
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function createLevelProps (args:Array):LevelPropsX {
+			return (new LevelPropsX ()).setup (args);
 		}
 		
 		//------------------------------------------------------------------------------------------
@@ -585,7 +590,7 @@ package gx {
 		public function setMickeyToLevelStartPosition ():void {
 			getAllGlobalItems ();
 			
-			setCurrentZone (m_levelData.zone);
+			setCurrentZone (m_levelProps.zone);
 			
 			m_levelObject.onEntry ();
 			
