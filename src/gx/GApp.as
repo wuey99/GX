@@ -81,7 +81,7 @@ package gx {
 		public var m_levelName:String;
 		public var m_levelComplete:Boolean;	
 		public var m_currentZone:int;
-		
+		public var m_logicClassNameToClass:XDict; // <String, Dynamic>
 		public var m_setMickeyToStartSignal:XSignal;
 		public var m_zoneStartedSignal:XSignal;
 		public var m_zoneFinishedSignal:XSignal;
@@ -372,6 +372,11 @@ package gx {
 		//------------------------------------------------------------------------------------------
 		public function Null_HndlrX ():XLogicObject {
 			return null;
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function initLogicClassNames (__array:Array /* <Dynamic> */):void {
+			m_logicClassNameToClass = XType.array2XDict (__array);	
 		}
 		
 		//------------------------------------------------------------------------------------------

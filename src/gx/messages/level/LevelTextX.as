@@ -172,7 +172,7 @@ package gx.messages.level {
 
 		//------------------------------------------------------------------------------------------
 		public function createMessage ():void {
-			var __dx:Number;
+			var __dx:Number = 0;
 			
 			switch (m_alignment) {
 				case "left":
