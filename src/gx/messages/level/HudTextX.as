@@ -54,7 +54,17 @@ package gx.messages.level {
 		//------------------------------------------------------------------------------------------
 		public override function cleanup ():void {
 			if (GX.appX.getHudMessageObject ().getOwnerItem () == item) {
-				GX.appX.getHudMessageObject ().setMessage ("", 32.0, 0x000000, 32, 32, "left", 0.0, -12.0, "Aller");
+				GX.appX.getHudMessageObject ().setMessage (
+					"",
+					32,
+					0x000000,
+					32,
+					32,
+					"left",
+					0.0,
+					-12,
+					"Aller"
+				);
 				
 				GX.appX.getHudMessageObject ().setOwnerItem (null);
 			}

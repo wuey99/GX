@@ -49,7 +49,7 @@ package gx.messages.level {
 		public var m_levelMessageObject:LevelMessageX;
 		
 		public var m_message:String;
-		public var m_textSize:Number;
+		public var m_textSize:int;
 		public var m_textWidth:Number;
 		public var m_textHeight:Number;
 		public var m_textColor:uint;
@@ -57,7 +57,7 @@ package gx.messages.level {
 		public var m_textX:Number;
 		public var m_textY:Number;
 		public var m_spacing:Number;
-		public var m_leading:Number;
+		public var m_leading:int;
 		public var m_fontName:String;
 
 		//------------------------------------------------------------------------------------------
@@ -230,8 +230,8 @@ package gx.messages.level {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function getDefaultSize ():Number {
-			return 32.0;
+		public function getDefaultSize ():int {
+			return 32;
 		}
 
 		//------------------------------------------------------------------------------------------
@@ -260,8 +260,8 @@ package gx.messages.level {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function getDefaultLeading ():Number {
-			return -12.0;
+		public function getDefaultLeading ():int {
+			return -12;
 		}
 		
 		//------------------------------------------------------------------------------------------
