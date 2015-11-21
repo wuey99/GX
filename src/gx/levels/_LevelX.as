@@ -123,9 +123,9 @@ package gx.levels {
 // create sprites
 //------------------------------------------------------------------------------------------
 		public function createSprites9 ():void {			
-			var i:int;
+			var i:int = 0;
 			
-			for (i=0; i < m_maxLayers; i += 2) {
+			while (i < m_maxLayers) {
 				m_layerView[i+0] = xxx.getXLogicManager ().initXLogicObject (
 					// parent
 					this,
@@ -172,7 +172,9 @@ package gx.levels {
 					]
 				) as XMapLayerCachedView;
 				
-				addXLogicObject (m_layerView[i+1]);				
+				addXLogicObject (m_layerView[i+1]);	
+				
+				i += 2;
 			}
 			
 			show ();

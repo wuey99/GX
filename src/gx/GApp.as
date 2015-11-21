@@ -403,6 +403,27 @@ package gx {
 		public function createLevelProps (args:Array /* <Dynamic> */):LevelPropsX {
 			return (new LevelPropsX ()).setup (args);
 		}
+
+		//------------------------------------------------------------------------------------------
+		public function loadLevel (__levelResourceName:String):XSimpleXMLNode {
+			// <HAXE>
+			/* --
+			var __levelXMLString:ByteArray = XType.createInstance (xxx.getClass (__levelResourceName));
+			__levelXMLString.uncompress (CompressionAlgorithm.ZLIB);
+			
+			var __xml:XSimpleXMLNode = new XSimpleXMLNode ();
+			__xml.setupWithXMLString (__levelXMLString.toString ());
+			-- */
+			// </HAXE>
+			// <AS3>
+			var level:* = XType.createInstance (xxx.getClass (__levelResourceName));
+			
+			var __xml:XSimpleXMLNode = new XSimpleXMLNode ();
+			__xml.setupWithXML (level.getXML ());
+			// </AS3>
+			
+			return __xml;
+		}
 		
 		//------------------------------------------------------------------------------------------
 		public function initHudLayerObject ():void {		
