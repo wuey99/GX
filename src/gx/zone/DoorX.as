@@ -57,6 +57,8 @@ package gx.zone {
 		
 		public var m_opened:Boolean = false;
 		
+		public var m_triggerListener:int;
+		
 		//------------------------------------------------------------------------------------------
 		public function DoorX () {
 			super ();
@@ -90,7 +92,7 @@ package gx.zone {
 			
 			Idle_Script ();
 			
-			GX.appX.addTriggerListener (triggerDoor);
+			m_triggerListener = GX.appX.addTriggerListener (triggerDoor);
 			
 			m_opened = false;
 			
@@ -111,7 +113,7 @@ package gx.zone {
 		public override function cleanup ():void {
 			super.cleanup ();
 			
-			GX.appX.removeTriggerListener (triggerDoor);
+			GX.appX.removeTriggerListener (m_triggerListener);
 		}
 		
 		//------------------------------------------------------------------------------------------

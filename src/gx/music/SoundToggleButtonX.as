@@ -113,13 +113,13 @@ package gx.music {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function addToggleListener (__listener:Function):void {
-			m_toggleSignal.addListener (__listener);
+		public function addToggleListener (__listener:Function):int {
+			return m_toggleSignal.addListener (__listener);
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function removeToggleListener (__listener:Function):void {
-			m_toggleSignal.removeListener (__listener);
+		public function removeToggleListener (__id:int):void {
+			m_toggleSignal.removeListener (__id);
 		}
 		
 		//------------------------------------------------------------------------------------------

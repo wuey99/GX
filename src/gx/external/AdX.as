@@ -94,8 +94,8 @@ package gx.external {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function addCompleteListener (__listener:Function):void {
-			m_completeSignal.addListener (__listener);
+		public function addCompleteListener (__listener:Function):int {
+			return m_completeSignal.addListener (__listener);
 		}
 		
 		//------------------------------------------------------------------------------------------
@@ -104,8 +104,8 @@ package gx.external {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function addErrorListener (__listener:Function):void {
-			m_errorSignal.addListener (__listener);
+		public function addErrorListener (__listener:Function):int {
+			return m_errorSignal.addListener (__listener);
 		}
 		
 		//------------------------------------------------------------------------------------------

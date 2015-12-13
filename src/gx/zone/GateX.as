@@ -64,6 +64,9 @@ package gx.zone {
 		
 		public var m_GateArrowX:Class; // <Dynamic>
 		
+		public var m_zoneStartedListenerID:int;
+		public var m_zoneFinishedListenerID:int;
+		
 		//------------------------------------------------------------------------------------------
 		public function GateX () {
 			super ();
@@ -121,8 +124,8 @@ package gx.zone {
 				}
 			}
 			
-			GX.appX.addZoneStartedListener (onZoneStarted);
-			GX.appX.addZoneFinishedListener (onZoneFinished);
+			m_zoneStartedListenerID = GX.appX.addZoneStartedListener (onZoneStarted);
+			m_zoneFinishedListenerID = GX.appX.addZoneFinishedListener (onZoneFinished);
 			
 			createGoSprite ();
 			
@@ -150,8 +153,8 @@ package gx.zone {
 		public override function cleanup ():void {
 			super.cleanup ();
 			
-			GX.appX.removeZoneStartedListener (onZoneStarted);
-			GX.appX.removeZoneFinishedListener (onZoneFinished);
+			GX.appX.removeZoneStartedListener (m_zoneStartedListenerID);
+			GX.appX.removeZoneFinishedListener (m_zoneFinishedListenerID);
 		}
 
 		//------------------------------------------------------------------------------------------

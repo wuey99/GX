@@ -85,8 +85,8 @@ package gx.ads {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function addContinueListener (__listener:Function):void {
-			m_continueSignal.addListener (__listener);
+		public function addContinueListener (__listener:Function):int {
+			return m_continueSignal.addListener (__listener);
 		}
 
 		//------------------------------------------------------------------------------------------

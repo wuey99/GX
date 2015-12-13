@@ -93,13 +93,13 @@ package gx.mickey {
 		/* @:end */
 		
 //------------------------------------------------------------------------------------------
-		public function addLevelCompleteListener (__listener:Function):void {
-			m_levelCompleteSignal.addListener (__listener);
+		public function addLevelCompleteListener (__listener:Function):int {
+			return m_levelCompleteSignal.addListener (__listener);
 		}
 		
 //------------------------------------------------------------------------------------------
-		public function removeLevelCompleteListener (__listener:Function):void {
-			m_levelCompleteSignal.removeListener (__listener);
+		public function removeLevelCompleteListener (__id:int):void {
+			m_levelCompleteSignal.removeListener (__id);
 		}
 		
 //------------------------------------------------------------------------------------------
@@ -113,13 +113,13 @@ package gx.mickey {
 		}
 
 //------------------------------------------------------------------------------------------
-		public function addWaitingListener (__listener:Function):void {
-			m_waitingSignal.addListener (__listener);
+		public function addWaitingListener (__listener:Function):int {
+			return m_waitingSignal.addListener (__listener);
 		}
 		
 //------------------------------------------------------------------------------------------
-		public function removeWaitingListener (__listener:Function):void {
-			m_waitingSignal.removeListener (__listener);
+		public function removeWaitingListener (__id:int):void {
+			m_waitingSignal.removeListener (__id);
 		}
 		
 //------------------------------------------------------------------------------------------
@@ -128,13 +128,13 @@ package gx.mickey {
 		}
 
 //------------------------------------------------------------------------------------------
-		public function addPlayingListener (__listener:Function):void {
-			m_playingSignal.addListener (__listener);
+		public function addPlayingListener (__listener:Function):int {
+			return m_playingSignal.addListener (__listener);
 		}
 		
 //------------------------------------------------------------------------------------------
-		public function removePlayingListener (__listener:Function):void {
-			m_playingSignal.removeListener (__listener);
+		public function removePlayingListener (__id:int):void {
+			m_playingSignal.removeListener (__id);
 		}
 		
 //------------------------------------------------------------------------------------------

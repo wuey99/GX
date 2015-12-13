@@ -472,8 +472,8 @@ package gx.levels {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function addLevelSelectListener (__listener:Function):void {
-			m_levelSelectSignal.addListener (__listener);
+		public function addLevelSelectListener (__listener:Function):int {
+			return m_levelSelectSignal.addListener (__listener);
 		}
 		
 		//------------------------------------------------------------------------------------------
@@ -482,8 +482,8 @@ package gx.levels {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function addGameStateChangedListener (__listener:Function):void {
-			m_gameStateChangedSignal.addListener (__listener);
+		public function addGameStateChangedListener (__listener:Function):int {
+			return m_gameStateChangedSignal.addListener (__listener);
 		}
 		
 		//------------------------------------------------------------------------------------------

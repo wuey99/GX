@@ -58,6 +58,9 @@ package gx.zone {
 		public var m_zone:Number;
 		public var m_message:String;
 		
+		public var m_zoneStartedListenerID:int;
+		public var m_zoneFinishedListenerID:int;
+		
 		//------------------------------------------------------------------------------------------
 		public function CurrentGateX () {
 			super ();
@@ -78,8 +81,8 @@ package gx.zone {
 			
 			setCX (-64, +64, -64, +64);
 	
-			GX.appX.addZoneStartedListener (onZoneStarted);
-			GX.appX.addZoneFinishedListener (onZoneFinished);
+			m_zoneStartedListenerID = GX.appX.addZoneStartedListener (onZoneStarted);
+			m_zoneFinishedListenerID = GX.appX.addZoneFinishedListener (onZoneFinished);
 			
 			__setupItemParamsXML ();
 			__setupSpawnScript ();
@@ -92,8 +95,8 @@ package gx.zone {
 		public override function cleanup ():void {
 			super.cleanup ();
 			
-			GX.appX.removeZoneStartedListener (onZoneStarted);
-			GX.appX.removeZoneFinishedListener (onZoneFinished);
+			GX.appX.removeZoneStartedListener (m_zoneStartedListenerID);
+			GX.appX.removeZoneFinishedListener (m_zoneFinishedListenerID);
 		}
 		
 		//------------------------------------------------------------------------------------------

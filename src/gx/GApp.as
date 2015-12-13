@@ -658,13 +658,13 @@ package gx {
 		}
 
 		//------------------------------------------------------------------------------------------
-		public function addZoneStartedListener (__function:Function):void {
-			m_zoneStartedSignal.addListener (__function);
+		public function addZoneStartedListener (__function:Function):int {
+			return m_zoneStartedSignal.addListener (__function);
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function removeZoneStartedListener (__function:Function):void {
-			m_zoneStartedSignal.removeListener (__function);
+		public function removeZoneStartedListener (__id:int):void {
+			m_zoneStartedSignal.removeListener (__id);
 		}
 		
 		//------------------------------------------------------------------------------------------
@@ -673,13 +673,13 @@ package gx {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function addZoneFinishedListener (__function:Function):void {
-			m_zoneFinishedSignal.addListener (__function);
+		public function addZoneFinishedListener (__function:Function):int {
+			return m_zoneFinishedSignal.addListener (__function);
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function removeZoneFinishedListener (__function:Function):void {
-			m_zoneFinishedSignal.removeListener (__function);
+		public function removeZoneFinishedListener (__id:int):void {
+			m_zoneFinishedSignal.removeListener (__id);
 		}
 		
 		//------------------------------------------------------------------------------------------
@@ -704,13 +704,13 @@ package gx {
 		/* @:end */
 		
 		//------------------------------------------------------------------------------------------
-		public function addLivesChangedListener (__listener:Function):void {
-			m_livesChangedSignal.addListener (__listener);
+		public function addLivesChangedListener (__listener:Function):int {
+			return m_livesChangedSignal.addListener (__listener);
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function removeLivesChangedListener (__listener:Function):void {
-			m_livesChangedSignal.removeListener (__listener);
+		public function removeLivesChangedListener (__id:int):void {
+			m_livesChangedSignal.removeListener (__id);
 		}
 		
 		//------------------------------------------------------------------------------------------
@@ -719,23 +719,23 @@ package gx {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function addMickeyDeathListener (__listener:Function):void {
-			m_mickeyDeathSignal.addListener (__listener);
+		public function addMickeyDeathListener (__listener:Function):int {
+			return m_mickeyDeathSignal.addListener (__listener);
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function removeMickeyDeathListener (__listener:Function):void {
-			m_mickeyDeathSignal.removeListener (__listener);
+		public function removeMickeyDeathListener (__id:int):void {
+			m_mickeyDeathSignal.removeListener (__id);
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function addMickeyPlayingListener (__listener:Function):void {
-			GX.appX.__getMickeyObject ().addPlayingListener (__listener);
+		public function addMickeyPlayingListener (__listener:Function):int {
+			return GX.appX.__getMickeyObject ().addPlayingListener (__listener);
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function removeMickeyPlayingListener (__listener:Function):void {
-			GX.appX.__getMickeyObject ().removePlayingListener (__listener);
+		public function removeMickeyPlayingListener (__id:int):void {
+			GX.appX.__getMickeyObject ().removePlayingListener (__id);
 		}
 
 		//------------------------------------------------------------------------------------------
@@ -744,13 +744,13 @@ package gx {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function addTriggerListener (__listener:Function):void {
-			m_triggerSignal.addListener (__listener);
+		public function addTriggerListener (__listener:Function):int {
+			return m_triggerSignal.addListener (__listener);
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function removeTriggerListener (__listener:Function):void {
-			m_triggerSignal.removeListener (__listener);
+		public function removeTriggerListener (__id:int):void {
+			m_triggerSignal.removeListener (__id);
 		}
 		
 		//------------------------------------------------------------------------------------------
@@ -759,23 +759,23 @@ package gx {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function addTriggerXListener (__listener:Function):void {
-			m_triggerXSignal.addListener (__listener);
+		public function addTriggerXListener (__listener:Function):int {
+			return m_triggerXSignal.addListener (__listener);
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function removeTriggerXListener (__listener:Function):void {
-			m_triggerXSignal.removeListener (__listener);
+		public function removeTriggerXListener (__id:int):void {
+			m_triggerXSignal.removeListener (__id);
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function addPingListener (__listener:Function):void {
-			m_pingSignal.addListener (__listener);
+		public function addPingListener (__listener:Function):int {
+			return m_pingSignal.addListener (__listener);
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function removePingListener (__listener:Function):void {
-			m_pingSignal.removeListener (__listener);
+		public function removePingListener (__id:int):void {
+			m_pingSignal.removeListener (__id);
 		}
 
 		//------------------------------------------------------------------------------------------
