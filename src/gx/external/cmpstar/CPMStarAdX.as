@@ -83,7 +83,7 @@ package gx.external.cmpstar {
 				}
 			);
 			
-			m_sprite.getMovieClip ().addChild (m_adLoaderObject);
+//			m_sprite.getMovieClip ().addChild (m_adLoaderObject);
 			
 			show ();
 		}
