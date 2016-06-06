@@ -83,7 +83,7 @@ package gx.messages.level {
 			
 			m_message = "None";
 			if (m_xml.hasAttribute ("message")) {
-				m_message = m_xml.getAttribute ("message");
+				m_message = m_xml.getAttributeString ("message");
 			}
 			
 			GX.appX.setMickeyMessage (m_message);

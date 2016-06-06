@@ -74,17 +74,17 @@ package gx.triggers {
 			
 			m_trigger = -1;			
 			if (itemHasAttribute ("trigger")) {
-				m_trigger = itemGetAttribute ("trigger");
+				m_trigger = itemGetAttributeInt ("trigger");
 			}
 			
 			m_direction = null;
 			if (itemHasAttribute ("direction")) {
-				m_direction = itemGetAttribute ("direction");	
+				m_direction = itemGetAttributeString ("direction");	
 			}
 			
 			m_distance = 0;
 			if (itemHasAttribute ("distance")) {
-				m_distance = itemGetAttribute ("distance");	
+				m_distance = itemGetAttributeFloat ("distance");	
 			}
 		}
 		

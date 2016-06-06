@@ -151,16 +151,16 @@ package gx.zone {
 			
 			m_zone = -1;
 			if (itemHasAttribute ("zone")) {
-				m_zone = itemGetAttribute ("zone");
+				m_zone = itemGetAttributeInt ("zone");
 			}
 			
 			m_message = "";
 			if (itemHasAttribute ("message")) {
-				m_message = itemGetAttribute ("message");	
+				m_message = itemGetAttributeString ("message");	
 			}
 			
 			if (itemHasAttribute ("direction")) {
-				m_direction = itemGetAttribute ("direction");
+				m_direction = itemGetAttributeString ("direction");
 				
 				switch (m_direction) {
 					case "left":

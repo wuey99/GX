@@ -54,14 +54,19 @@ package gx.text {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public override function setupX ():void {
-			super.setupX ();
-			
+		public override function setup (__xxx:XWorld, args:Array  /* <Dynamic> */):void {
 			angle = 45;
 			dist = 75;
 			delta = 25;
 			speed = 4.0;
-
+			
+			super.setup (__xxx, args);
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public override function setupX ():void {
+			super.setupX ();
+			
 			addTask ([
 				XTask.LABEL, "loop",
 					XTask.WAIT, 0x0100,
@@ -162,7 +167,7 @@ package gx.text {
 				if (__c >= 64) __c -= 32;
 				m_bitmap[i].gotoAndStop (__c + 1);
 //				m_bitmap[i].setRegistration (getWidths ()[__c]/2, 21);
-				__rotation = 360 - __angle;  if (__rotation >= 360) __rotation - 360;
+				__rotation = 360 - __angle;  if (__rotation >= 360) __rotation -= 360;
 				m_bitmap[i].rotation = __rotation - 90;
 				__radians = __rotation * Math.PI/180;
 				__dx = Math.cos (__radians) * m_dist;

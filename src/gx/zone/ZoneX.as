@@ -98,7 +98,12 @@ package gx.zone {
 			setupItemParamsXML ();
 			
 			if (itemHasAttribute ("x") && itemHasAttribute ("y") && itemHasAttribute ("width") && itemHasAttribute ("height")) {
-				boundingRect.setRect (itemGetAttribute ("x"), itemGetAttribute ("y"), itemGetAttribute ("width"), itemGetAttribute ("height"));
+				boundingRect.setRect (
+					itemGetAttributeFloat ("x"),
+					itemGetAttributeFloat ("y"),
+					itemGetAttributeFloat ("width"),
+					itemGetAttributeFloat ("height")
+				);
 			}
 			else
 			{
@@ -115,7 +120,7 @@ package gx.zone {
 				m_size = m_xml.getAttribute ("size");
 			}
 			
-			m_zone = itemGetAttribute ("zone");
+			m_zone = itemGetAttributeInt ("zone");
 			
 			script = addEmptyTask ();
 			

@@ -105,57 +105,57 @@ package gx.messages.level {
 			
 			m_message = "None";
 			if (m_xml.hasAttribute ("message")) {
-				m_message = m_xml.getAttribute ("message");
+				m_message = m_xml.getAttributeString ("message");
 			}
 			
 			m_textSize = getDefaultSize ();
 			if (m_xml.hasAttribute ("size")) {
-				m_textSize = m_xml.getAttribute ("size");
+				m_textSize = m_xml.getAttributeInt ("size");
 			}
 			
 			m_textColor = getDefaultColor ();
 			if (m_xml.hasAttribute ("color")) {
-				m_textColor = m_xml.getAttribute ("color");
+				m_textColor = m_xml.getAttributeInt ("color");
 			}
 			
 			m_textWidth = getDefaultWidth ();
 			if (m_xml.hasAttribute ("width")) {
-				m_textWidth = m_xml.getAttribute ("width");
+				m_textWidth = m_xml.getAttributeInt ("width");
 			}
 			
 			m_textHeight = getDefaultHeight ();
 			if (m_xml.hasAttribute ("height")) {
-				m_textHeight = m_xml.getAttribute ("height");
+				m_textHeight = m_xml.getAttributeInt ("height");
 			}
 		
 			m_alignment = "left";
 			if (m_xml.hasAttribute ("align")) {
-				m_alignment = m_xml.getAttribute ("align");
+				m_alignment = m_xml.getAttributeString ("align");
 			}
 			
 			m_textX = getDefaultX ();
 			if (m_xml.hasAttribute ("x")) {
-				m_textX = m_xml.getAttribute ("x");
+				m_textX = m_xml.getAttributeFloat ("x");
 			}
 			
 			m_textY = getDefaultY ();
 			if (m_xml.hasAttribute ("y")) {
-				m_textY = m_xml.getAttribute ("y");
+				m_textY = m_xml.getAttributeFloat ("y");
 			}
 			
 			m_spacing = getDefaultSpacing ();
 			if (m_xml.hasAttribute ("spacing")) {
-				m_spacing = m_xml.getAttribute ("spacing");
+				m_spacing = m_xml.getAttributeFloat ("spacing");
 			}
 			
 			m_leading = getDefaultLeading ();
 			if (m_xml.hasAttribute ("leading")) {
-				m_leading = m_xml.getAttribute ("leading");
+				m_leading = m_xml.getAttributeInt ("leading");
 			}
 			
 			m_fontName = getDefaultFontName ();
 			if (m_xml.hasAttribute ("fontName")) {
-				m_fontName = m_xml.getAttribute ("fontName");
+				m_fontName = m_xml.getAttributeString ("fontName");
 			}
 		}
 		
