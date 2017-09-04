@@ -55,6 +55,7 @@ package gx.messages.level {
 			m_text = createXTextSprite ();
 			x_text = addSpriteToHudAt (m_text, 0, 0);
 			
+			/*
 			m_text.filters = [new DropShadowFilter (
 				// distance
 				4.0,
@@ -65,6 +66,7 @@ package gx.messages.level {
 				// alpha
 				1.0
 			)];
+			*/
 			
 			show ();
 		}
