@@ -62,6 +62,7 @@ package gx.levels {
 		protected var m_gameStateChangedSignal:XSignal;
 		
 		protected var m_levelData:*;
+		protected var m_levelProps:*;
 		
 		protected var m_viewRect:XRect;
 		
@@ -462,13 +463,13 @@ package gx.levels {
 		}
 	
 		//------------------------------------------------------------------------------------------
-		public function getLevelData ():* {
-			return m_levelData;
+		public function getLevelProps ():* {
+			return m_levelProps;
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function setLevelData (__levelData:*):void {
-			m_levelData = __levelData;
+		public function setLevelProps (__levelProps:*):void {
+			m_levelProps = __levelProps;
 		}
 		
 		//------------------------------------------------------------------------------------------

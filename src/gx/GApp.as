@@ -331,7 +331,7 @@ package gx {
 		//------------------------------------------------------------------------------------------
 		public function cacheAllMovieClips ():void {
 			if (CONFIG::flash) {
-				return;
+//				return;
 			}
 			
 			var t:XSubTextureManager = m_globalTextureManager = xxx.getTextureManager ().createSubManager ("__global__");
