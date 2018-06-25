@@ -65,15 +65,15 @@ package gx.external.fgl {
 			m_sprite = new Sprite ();
 			x_sprite = addSpriteToHudAt (m_sprite, 0, 0);
 			
+			function showStartupAd(e:Event):void {
+				m_ads.showAdPopup();
+			}
+			
 			if (m_ads == null) {
 				m_ads = new FGLAds (stage, adID);
 			
 				// When the API is ready, show the ad!
 				m_ads.addEventListener(FGLAds.EVT_API_READY, showStartupAd);
-			
-				function showStartupAd(e:Event):void {
-					m_ads.showAdPopup();
-				}
 			}
 			else
 			{

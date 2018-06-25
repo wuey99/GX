@@ -148,14 +148,14 @@ package gx.ads {
 		
 		//------------------------------------------------------------------------------------------
 		public function hideAds ():void {
-			if (getAdObject ()) {
+			if (getAdObject () != null) {
 				getAdObject ().hide ();		
 			}
 		}
 		
 		//------------------------------------------------------------------------------------------
 		public function getAdObject ():AdX {
-			if (m_fglAdObject) {
+			if (m_fglAdObject != null) {
 				return m_fglAdObject;
 			}
 			else

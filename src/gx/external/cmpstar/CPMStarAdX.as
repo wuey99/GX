@@ -27,6 +27,14 @@
 //------------------------------------------------------------------------------------------
 package gx.external.cmpstar {
 	
+	import flash.display.*;
+	import flash.events.*;
+	import flash.geom.*;
+	import flash.net.*;
+	import flash.system.*;
+	import flash.text.*;
+	import flash.utils.*;
+	
 	import gx.external.*;
 	
 	import kx.*;
@@ -36,15 +44,6 @@ package gx.external.cmpstar {
 	import kx.world.collision.*;
 	import kx.world.logic.*;
 	import kx.world.sprite.*;
-	
-	import flash.geom.*;
-	import flash.text.*;
-	import flash.utils.*;
-	
-	import flash.display.*;
-	import flash.events.*;
-	import flash.net.*;
-	import flash.system.*;
 	
 	//------------------------------------------------------------------------------------------
 	public class CPMStarAdX extends AdX {
@@ -62,7 +61,7 @@ package gx.external.cmpstar {
 		// create sprites
 		//------------------------------------------------------------------------------------------
 		public override function createSprites ():void {
-			m_sprite = createXMovieClip ("adBox:adBox");
+			m_sprite = createXMovieClip ("AdBox:AdBox");
 			x_sprite = addSpriteToHudAt (m_sprite, 0, 0);
 				
 			m_adLoaderObject = new AdLoader (adID);
@@ -70,7 +69,7 @@ package gx.external.cmpstar {
 			m_adLoaderObject.addEventListener (
 				Event.COMPLETE,
 				
-				function ():void {
+				function (e:Event):void {
 					fireCompleteSignal ();
 				}
 			);

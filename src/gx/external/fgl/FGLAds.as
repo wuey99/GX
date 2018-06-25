@@ -38,6 +38,8 @@ package gx.external.fgl {
 	import flash.system.LoaderContext;
 	import flash.system.Security;
 	
+	import kx.type.*;
+	
 	//------------------------------------------------------------------------------------------
 	/**
 	 * <p>The FGLAds object is used to show ads! It's very simple.</p> 
@@ -87,7 +89,7 @@ package gx.external.fgl {
 		private var _referer:String = "";
 		private var _loader:Loader = new Loader();
 		private var _context:LoaderContext = new LoaderContext(true);
-		private var _tmpSkin:Object = new Object();
+		private var _tmpSkin:Object = {};
 		
 		//live URL
 		private var _request:URLRequest = new URLRequest("http://ads.fgl.com/swf/FGLAds." + version + ".swf");
@@ -163,7 +165,7 @@ package gx.external.fgl {
 			}
 			
 			addEventListener(Event.ADDED_TO_STAGE, setupStage);
-			if(parent is Sprite || parent is MovieClip || parent is Stage)
+			if(XType.isType (parent, Sprite) || XType.isType (parent, MovieClip) || XType.isType (parent, Stage))
 			{
 				parent.addChild(this);
 			} else {
@@ -301,7 +303,7 @@ package gx.external.fgl {
 				_tmpSkin[name] = value;
 				return;
 			}
-			var o:Object = new Object ();
+			var o:Object = {};
 			o[name] = value;
 			_fglAds.setSkin(o);
 		}
@@ -311,7 +313,7 @@ package gx.external.fgl {
 		//------------------------------------------------------------------------------------------
 		
 		//------------------------------------------------------------------------------------------
-		/* @:get, set a Float */
+		/* @:get, set onNetworkingError Dynamic */
 		
 		public function get onNetworkingError ():Function {
 			return _evt_NetworkingError;
@@ -331,7 +333,7 @@ package gx.external.fgl {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		/* @:get, set onApiReady Function */
+		/* @:get, set onApiReady Dynamic */
 		
 		public function get onApiReady ():Function {
 			return _evt_ApiReady;
@@ -351,7 +353,7 @@ package gx.external.fgl {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		/* @:get, set onAdLoaded Function */
+		/* @:get, set onAdLoaded Dynamic */
 		
 		public function get onAdLoaded ():Function {
 			return _evt_AdLoaded;
@@ -371,7 +373,7 @@ package gx.external.fgl {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		/* @:get, set onAdShown Function */
+		/* @:get, set onAdShown Dynamic */
 		
 		public function get onAdShown ():Function {
 			return _evt_AdShown;
@@ -391,7 +393,7 @@ package gx.external.fgl {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		/* @:get, set onAdClicked Function */
+		/* @:get, set onAdClicked Dynamic */
 		
 		public function get onAdClicked ():Function {
 			return _evt_AdClicked;
@@ -411,7 +413,7 @@ package gx.external.fgl {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		/* @:get, set onAdClosed Function */
+		/* @:get, set onAdClosed Dynamic */
 		
 		public function get onAdClosed ():Function {
 			return _evt_AdClosed;
@@ -431,7 +433,7 @@ package gx.external.fgl {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		/* @:get, set onAdUnavailable Function */
+		/* @:get, set onAdUnavailable Dynamic */
 		
 		public function get onAdUnavailable ():Function {
 			return _evt_AdUnavailable;
@@ -451,7 +453,7 @@ package gx.external.fgl {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		/* @:get, set onAdLoadingError Function */
+		/* @:get, set onAdLoadingError Dynamic */
 		
 		public function get onAdLoadingError ():Function {
 			return _evt_AdLoadingError;
@@ -496,7 +498,7 @@ package gx.external.fgl {
 			if(_loaded){
 				_fglAds.componentWidth = _stageWidth;
 				_fglAds.componentHeight = _stageHeight;
-				_stage.addChild(_fglAds as Sprite);
+				_stage.addChild(/* @:cast */ _fglAds as Sprite);
 			}
 		}
 		
@@ -504,7 +506,7 @@ package gx.external.fgl {
 		private function onLoadingComplete (e:Event):void {
 			_status = "Ready";
 			_loaded = true;
-			_fglAds = _loader.content as Object;
+			_fglAds = /* @:cast */ _loader.content as Object;
 			_fglAds.componentWidth = _stageWidth;
 			_fglAds.componentHeight = _stageHeight;
 			_fglAds.setSkin(_tmpSkin);
@@ -519,11 +521,11 @@ package gx.external.fgl {
 			_fglAds.addEventListener(EVT_AD_LOADING_ERROR, e_onAdLoadingError);
 			
 			if(_stage != null){
-				_stage.addChild(_fglAds as Sprite);
+				_stage.addChild(/* @:cast */ _fglAds as Sprite);
 			}
 			
 			if(root != null){
-				_referer = root.loaderInfo.loaderURL
+				_referer = root.loaderInfo.loaderURL;
 			}
 			
 			_fglAds.init(_stage, _referer, _storedGameID);
