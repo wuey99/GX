@@ -86,7 +86,11 @@ package gx.music {
 
 		//------------------------------------------------------------------------------------------
 		public function onMouseDown (e:MouseEvent):void {
-			m_volume ^= 1;
+			if (m_volume == 0.0) {
+				m_volume = 1.0;
+			} else {
+				m_volume = 0.0;
+			}
 			
 			update ();
 			

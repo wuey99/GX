@@ -30,6 +30,7 @@ package gx.util  {
 	import kx.*;
 	import kx.task.*;
 	import kx.text.*;
+	import kx.type.*;
 	import kx.world.*;
 	import kx.world.collision.*;
 	import kx.world.logic.*;

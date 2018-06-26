@@ -47,13 +47,7 @@ package gx.ads {
 	
 	//------------------------------------------------------------------------------------------
 	public class AdXLogicObject extends XLogicObjectCX {
-		private var m_cpmStarAdObject:CPMStarAdX;
-		private var m_fglAdObject:FGLAdX;
-		
 		private var m_continueSignal:XSignal;
-		
-		public const AdType_CPMStar:String = "CPMStar";
-		public const AdType_FGLAds:String = "FGLAds";
 		
 		//------------------------------------------------------------------------------------------
 		public function AdXLogicObject () {
@@ -78,9 +72,6 @@ package gx.ads {
 		public function killAdObject ():void {
 			if (getAdObject () != null) {
 				getAdObject ().nukeLater ();
-				
-				m_cpmStarAdObject = null;
-				m_fglAdObject = null;
 			}
 		}
 		
@@ -96,49 +87,11 @@ package gx.ads {
 		
 		//------------------------------------------------------------------------------------------
 		public function createAd ():void {
-			m_fglAdObject = null;
-			m_cpmStarAdObject = null;
-			
-			if (getAdType () != AdType_CPMStar) {
-				m_fglAdObject = xxx.getXLogicManager ().initXLogicObject (
-					// parent
-					null,
-					// logicObject
-					/* @:cast */ new FGLAdX () as XLogicObject,
-					// item, layer, depth
-					null, -1, 2000000,
-					// x, y, z
-					0, 0, 0,
-					// scale, rotation
-					1.0, 0,
-					[
-						getAdID ()
-					]
-				) as FGLAdX;
-			}
-			else
-			{
-				m_cpmStarAdObject = xxx.getXLogicManager ().initXLogicObject (
-					// parent
-					null,
-					// logicObject
-					/* @:cast */ new CPMStarAdX () as XLogicObject,
-					// item, layer, depth
-					null, -1, 2000000,
-					// x, y, z
-					700/2 - 300/2, 550/2 - 250/2, 0,
-					// scale, rotation
-					1.0, 0,
-					[
-						getAdID ()
-					]
-				) as CPMStarAdX;
-			}
 		}
 
 		//------------------------------------------------------------------------------------------
 		public function getAdType ():String {
-			return AdType_CPMStar;
+			return "";
 		}
 		
 		//------------------------------------------------------------------------------------------
@@ -155,13 +108,7 @@ package gx.ads {
 		
 		//------------------------------------------------------------------------------------------
 		public function getAdObject ():AdX {
-			if (m_fglAdObject != null) {
-				return m_fglAdObject;
-			}
-			else
-			{
-				return m_cpmStarAdObject;
-			}
+			return null;
 		}
 				
 	//------------------------------------------------------------------------------------------
