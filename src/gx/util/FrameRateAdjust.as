@@ -61,7 +61,8 @@ package gx.util  {
 			
 			m_maxSamples = 16;
 			
-			m_frameSamples = new Array (m_maxSamples); // <Float>
+			m_frameSamples = new Array (); // <Float>
+			XType.initArray (m_frameSamples, m_maxSamples, 0.0);
 			
 			for (var i:int = 0; i < m_maxSamples; i++) {
 				m_frameSamples.push (xxx.getIdealFPS ());

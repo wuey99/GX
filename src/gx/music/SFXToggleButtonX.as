@@ -28,8 +28,6 @@
 package gx.music {
 	
 	import gx.external.*;
-	import gx.external.cmpstar.*;
-	import gx.external.fgl.*;
 	
 	import kx.*;
 	import kx.geom.*;

@@ -28,9 +28,7 @@
 package gx.ads {
 	
 	import gx.external.*;
-	import gx.external.cmpstar.*;
-	import gx.external.fgl.*;
-
+	
 	import kx.*;
 	import kx.geom.*;
 	import kx.signals.*;
