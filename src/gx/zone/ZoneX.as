@@ -141,7 +141,7 @@ package gx.zone {
 					XTask.WAIT, 0x0100,
 					
 					XTask.FLAGS, function (__task:XTask):void {
-						if (!GX.appX.getLevelComplete ()) {
+						if (GX.appX.__getMickeyObject () != null && !GX.appX.getLevelComplete ()) {
 							GX.appX.__getMickeyObject ().getCX ().copy2 (__mickeyRect);
 							__mickeyRect.offsetPoint (GX.appX.__getMickeyObject ().getPos ());
 							

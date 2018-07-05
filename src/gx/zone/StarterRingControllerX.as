@@ -85,21 +85,23 @@ package gx.zone {
 		//------------------------------------------------------------------------------------------
 		public function create ():void {
 			
-			GX.appX.__getMickeyObject ().addWaitingListener (
-				function ():void {
-					trace (": waiting: ");
-					
-					oVisible = true;
-				}
-			);
-			
-			GX.appX.__getMickeyObject ().addPlayingListener (
-				function ():void {
-					trace (": playing: ");
-					
-					oVisible = false;
-				}
-			);
+			if (GX.appX.__getMickeyObject () != null) {
+				GX.appX.__getMickeyObject ().addWaitingListener (
+					function ():void {
+						trace (": waiting: ");
+						
+						oVisible = true;
+					}
+				);
+				
+				GX.appX.__getMickeyObject ().addPlayingListener (
+					function ():void {
+						trace (": playing: ");
+						
+						oVisible = false;
+					}
+				);
+			}
 			
 			__createClickHereSprite ();
 			
@@ -226,14 +228,18 @@ package gx.zone {
 
 		//------------------------------------------------------------------------------------------	
 		private function getDistanceToMickey ():Number {
-			var __mickeyObject:_MickeyX = GX.appX.__getMickeyObject ();
-			
-			var __dx:Number = __mickeyObject.oX - oX;
-			var __dy:Number = __mickeyObject.oY - oY;
-			
-			var __distance:Number = xxx.approxDistance (__dx, __dy);
-			
-			return __distance;
+			if (GX.appX.__getMickeyObject () != null) {
+				var __mickeyObject:_MickeyX = GX.appX.__getMickeyObject ();
+				
+				var __dx:Number = __mickeyObject.oX - oX;
+				var __dy:Number = __mickeyObject.oY - oY;
+				
+				var __distance:Number = xxx.approxDistance (__dx, __dy);
+				
+				return __distance;
+			} else {
+				return 0;
+			}
 		}
 		
 	//------------------------------------------------------------------------------------------
