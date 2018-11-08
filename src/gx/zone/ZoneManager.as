@@ -71,6 +71,7 @@ package gx.zone {
 		private var m_GateArrowX:Class; // <Dynamic>
 		private var m_WaterCurrentX:Class; // <Dynamic>
 		private var m_StarterRingControllerX:Class; // <Dynamic>
+		private var m_ZoneX:Class; // <Dynamic>
 		
 		//------------------------------------------------------------------------------------------
 		public function ZoneManager () {
@@ -90,7 +91,8 @@ package gx.zone {
 			__Vert_DoorX:Class /* <Dynamic> */,
 			__GateArrowX:Class /* <Dynamic> */,
 			__WaterCurrentX:Class /* <Dynamic> */,
-			__StarterRingControllerX:Class  /* <Dynamic> */
+			__StarterRingControllerX:Class  /* <Dynamic> */,
+			__ZoneX:Class = null /* <Dynamic> */
 		):void {
 			xxx = __xxx;
 			m_XApp = __XApp;
@@ -107,6 +109,11 @@ package gx.zone {
 			m_GateArrowX = __GateArrowX;
 			m_WaterCurrentX = __WaterCurrentX;
 			m_StarterRingControllerX = __StarterRingControllerX;
+			if (__ZoneX == null) {
+				m_ZoneX = ZoneX;
+			} else {
+				m_ZoneX = __ZoneX;
+			}
 		}
 		
 		//------------------------------------------------------------------------------------------
@@ -240,7 +247,7 @@ package gx.zone {
 						// parent
 						GX.appX.getLevelObject (),
 						// logicObject
-						/* @:cast */ new ZoneX () as XLogicObject,
+						/* @:cast */ XType.createInstance (m_ZoneX) as XLogicObject,
 						// item, layer, depth
 						__item, m_playFieldLayer + 0, 10000,
 						// x, y, z

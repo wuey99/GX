@@ -134,7 +134,7 @@ package gx {
 			
 			setupMask ();
 			
-			xxx.setViewRect (704, 576);
+			createViewRect ();
 			
 			xxx.grabFocus ();
 			
@@ -168,11 +168,21 @@ package gx {
 			
 			m_livesChangedSignal = new XSignal ();
 			
-			m_zoneManager = new ZoneManager ();
+			m_zoneManager = createZoneManager ();
 			
 			m_XTaskSubManager = new XTaskSubManager (m_XApp.getXTaskManager ());
 			
 			script = addEmptyTask ();
+		}
+
+		//------------------------------------------------------------------------------------------
+		public function createViewRect ():void {
+			xxx.setViewRect (704, 576);	
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function createZoneManager ():ZoneManager {
+			return new ZoneManager ();
 		}
 		
 		//------------------------------------------------------------------------------------------
