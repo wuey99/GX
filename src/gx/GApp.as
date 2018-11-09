@@ -68,6 +68,30 @@ package gx {
 		public var xxx:XWorld;
 		public var m_app:GApp;
 		public var m_assets:XAssets;
+		
+		public var m_player:XFlod;
+		
+		private var m_globalTextureManager:XSubTextureManager;
+				
+		public var m_XTaskSubManager:XTaskSubManager;
+		
+		public var m_states:XDict; // <String, Dynamic>
+		public var m_gameStateObject:Gamestate;
+		// deprecated
+		public var m_gameState:int;
+		
+		public var script:XTask;
+		
+		//------------------------------------------------------------------------------------------
+		// gameplay?
+		//------------------------------------------------------------------------------------------
+		public var m_triggerSignal:XSignal;
+		public var m_triggerXSignal:XSignal;
+		public var m_pingSignal:XSignal;
+		
+		//------------------------------------------------------------------------------------------
+		// gameplay
+		//------------------------------------------------------------------------------------------
 		public var m_mickeyObject:_MickeyX;
 		public var m_mickeyCursorObject:_MickeyCursorX;
 		public var m_levelObject:_LevelX;
@@ -75,7 +99,6 @@ package gx {
 		public var m_hudObject:XLogicObject;
 		public var m_hudMessageObject:HudMessageX;
 		public var PLAYFIELD_LAYER:int = 0;
-		public var m_gameState:int;
 		public var m_levelData:*;
 		public var m_levelProps:LevelPropsX;
 		public var m_levelName:String;
@@ -85,28 +108,12 @@ package gx {
 		public var m_setMickeyToStartSignal:XSignal;
 		public var m_zoneStartedSignal:XSignal;
 		public var m_zoneFinishedSignal:XSignal;
-		public var m_mickeyDeathSignal:XSignal;
-		public var m_triggerSignal:XSignal;
-		public var m_triggerXSignal:XSignal;
-		public var m_pingSignal:XSignal;
-		
-		public var m_player:XFlod;
-		
-		private var m_globalTextureManager:XSubTextureManager;
-		
 		protected var m_lives:int;
 		protected var m_livesChangedSignal:XSignal;
-		
 		private var m_zoneManager:ZoneManager;
-		
 		protected var m_paused:Boolean;
 		protected var m_pausedObject:XLogicObject;
-		
-		public var m_XTaskSubManager:XTaskSubManager;
-		
-		public var m_gameStateObject:Gamestate;
-		
-		public var script:XTask;
+		public var m_mickeyDeathSignal:XSignal;
 		
 		//------------------------------------------------------------------------------------------
 		public function GApp () {	
@@ -131,6 +138,8 @@ package gx {
 			
 			xxx = new XWorld (__parent, m_XApp, __layers, __timerInterval);
 			addChild (xxx);
+			
+			m_states = new XDict (); // <String, Dynamic>
 			
 			setupMask ();
 			
@@ -181,30 +190,22 @@ package gx {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function createZoneManager ():ZoneManager {
-			return new ZoneManager ();
-		}
-		
-		//------------------------------------------------------------------------------------------
 		public function getWorld ():XWorld {
 			return xxx;
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function setupSignals ():void {
-			m_setMickeyToStartSignal = new XSignal ();
-			m_zoneStartedSignal = new XSignal ();
-			m_zoneFinishedSignal = new XSignal ();
-			m_triggerSignal = new XSignal ();
-			m_triggerXSignal = new XSignal ();
-			m_pingSignal = new XSignal ();
-		}
-
-		//------------------------------------------------------------------------------------------
 		public function getGamestateObject ():Gamestate {
 			return m_gameStateObject;
 		}
 		
+		//------------------------------------------------------------------------------------------
+		public function getCurrentState ():Gamestate {
+			return m_gameStateObject;
+		}
+		
+		//------------------------------------------------------------------------------------------
+		// deprecated
 		//------------------------------------------------------------------------------------------
 		public function launchGamestate (__gameState:Class /* <Dynamic> */):void {
 			m_XApp.getXTaskManager ().addTask ([
@@ -227,6 +228,50 @@ package gx {
 				
 				XTask.RETN,
 			]);
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function registerState (__name:String, __class:Class /* <Dynamic> */):void {
+			if (!m_states.exists (__name)) {
+				m_states.set (__name, __class);
+			}
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function unregisterState (__name:String):void {
+			if (m_states.exists (__name)) {
+				m_states.remove (__name);
+			}
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function gotoState (__name:String, __params:Array /* <Dynamic> */ = null, __layer:int = 0, __depth:Number = 0.0):Gamestate {
+			if (m_states.exists (__name)) {
+				var __class:Class /* <Dynamic> */ = m_states.get (__name);
+				
+				if (m_gameStateObject != null) {
+					m_gameStateObject.nukeLater ();
+				}
+				
+				m_gameStateObject = xxx.getXLogicManager ().initXLogicObject (
+					// parent
+					null,
+					// logicObject
+					/* @:cast */ XType.createInstance (__class) as XLogicObject,
+					// item, layer, depth
+					null, 0, 0,
+					// x, y, z
+					0, 0, 0,
+					// scale, rotation
+					1.0, 0,
+					// args
+					__params
+				) as Gamestate;	
+				
+				return m_gameStateObject;
+			}
+			
+			return null;
 		}
 		
 		//------------------------------------------------------------------------------------------
@@ -280,6 +325,11 @@ package gx {
 		//------------------------------------------------------------------------------------------
 		public function gotoLogic (__logic:Function):void {
 			m_XTaskSubManager.gotoLogic (__logic);
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function Null_HndlrX ():XLogicObject {
+			return null;
 		}
 		
 		//------------------------------------------------------------------------------------------
@@ -358,16 +408,6 @@ package gx {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function addXShake (__count:int=15, __delayValue:Number=0x0100):void {
-			m_levelObject.addXShake (__count, __delayValue);
-		}
-		
-		//------------------------------------------------------------------------------------------
-		public function addYShake (__count:int=15, __delayValue:Number=0x0100):void {
-			m_levelObject.addYShake (__count, __delayValue);
-		}
-		
-		//------------------------------------------------------------------------------------------
 		/* @:get, set player XFlod */
 		
 		public function get player ():XFlod {
@@ -380,10 +420,187 @@ package gx {
 		/* @:end */
 		
 		//------------------------------------------------------------------------------------------
-		public function Null_HndlrX ():XLogicObject {
-			return null;
+		public function setBGMVolume (__volume:Number):void {
+			m_player.setVolume (__volume);
 		}
 		
+		//------------------------------------------------------------------------------------------
+		public function getBGMVolume ():Number {
+			return m_player.getVolume ();
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function setSFXVolume (__volume:Number):void {
+			xxx.getSoundManager ().setSFXVolume (__volume);
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function getSFXVolume ():Number {
+			return xxx.getSoundManager ().getSFXVolume ();
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function getSmallFontName ():String {
+			return "SmallHiresFont:SmallHiresFont";	
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function openURLInBrowser (__url:String):void {
+			var __request:URLRequest = new URLRequest (__url);
+			
+			__request.method = URLRequestMethod.POST;
+			
+			__navigateToURL (__request, "_blank");	
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public  function openURLInBrowserWithJavascript (url:*, window:String = "_blank", specs:String=""):void {
+			var isString:Boolean = XType.isType (url, String);
+			var req:URLRequest = isString ? new URLRequest(url) : url;
+			if (!ExternalInterface.available) {
+				__navigateToURL(req, window);
+			} else {
+				var strUserAgent:String = String(ExternalInterface.call("function() {return navigator.userAgent;}")).toLowerCase();
+				var msieIndex:uint = XType.parseInt (strUserAgent.substr(strUserAgent.indexOf("msie") + 5, 3));
+				if (strUserAgent.indexOf("firefox") != -1 || (strUserAgent.indexOf("msie") != -1 && msieIndex >= 7)) {
+					ExternalInterface.call("window.open", req.url, window, specs);
+				} else {
+					__navigateToURL(req, window);
+				}
+			}
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function getNetworkingRestriction():String {
+			// <HAXE>
+			/* --
+			return "";
+			-- */
+			// </HAXE>
+			// <AS3>
+			var result:String = "all"; // default level
+			
+			try {
+				// first try SharedObject.  If it throws a SecurityError, then allowNetworking="none"
+				SharedObject.getLocal("test"); 
+				
+				try {
+					// SharedObject didn't throw a SecurityError. 
+					//If ExternalInterface.call() throws a SecurityError then allowNetworking="internal"
+					ExternalInterface.call(""); 
+				}
+				catch (e:SecurityError) {
+					result = "internal";
+				}
+				
+			}
+			catch (e:SecurityError) {
+				result = "none";        
+			}
+			
+			return result;
+			// </AS3>
+		}
+		
+		//------------------------------------------------------------------------------------------
+		// https://www.facebook.com/dialog/feed
+		// ?app_id=1437483596500878
+		// &caption=Octo-Tron%20Circus
+		// &description=Building%20a%20better%20tomorrow%20by%20lending%20today!
+		// &display=popup
+		// &e2e=%7B%7D
+		// &link=http%3A%2F%2Fwww.kablooey.com%2Fapps%2FOcto-Tron-Circus
+		// &locale=en_US
+		// &name=Play%20Octo-Tron%20Circus!
+		// &next=http%3A%2F%2Fstatic.ak.facebook.com%2Fconnect%2Fxd_arbiter%2FoDB-fAAStWy.js%3Fversion%3D41%23cb%3Df7a5bb56%26domain%3Dwww.kablooey.com%26origin%3Dhttp%253A%252F%252Fwww.kablooey.com%252Ff1cb06720%26relation%3Dopener%26frame%3Df3b90fbe68%26result%3D%2522xxRESULTTOKENxx%2522
+		// &picture=http%3A%2F%2Fwww.kablooey.com%3A8080%2Fapps%2FOcto-Tron-Circus%2Fimages%2FOcto-Tron-Circus-Facebook-Feed-Large.png
+		// &sdk=joey
+		//------------------------------------------------------------------------------------------
+		public function generateFacebookShareLink (
+			__app_id:String,
+			__caption:String,
+			__description:String,
+			__link:String,
+			__name:String,
+			__picture:String
+		):String {
+			
+			var __variables:URLVariables = new URLVariables();
+			__variables.caption = __caption;
+			__variables.description = __description;
+			__variables.display = "popup";
+			__variables.e2e = "{}";
+			__variables.link = __link;
+			__variables.local = "en_US";
+			__variables.name = __name;
+			__variables.next = "http://static.ak.facebook.com/connect/xd_arbiter/oDB-fAAStWy.js?version=41#cb=f7a5bb56&domain=www.kablooey.com&origin=http%3A%2F%2Fwww.kablooey.com%2Ff1cb06720&relation=opener&frame=f3b90fbe68&result=%22xxRESULTTOKENxx%22";
+			__variables.picture = __picture;
+			__variables.sdk = "joey";
+			
+			var __urlString:String = "http://www.facebook.com/dialog/feed?app_id=" + __app_id + "&" + __variables.toString ();
+			
+			trace (": ", __urlString);
+			
+			return __urlString;
+		}
+		
+		//------------------------------------------------------------------------------------------
+		private function __navigateToURL (__req:URLRequest, __url):void {
+			// <HAXE>
+			/* --
+			openfl.Lib.getURL(__req, __url);
+			-- */
+			// </HAXE>
+			// <AS3>
+			navigateToURL (__req, __url);
+			// </AS3>
+		}
+		
+		//------------------------------------------------------------------------------------------
+		//
+		// gameplay
+		//
+		// in the future, possibly move some or all of the functionality to the gameplay state
+		// retain interface methods in this class for backwards compatbility
+		// we may keep level methods here in this class
+		//
+		//------------------------------------------------------------------------------------------
+		
+		//------------------------------------------------------------------------------------------
+		public function setupSignals ():void {
+			m_setMickeyToStartSignal = new XSignal ();
+			m_zoneStartedSignal = new XSignal ();
+			m_zoneFinishedSignal = new XSignal ();
+			m_triggerSignal = new XSignal ();
+			m_triggerXSignal = new XSignal ();
+			m_pingSignal = new XSignal ();
+		}
+
+		//------------------------------------------------------------------------------------------
+		public function cleanupSignals ():void {
+			m_setMickeyToStartSignal.removeAllListeners ();
+			m_zoneStartedSignal.removeAllListeners ();
+			m_zoneFinishedSignal.removeAllListeners ();
+			m_triggerSignal.removeAllListeners ();
+			m_triggerXSignal.removeAllListeners ();
+			m_pingSignal.removeAllListeners ();
+		}
+
+		//------------------------------------------------------------------------------------------
+		public function cleanupCollisionLists ():void {
+			xxx.getXBulletCollisionManager ().cleanup ();
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function addXShake (__count:int=15, __delayValue:Number=0x0100):void {
+			m_levelObject.addXShake (__count, __delayValue);
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function addYShake (__count:int=15, __delayValue:Number=0x0100):void {
+			m_levelObject.addYShake (__count, __delayValue);
+		}
+	
 		//------------------------------------------------------------------------------------------
 		public function initLogicClassNames (__array:Array /* <Dynamic> */):void {
 			m_logicClassNameToClass = XType.array2XDict (__array);	
@@ -393,10 +610,25 @@ package gx {
 		public function logicClassNameToClass (__logicClassName:String):* {
 			return null;
 		}
+
+		//------------------------------------------------------------------------------------------
+		public function setLevelComplete (__complete:Boolean):void {
+			m_levelComplete = __complete;
+		}
 		
 		//------------------------------------------------------------------------------------------
 		public function getLevelComplete ():Boolean {
 			return m_levelComplete;
+		}
+
+		//------------------------------------------------------------------------------------------
+		public function setCurrentLevelProps (__levelProps:LevelPropsX):void {
+			m_levelProps = __levelProps;
+		}
+		
+		//------------------------------------------------------------------------------------------
+		public function getCurrentLevelProps ():LevelPropsX {
+			return m_levelProps;
 		}
 		
 		//------------------------------------------------------------------------------------------
@@ -469,6 +701,11 @@ package gx {
 		}
 		
 		//------------------------------------------------------------------------------------------
+		public function setLevelObject (__levelObject:_LevelX):void {
+			m_levelObject = __levelObject;
+		}
+		
+		//------------------------------------------------------------------------------------------
 		public function getLevelObject ():_LevelX {
 			return m_levelObject;
 		}
@@ -476,26 +713,6 @@ package gx {
 		//------------------------------------------------------------------------------------------
 		public function getLevelLayer (__layer:int):XMapView { // XMapLayerView
 			return m_levelObject;
-		}
-
-		//------------------------------------------------------------------------------------------
-		public function setBGMVolume (__volume:Number):void {
-			m_player.setVolume (__volume);
-		}
-
-		//------------------------------------------------------------------------------------------
-		public function getBGMVolume ():Number {
-			return m_player.getVolume ();
-		}
-		
-		//------------------------------------------------------------------------------------------
-		public function setSFXVolume (__volume:Number):void {
-			xxx.getSoundManager ().setSFXVolume (__volume);
-		}
-		
-		//------------------------------------------------------------------------------------------
-		public function getSFXVolume ():Number {
-			return xxx.getSoundManager ().getSFXVolume ();
 		}
 		
 		//------------------------------------------------------------------------------------------
@@ -578,6 +795,11 @@ package gx {
 			m_mickeyObject.setMessage (__message);
 		}
 
+		//------------------------------------------------------------------------------------------
+		public function createZoneManager ():ZoneManager {
+			return new ZoneManager ();
+		}
+		
 		//------------------------------------------------------------------------------------------
 		public function getZoneManager ():ZoneManager {
 			return m_zoneManager;
@@ -796,123 +1018,6 @@ package gx {
 			__listener:Function
 		):void {
 			m_pingSignal.fireSignal (__id, __type, __logicObject, __listener);
-		}
-		
-		//------------------------------------------------------------------------------------------
-		public function getSmallFontName ():String {
-			return "SmallHiresFont:SmallHiresFont";	
-		}
-		
-		//------------------------------------------------------------------------------------------
-		public function openURLInBrowser (__url:String):void {
-			var __request:URLRequest = new URLRequest (__url);
-			
-			__request.method = URLRequestMethod.POST;
-			
-			__navigateToURL (__request, "_blank");	
-		}
-		
-		//------------------------------------------------------------------------------------------
-		public  function openURLInBrowserWithJavascript (url:*, window:String = "_blank", specs:String=""):void {
-			var isString:Boolean = XType.isType (url, String);
-			var req:URLRequest = isString ? new URLRequest(url) : url;
-			if (!ExternalInterface.available) {
-				__navigateToURL(req, window);
-			} else {
-				var strUserAgent:String = String(ExternalInterface.call("function() {return navigator.userAgent;}")).toLowerCase();
-				var msieIndex:uint = XType.parseInt (strUserAgent.substr(strUserAgent.indexOf("msie") + 5, 3));
-				if (strUserAgent.indexOf("firefox") != -1 || (strUserAgent.indexOf("msie") != -1 && msieIndex >= 7)) {
-					ExternalInterface.call("window.open", req.url, window, specs);
-				} else {
-					__navigateToURL(req, window);
-				}
-			}
-		}
-		
-		//------------------------------------------------------------------------------------------
-		public function getNetworkingRestriction():String {
-			// <HAXE>
-			/* --
-			return "";
-			-- */
-			// </HAXE>
-			// <AS3>
-			var result:String = "all"; // default level
-			
-			try {
-				// first try SharedObject.  If it throws a SecurityError, then allowNetworking="none"
-				SharedObject.getLocal("test"); 
-				
-				try {
-					// SharedObject didn't throw a SecurityError. 
-					//If ExternalInterface.call() throws a SecurityError then allowNetworking="internal"
-					ExternalInterface.call(""); 
-				}
-				catch (e:SecurityError) {
-					result = "internal";
-				}
-				
-			}
-			catch (e:SecurityError) {
-				result = "none";        
-			}
-			
-			return result;
-			// </AS3>
-		}
-		
-		//------------------------------------------------------------------------------------------
-		// https://www.facebook.com/dialog/feed
-		// ?app_id=1437483596500878
-		// &caption=Octo-Tron%20Circus
-		// &description=Building%20a%20better%20tomorrow%20by%20lending%20today!
-		// &display=popup
-		// &e2e=%7B%7D
-		// &link=http%3A%2F%2Fwww.kablooey.com%2Fapps%2FOcto-Tron-Circus
-		// &locale=en_US
-		// &name=Play%20Octo-Tron%20Circus!
-		// &next=http%3A%2F%2Fstatic.ak.facebook.com%2Fconnect%2Fxd_arbiter%2FoDB-fAAStWy.js%3Fversion%3D41%23cb%3Df7a5bb56%26domain%3Dwww.kablooey.com%26origin%3Dhttp%253A%252F%252Fwww.kablooey.com%252Ff1cb06720%26relation%3Dopener%26frame%3Df3b90fbe68%26result%3D%2522xxRESULTTOKENxx%2522
-		// &picture=http%3A%2F%2Fwww.kablooey.com%3A8080%2Fapps%2FOcto-Tron-Circus%2Fimages%2FOcto-Tron-Circus-Facebook-Feed-Large.png
-		// &sdk=joey
-		//------------------------------------------------------------------------------------------
-		public function generateFacebookShareLink (
-			__app_id:String,
-			__caption:String,
-			__description:String,
-			__link:String,
-			__name:String,
-			__picture:String
-		):String {
-			
-			var __variables:URLVariables = new URLVariables();
-			__variables.caption = __caption;
-			__variables.description = __description;
-			__variables.display = "popup";
-			__variables.e2e = "{}";
-			__variables.link = __link;
-			__variables.local = "en_US";
-			__variables.name = __name;
-			__variables.next = "http://static.ak.facebook.com/connect/xd_arbiter/oDB-fAAStWy.js?version=41#cb=f7a5bb56&domain=www.kablooey.com&origin=http%3A%2F%2Fwww.kablooey.com%2Ff1cb06720&relation=opener&frame=f3b90fbe68&result=%22xxRESULTTOKENxx%22";
-			__variables.picture = __picture;
-			__variables.sdk = "joey";
-			
-			var __urlString:String = "http://www.facebook.com/dialog/feed?app_id=" + __app_id + "&" + __variables.toString ();
-			
-			trace (": ", __urlString);
-			
-			return __urlString;
-		}
-		
-		//------------------------------------------------------------------------------------------
-		private function __navigateToURL (__req:URLRequest, __url):void {
-			// <HAXE>
-			/* --
-			openfl.Lib.getURL(__req, __url);
-			-- */
-			// </HAXE>
-			// <AS3>
-			navigateToURL (__req, __url);
-			// </AS3>
 		}
 		
 	//------------------------------------------------------------------------------------------
