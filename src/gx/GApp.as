@@ -136,7 +136,7 @@ package gx {
 			m_XApp = new XApp ();
 			m_XApp.setup (m_XApp.getDefaultPoolSettings ());
 			
-			xxx = new XWorld (__parent, m_XApp, __layers, __timerInterval);
+			xxx = createXWorld (__parent, m_XApp, __layers, __timerInterval);
 			addChild (xxx);
 			
 			m_states = new XDict (); // <String, Dynamic>
@@ -187,6 +187,11 @@ package gx {
 		//------------------------------------------------------------------------------------------
 		public function createViewRect ():void {
 			xxx.setViewRect (704, 576);	
+		}
+
+		//------------------------------------------------------------------------------------------
+		public function createXWorld (__parent:*, __XApp:XApp, __layers:int=8, __timerInterval:Number=32){
+			return new XWorld (__parent, __XApp, __layers, __timerInterval);	
 		}
 		
 		//------------------------------------------------------------------------------------------

@@ -472,7 +472,12 @@ package gx.zone {
 		public function getStarterRingItems ():XDict /* <Int, XMapItemModel> */ {
 			return m_starterRingItems;
 		}
-				
+			
+		//------------------------------------------------------------------------------------------
+		public function getStarterRingItemObjects ():XDict /* <Int, StarterRingControllerX> */ {
+			return m_starterRingItemObjects;
+		}
+		
 		//------------------------------------------------------------------------------------------
 		public function setMickeyToStartPosition (__zone:int):void {	
 			var __logicObject:StarterRingControllerX = m_starterRingItemObjects.get (__zone) as StarterRingControllerX;
