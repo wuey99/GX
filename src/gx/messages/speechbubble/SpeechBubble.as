@@ -18,7 +18,7 @@ package gx.messages.speechbubble {
 		 * @param	cornerRadius	The radius of the corners of the bubble (in px)
 		 * @param	point	A Point instance defining the position of the point of the speech bubble.
 		 */
-		public static function drawSpeechBubble(target:Sprite, rect:Rectangle, cornerRadius:Number, point:Point):void
+		public static function drawSpeechBubble(target:Sprite, rect:Rectangle, cornerRadius:Number, point:Point, __left:Number, __right:Number):void
 		{
 			var g:Graphics = target.graphics;
 			var r:Number = cornerRadius;
@@ -31,12 +31,22 @@ package gx.messages.speechbubble {
 			var py:Number = point.y;
 			var min_gap:Number = 20;
 			var hgap:Number = Math.min(w - r - r, Math.max(min_gap, w / 5));
-			var left:Number = px <= x + w / 2 ? 
+			var left:Number;
+			if (__left == 0) {
+			left = px <= x + w / 2 ? 
 				(Math.max(x+r, px))
 				:(Math.min(x + w - r - hgap, px - hgap));
-			var right:Number = px <= x + w / 2?
+			} else {
+				left = __left;
+			}
+			var right:Number;
+			if (__right == 0) {
+			right = px <= x + w / 2?
 				(Math.max(x + r + hgap, px+hgap))
 				:(Math.min(x + w - r, px));
+			} else {
+				right = __right;
+			}
 			var vgap:Number = Math.min(h - r - r, Math.max(min_gap, h / 5));
 			var top:Number = py < y + h / 2 ?
 				Math.max(y + r, py)
