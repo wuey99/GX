@@ -258,20 +258,28 @@ package gx {
 					m_gameStateObject.nukeLater ();
 				}
 				
-				m_gameStateObject = xxx.getXLogicManager ().initXLogicObject (
-					// parent
-					null,
-					// logicObject
-					/* @:cast */ XType.createInstance (__class) as XLogicObject,
-					// item, layer, depth
-					null, 0, 0,
-					// x, y, z
-					0, 0, 0,
-					// scale, rotation
-					1.0, 0,
-					// args
-					__params
-				) as Gamestate;	
+				xxx.getXTaskManager ().addTask ([
+					XTask.WAIT, 0x0100,
+					
+					function ():void {
+						m_gameStateObject = xxx.getXLogicManager ().initXLogicObject (
+							// parent
+							null,
+							// logicObject
+							/* @:cast */ XType.createInstance (__class) as XLogicObject,
+							// item, layer, depth
+							null, 0, 0,
+							// x, y, z
+							0, 0, 0,
+							// scale, rotation
+							1.0, 0,
+							// args
+							__params
+						) as Gamestate;	
+					},
+					
+					XTask.RETN,
+				]);
 				
 				return m_gameStateObject;
 			}
