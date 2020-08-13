@@ -500,8 +500,8 @@ package gx.levels {
 		}
 		
 		//------------------------------------------------------------------------------------------
-		public function fireLevelCompleteSignal ():void {
-			m_levelCompleteSignal.fireSignal ();
+		public function fireLevelCompleteSignal (__status:String = null):void {
+			m_levelCompleteSignal.fireSignal (__status);
 		}
 		
 	//------------------------------------------------------------------------------------------
